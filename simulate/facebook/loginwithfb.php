@@ -2,7 +2,7 @@
 session_start();
 $_SESSION['state'] = md5(uniqid(rand(), TRUE)); // CSRF protection
 
-$app_id = "463791427029718";//change this
+include 'config.php';
 $redirect_url = "http://goedbezig.marijnvdwerf.nl/callback.php"; //change this
 
 $dialog_url = "https://www.facebook.com/dialog/oauth?client_id=" 
