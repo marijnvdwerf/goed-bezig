@@ -16,8 +16,8 @@ $post = R::load('post',$id); //Retrieve
 
 $app = new \Slim\Slim();
 
-$app->get('/', function() {
-    echo 'Hello world';
+$app->get('/', function() use($app) {
+    $app->render('index.php');
 });
 
 $app->run();
