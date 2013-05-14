@@ -3,6 +3,10 @@ simulate/facebook/postData.txt
 simulate/facebook/postData.json
 simulate/foursquare/config.php
 
+# Composer
+simulate/vendor
+simulate/composer.lock
+
 #
 # OS X
 #

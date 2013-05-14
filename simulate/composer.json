@@ -1,0 +1,6 @@
+{
+    "name": "goed-bezig/simulate",
+    "require": {
+        "shuber/curl": "dev-master"
+    }
+}
