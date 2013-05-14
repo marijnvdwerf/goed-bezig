@@ -1,14 +1,14 @@
 <?php 
     //change this
    include 'config.php';
-   $redirect_url = "http://goedbezig.marijnvdwerf.nl/callback.php"; //change this
+   $redirect_url = "http://goedbezig.marijnvdwerf.nl/simulate/callback.php"; //change this
 
    $code = $_REQUEST["code"];
    session_start();
 
    if(empty($code)) 
    {
-	header( 'Location: http://goedbezig.marijnvdwerf.nl/loginwithfb.php' ) ; //change this
+	header( 'Location: http://goedbezig.marijnvdwerf.nl/simulate/loginwithfb.php' ) ; //change this
 	exit(0);
    }
    
