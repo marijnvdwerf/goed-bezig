@@ -4,13 +4,14 @@
    $redirect_url = "http://goedbezig.marijnvdwerf.nl/simulate/callback.php"; //change this
 
    $code = $_REQUEST["code"];
+ 
    session_start();
 
    if(empty($code)) 
    {
 	header( 'Location: http://goedbezig.marijnvdwerf.nl/simulate/loginwithfb.php' ) ; //change this
 	exit(0);
-   }
+   } else {  echo "Code:". $code . "<br>";}
    
    $access_token_details = getAccessTokenDetails($app_id,$app_secret,$redirect_url,$code);
    if($access_token_details == null)
@@ -47,7 +48,7 @@
    if($checkins)
    {
 	   echo "<h3>Checkins werkt</h3>";
-	   print_r ($checkins);
+	   echo "<pre>". $checkins . "</pre>";
 	   
    }
    else
@@ -85,8 +86,9 @@ function getCheckIns($access_token)
 {
 	$graph_url = "https://graph.facebook.com/me/checkins?access_token=". $access_token;
 	$checkins = json_decode(file_get_contents($graph_url));
-	if($checkins != null)
-	return $checkins;
+    $checkins2 = json_encode($checkins, JSON_PRETTY_PRINT);
+	if($checkins2 != null)
+	return $checkins2;
 	
 	return null;
 	}
