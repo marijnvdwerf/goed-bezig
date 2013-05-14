@@ -7,17 +7,23 @@ require 'includes/vendor/rb.php';
 
 R::setup('mysql:host=mysql.dd;dbname=' . $db_name, $db_user, $db_pass);
 
-$post = R::dispense('post');
-$post->text = 'Hello World';
-
-$id = R::store($post);       //Create or Update
-$post = R::load('post',$id); //Retrieve
-//R::trash($post);             //Delete
-
 $app = new \Slim\Slim();
 
 $app->get('/', function() use($app) {
     $app->render('index.php');
+});
+
+$app->get('/achievements', function() use($app) {
+    $app->render('achievements.php', [
+        'achievements' => R::findAll('achievement')
+    ]);
+});
+
+$app->get('/db', function() use($app) {
+    $achievement = R::dispense('achievement');
+    $achievement->text = 'Hello World';
+    
+    R::store($achievement);       //Create or Update
 });
 
 $app->run();
