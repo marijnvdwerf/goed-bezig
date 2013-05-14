@@ -1,4 +1,6 @@
 app/includes/config.php
+app/composer.lock
+app/vendor
 
 #
 # OS X
