@@ -3,7 +3,6 @@
    include 'config.php';
    $redirect_url = "http://goedbezig.marijnvdwerf.nl/callback.php"; //change this
 
-   
    $code = $_REQUEST["code"];
    session_start();
 
@@ -25,10 +24,10 @@
 		die("May be CSRF attack");
    }
 	 
-   	$_SESSION['access_token'] = $access_token_details['access_token']; //save token is session 
+   $_SESSION['access_token'] = $access_token_details['access_token']; //save token is session 
    
    $user = getUserDetails($access_token_details['access_token']);
-   $checkins = testMyShizzle($access_token_details['access_token']);
+   $checkins = getCheckIns($access_token_details['access_token']);
    
    if($user)
    {
@@ -82,7 +81,7 @@ function getUserDetails($access_token)
 	return null;
 }
 
-function testMyShizzle($access_token)
+function getCheckIns($access_token)
 {
 	$graph_url = "https://graph.facebook.com/me/checkins?access_token=". $access_token;
 	$checkins = json_decode(file_get_contents($graph_url));

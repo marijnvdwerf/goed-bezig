@@ -14,6 +14,6 @@ $dialog_url = "https://www.facebook.com/dialog/oauth?client_id="
 <body>
 <h1>GoedBezig</h1>
 
-Klik op die kutknop
+Klik op die knop
 <a href="<?php echo $dialog_url;?>"><img src="login-fb2.jpg"></a>
 </html>
