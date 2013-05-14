@@ -1,6 +1,7 @@
 {
     "name": "goed-bezig/simulate",
     "require": {
-        "shuber/curl": "dev-master"
+        "shuber/curl": "dev-master",
+        "facebook/php-sdk": "dev-master"
     }
 }
