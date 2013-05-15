@@ -1,7 +1,7 @@
 <?php 
     //change this
    include 'config.php';
-   $redirect_url = "http://goedbezig.marijnvdwerf.nl/simulate/callback.php"; //change this
+   $redirect_url = "http://goedbezig.marijnvdwerf.nl/simulate/facebook/callback.php"; //change this
 
    $code = $_REQUEST["code"];
  
@@ -9,7 +9,7 @@
 
    if(empty($code)) 
    {
-	header( 'Location: http://goedbezig.marijnvdwerf.nl/simulate/loginwithfb.php' ) ; //change this
+	header( 'Location: http://goedbezig.marijnvdwerf.nl/simulate/facebook/loginwithfb.php' ) ; //change this
 	exit(0);
    } else {  echo "Code:". $code . "<br>";}
    

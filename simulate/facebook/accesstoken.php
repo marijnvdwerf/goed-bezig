@@ -19,7 +19,7 @@ if ($user) {
                 $fbID = $me['id'];
 
                 file_put_contents('users/'. $fbID . '.json', $token); 
-                header( 'Location: http://goedbezig.marijnvdwerf.nl/simulate/getlatest.php');
+                header( 'Location: http://goedbezig.marijnvdwerf.nl/simulate/facebook/getlatest.php');
                 exit(0);
             }
         } catch (FacebookApiException $e) {
