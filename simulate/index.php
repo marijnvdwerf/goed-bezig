@@ -49,10 +49,7 @@ if(isset($_GET['facebook'])){
 } else if(isset($_GET['foursquare'])){
     require 'foursquare/config.php';
     // Foursquare
-
-    $place_to_be = 'foursquare/user/' . $_GET['user'];
-
-    $json_user_content = file_get_contents($place_to_be);
+    $json_user_content = file_get_contents('foursquare/user/' . $_GET['user']);
     $json_checkin_content = file_get_contents('foursquare/checkin/' . $_GET['checkin']);
 
     $json_content = [
