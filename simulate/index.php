@@ -62,35 +62,41 @@ if(isset($_GET['user']) && isset($_GET['checkin'])){
 <html>
 <head>
     <title>GoedBezig callto</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
 </head>
 <body>
-    <form id="selectUserCheckInFacebook">
-        <fieldset>
-            <legend>Facebook</legend>
-            <select name="fbuser">
-                <option value="34647475754585">Jeroen</option>
-                <option value="ffuser">Sjaak</option>
-            </select>
-            <select name="location">
-                <option value="location1">Eindhoven</option>
-                <option value="location2">Veghel</option>
-            </select>
-            <input type="submit" />
-        </fieldset>
-    </form>
+    <div class="container">
+        <form id="selectUserCheckInFacebook" class="form-inline">
+            <fieldset>
+                <legend>Facebook</legend>
+                <select name="fbuser">
+                    <option value="34647475754585">Jeroen</option>
+                    <option value="ffuser">Sjaak</option>
+                </select>
+                <select name="location">
+                    <option value="location1">Eindhoven</option>
+                    <option value="location2">Veghel</option>
+                </select>
+                <input type="submit" class="btn btn-primary" />
+            </fieldset>
+        </form>
 
-    <form id="selectUserCheckInFoursquare">
-        <fieldset>
-            <legend>Foursquare</legend>
-            <?= getSelectBox('user'); ?>
-            <?= getSelectBox('checkin'); ?>
-            <input type="submit" />
-        </fieldset>
-    </form>
+        <form id="selectUserCheckInFoursquare" class="form-inline">
+            <fieldset>
+                <legend>Foursquare</legend>
+                <?= getSelectBox('user'); ?>
+                <?= getSelectBox('checkin'); ?>
+                <input type="submit" class="btn btn-primary" />
+            </fieldset>
+        </form>
     
-    <?php if(isset($response)): ?>
-        <p>Verstuurd naar <a href="<?= htmlentities($target_url); ?>?inspect"><?= htmlentities($target_url); ?></a>.</p>
-    <pre><?= $response; ?></pre>
-    <?php endif; ?>
+        <?php if(isset($response)): ?>
+            <fieldset>
+                <legend>Request</legend>
+                <p>Verstuurd naar <a href="<?= htmlentities($target_url); ?>?inspect"><?= htmlentities($target_url); ?></a>.</p>
+                <pre><?= $response; ?></pre>
+            </fieldset>
+        <?php endif; ?>
+    </div>
 </body>
 </html>
