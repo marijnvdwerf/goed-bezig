@@ -104,7 +104,7 @@ if(isset($_GET['facebook'])){
             <fieldset>
                 <legend>Request</legend>
                 <p>Verstuurd naar <a href="<?= htmlentities($target_url); ?>?inspect"><?= htmlentities($target_url); ?></a>.</p>
-                <pre><?= $response; ?></pre>
+                <pre><?= htmlentities($response); ?></pre>
             </fieldset>
         <?php endif; ?>
     </div>
