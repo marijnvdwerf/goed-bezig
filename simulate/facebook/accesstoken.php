@@ -1,6 +1,6 @@
 <?php
 include 'config.php';
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 $facebook = new Facebook(array(
     'appId'  => $app_id,
