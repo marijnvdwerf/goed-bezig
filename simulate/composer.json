@@ -2,6 +2,7 @@
     "name": "goed-bezig/simulate",
     "require": {
         "shuber/curl": "dev-master",
-        "facebook/php-sdk": "dev-master"
+        "facebook/php-sdk": "dev-master",
+        "ccampbell/chromephp": "dev-master"
     }
 }
