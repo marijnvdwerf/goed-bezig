@@ -21,7 +21,11 @@ $app->get('/achievements', function() use($app) {
 
 $app->get('/db', function() use($app) {
     $achievement = R::dispense('achievement');
-    $achievement->text = 'Hello World';
+    $achievement->title = 'Hello World';
+    $achievement->progress = 0.7;
+    $achievement->description = 'Hello World';
+    $achievement->iconId = 'Hello World';
+    
     
     R::store($achievement);       //Create or Update
 });
