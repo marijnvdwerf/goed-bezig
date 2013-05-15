@@ -9,48 +9,88 @@ $facebook = new Facebook(array(
 
 if(isset($_GET['users'])){
     $json_accesstoken = file_get_contents('users/' . $_GET['users']);
-    echo $json_accesstoken . '<hr>';
+    //echo $json_accesstoken . '<hr>';
 }
 
 $user = $facebook->getUser();
 
 $facebook->setAccessToken($json_accesstoken);
 
+
 if ($user) {
   $token = $facebook->getAccessToken(); //get access token
   try {
-            $me = $facebook->api('/me/checkins');
-            if($me)
+            $collect = $facebook->api('/me/checkins');
+            if($collect)
             {
                 
-                echo '<pre>' . json_encode($me, JSON_PRETTY_PRINT). '</pre><hr>';
+                //ALLE CHECKINS
+                //echo '<pre>' . json_encode($collect, JSON_PRETTY_PRINT). '</pre><hr>';
+                ChromePhp::log($collect);
+
+                
+                            
+
+                foreach($collect['data'] as $checkin){
+                    
+
+                    if(!checkIfUserAlreadyExist($checkin['from']['name'])) {
+                        createJsonFile('checkin-users', $checkin['from']['name'], $checkin['from']);
+                        //ChromePhp::log("user json created");
+                    } else {//ChromePhp::log("checked");
+                }
+
+                    if(!checkIfLocationAlreadyExist($checkin['place']['name'])) {
+                        createJsonFile('checkin-locations', $checkin['place']['name'], $checkin['place']);
+                        //ChromePhp::log("location json created");
+                    } else {//ChromePhp::log("checked too");
+                }
+                   
+                    //if hij al bestaat --> niets, else make file and write
+
+                    //get locatie
+                    //if hij al bestaat --> niets, else make file and write
+
+
+                    //ChromePhp::log($checkin['from']['name'] . " @ " . $checkin['place']['name']);
+                    
+                    //echo $place . '/n';
+                }
+
+
+
+
+
+
+
             }
         } catch (FacebookApiException $e) {
           error_log($e);   
         }
-
-//echo "<hr>" . $me['id'];
-
-/*    try {
-            $me = $facebook->api('/100005427698197/checkins');
-            if($me)
-            {
-                print_r($me);               
-            }
-        } catch (FacebookApiException $e) {
-          error_log($e);   
-        }*/
 
   
 }
 else {
 $args['scope'] = 'email'; // scope parameter, separate multiple scopes by comma
 $loginUrl = $facebook->getLoginUrl($args); //generate login url
-echo $loginUrl;
+//echo $loginUrl;
 }
 
 
+function checkIfUserAlreadyExist($name){
 
+    $all_users = getFiles('checkin-users');
+    return in_array($name . '.json', $all_users);
+};
+function checkIfLocationAlreadyExist($location){
+
+    $all_locations = getFiles('checkin-locations');
+    return in_array($location . '.json', $all_locations);
+};
+
+function createJsonFile($folder, $name, $data){
+    file_put_contents($folder .'/'. $name . '.json', json_encode($data));
+}
 
 
 function getFiles($type){
