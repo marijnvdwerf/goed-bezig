@@ -43,7 +43,38 @@ if(isset($_GET['facebook'])){
     $time_stamp = explode(" ", microtime());
     $seconds = (int)$time_stamp[1];
 
-    $values = array("object" => "user", "entry" => array(array("uid" => "100005427698197", "id" => "100005427698197", "time" => $seconds, "changed_fields" => array("checkins"))));
+    $values = array(
+        "date" => array(array(
+            "id" => "100005427698197", 
+            "from" => array(
+                "name" => "Jeroen van der Sanden",
+                "id" => "39284902409842987"
+            ), 
+            "place" =>array(
+                "id" => "464646466464",
+                "name" => "Sportcentrum",
+                "location" => array(
+                    "street" => "Straat",
+                    "city" => "Eindhoven",
+                    "state" => "",
+                    "country" => "Holland",
+                    "zip" => "5436 KJ",
+                    "latitude" => 51.32354364644646,
+                    "longitude" => 52.2435535353
+                    )
+            ), 
+            "application" => array(
+                "name" => "Facebook for iPhone",
+                "namespace" => "fbiphone",
+                "id" => "7565757755"
+                ),
+            "created_time" => "2013-05-14T11:01:09+0000"
+            )
+        )
+    );
+    
+
+
 
     $response = $curl->post($target_url, $values);
 } else if(isset($_GET['foursquare'])){
