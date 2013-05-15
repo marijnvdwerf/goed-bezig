@@ -24,11 +24,20 @@ function getSelectBox($type) {
     return '<select name="' . $type . '">' . implode("\r\n", $options) . '</select>';
 }
 
+session_start();
+
 $curl = new Curl();
 $curl->follow_redirects = false;
-$target_url = 'http://requestb.in/ndf5oynd';
+
+if(isset($_GET['target_url'])) {
+    $_SESSION['target_url'] = $_GET['target_url'];
+}
+if(!isset($_SESSION['target_url'])) {
+    $_SESSION['target_url'] = 'http://requestb.in/ndf5oynd';
+}
+$target_url = $_SESSION['target_url'];
     
-if(isset($_GET['fbuser']) && isset($_GET['location'])){
+if(isset($_GET['facebook'])){
     // Facebook
 
     $time_stamp = explode(" ", microtime());
@@ -37,10 +46,7 @@ if(isset($_GET['fbuser']) && isset($_GET['location'])){
     $values = array("object" => "user", "entry" => array(array("uid" => "100005427698197", "id" => "100005427698197", "time" => $seconds, "changed_fields" => array("checkins"))));
 
     $response = $curl->post($target_url, $values);
-
-
-}
-if(isset($_GET['user']) && isset($_GET['checkin'])){
+} else if(isset($_GET['foursquare'])){
     require 'foursquare/config.php';
     // Foursquare
 
@@ -63,30 +69,37 @@ if(isset($_GET['user']) && isset($_GET['checkin'])){
 <head>
     <title>GoedBezig callto</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <style type="text/css">
+        body {
+            margin: 40px 0 0;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <form id="selectUserCheckInFacebook" class="form-inline">
+        <form class="form-inline">
+            <fieldset>
+                <label>URL: </label>
+                <input type="text" name="target_url" value="<?= htmlentities($target_url); ?>" />
+            </fieldset>
             <fieldset>
                 <legend>Facebook</legend>
-                <select name="fbuser">
+                <select name="fbUser">
                     <option value="34647475754585">Jeroen</option>
                     <option value="ffuser">Sjaak</option>
                 </select>
-                <select name="location">
+                <select name="fbLocation">
                     <option value="location1">Eindhoven</option>
                     <option value="location2">Veghel</option>
                 </select>
-                <input type="submit" class="btn btn-primary" />
+                <input type="submit" class="btn btn-primary" name="facebook"/>
             </fieldset>
-        </form>
 
-        <form id="selectUserCheckInFoursquare" class="form-inline">
             <fieldset>
                 <legend>Foursquare</legend>
                 <?= getSelectBox('user'); ?>
                 <?= getSelectBox('checkin'); ?>
-                <input type="submit" class="btn btn-primary" />
+                <input type="submit" class="btn btn-primary" name="foursquare"/>
             </fieldset>
         </form>
     
