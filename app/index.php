@@ -20,14 +20,31 @@ $app->get('/achievements', function() use($app) {
 });
 
 $app->get('/db', function() use($app) {
-    $achievement = R::dispense('achievement');
-    $achievement->title = 'Hello World';
-    $achievement->progress = 0.7;
-    $achievement->description = 'Hello World';
-    $achievement->iconId = 'Hello World';
+        
+    $user = R::dispense('user');
+    $user ->email = 'trend@marijnvdwerf.nl';
+    $user ->name = 'Jeroen van der Sanden';
+        
+    R::store($user);       //Create or Update
     
+});
+
+$app->post('/checkin/foursquare', function() use($app){
+    $user = R::find('user', 1);
     
-    R::store($achievement);       //Create or Update
+    $checkin = $app->request()->params('checkin');
+    $checkin = json_decode($checkin);
+    
+    $categories = [];
+    foreach($checkin->venue->categories as $category){
+        $categories[] = $category->name;
+        $categories = array_merge($categories, $category->parents);
+    }
+    
+    $relatedAchievements = R::find('achievement',
+    ' id in (SELECT achievement_id FROM requirement WHERE venue_category IN ('.R::genSlots($categories).'))',$categories);
+    
+    var_dump($relatedAchievements);
 });
 
 $app->run();
