@@ -12,9 +12,13 @@ var overlay = {
 
     hide: function () {
         this.el.css('opacity', 0);
-        this.el[0].addEventListener('webkitTransitionEnd', function (e) {
+
+        var onTransitionEnd = function (event) {
             $(this).css('display', 'none');
-        });
+            this.removeEventListener('webkitTransitionEnd', onTransitionEnd);
+        };
+
+        this.el[0].addEventListener('webkitTransitionEnd', onTransitionEnd);
     }
 };
 
@@ -60,4 +64,18 @@ cardContainer.hammer().on('tap', '.card', function (event) {
     card.css('transform', 'scale(1) rotateY(180deg)');
     card.css('top', viewportHeight / 2 - wrapperTop);
     card.css('left', viewportWidth / 2 - wrapperLeft);
+    $('.navbar-overlay').show();
+});
+
+$('#btn-close-overlay').hammer().on('tap', function (event) {
+    var activeCardWrapper = $('.card-wrapper.focus');
+    var card = activeCardWrapper.children('.card');
+
+    activeCardWrapper.removeClass('focus');
+    card.css('top', '50%');
+    card.css('left', '50%');
+    card.css('transform', 'scale(' + card.data('scale') + ')');
+
+    overlay.hide();
+    $('.navbar-overlay').hide();
 });
