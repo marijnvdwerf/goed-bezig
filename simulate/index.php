@@ -33,7 +33,7 @@ if(isset($_GET['target_url'])) {
     $_SESSION['target_url'] = $_GET['target_url'];
 }
 if(!isset($_SESSION['target_url'])) {
-    $_SESSION['target_url'] = 'http://requestb.in/ndf5oynd';
+    $_SESSION['target_url'] = 'http://requestb.in/15uy0po1';
 }
 $target_url = $_SESSION['target_url'];
     
