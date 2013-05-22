@@ -7,6 +7,10 @@ html, body {
     box-sizing: border-box;
 }
 
+body.loading * {
+    -webkit-transition: none;
+}
+
 .navbar {
     height: 44px;
     background: #00afe5;
