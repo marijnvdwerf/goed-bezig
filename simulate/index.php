@@ -2,27 +2,48 @@
 
 require 'vendor/autoload.php';
 
-function getFiles($type){
-    $files = scandir('foursquare/' . $type);
-    $output = [];
-    foreach($files as $file) {
-        if($file === '.' || $file === '..' || $file === 'empty') {
-            continue;
-        }
-        $output[] = $file;
-    }
+class Provider {
 
-    return $output;
+	protected static function getFiles($folder){
+	    $files = scandir($folder);
+	    $output = [];
+	    foreach($files as $file) {
+	        if($file === '.' || $file === '..' || $file === 'empty') {
+	            continue;
+	        }
+	        $output[] = $file;
+	    }
+	
+	    return $output;
+	}
+	
+	protected static function getSelectBox($folder, $type) {
+	    $options = self::getFiles($folder);
+	    foreach($options as &$option) {
+	        $option = '<option>' . $option . '</option>';
+	    };
+	
+	    return '<select name="' . $type . '">' . implode("\r\n", $options) . '</select>';
+	}
+	
 }
 
-function getSelectBox($type) {
-    $options = getFiles($type);
-    foreach($options as &$option) {
-        $option = '<option>' . $option . '</option>';
-    };
-
-    return '<select name="' . $type . '">' . implode("\r\n", $options) . '</select>';
+class Foursquare extends Provider {
+	
+	public static function getSelectBox($type){
+		return parent::getSelectBox('foursquare/' . $type, '4sq' . $type);
+	}
+	
 }
+
+class Facebook extends Provider {
+	
+	public static function getSelectBox($type){
+		return parent::getSelectBox('facebook/checkin-' . $type, 'fb' . $type);
+	}
+	
+}
+
 
 session_start();
 
@@ -80,8 +101,8 @@ if(isset($_GET['facebook'])){
 } else if(isset($_GET['foursquare'])){
     require 'foursquare/config.php';
     // Foursquare
-    $json_user_content = file_get_contents('foursquare/user/' . $_GET['user']);
-    $json_checkin_content = file_get_contents('foursquare/checkin/' . $_GET['checkin']);
+    $json_user_content = file_get_contents('foursquare/user/' . $_GET['4squser']);
+    $json_checkin_content = file_get_contents('foursquare/checkin/' . $_GET['4sqcheckin']);
 
     $json_content = [
         'user' => $json_user_content,
@@ -112,21 +133,15 @@ if(isset($_GET['facebook'])){
             </fieldset>
             <fieldset>
                 <legend>Facebook</legend>
-                <select name="fbUser">
-                    <option value="34647475754585">Jeroen</option>
-                    <option value="ffuser">Sjaak</option>
-                </select>
-                <select name="fbLocation">
-                    <option value="location1">Eindhoven</option>
-                    <option value="location2">Veghel</option>
-                </select>
+                <?= Facebook::getSelectBox('users'); ?>
+                <?= Facebook::getSelectBox('locations'); ?>
                 <input type="submit" class="btn btn-primary" name="facebook"/>
             </fieldset>
 
             <fieldset>
                 <legend>Foursquare</legend>
-                <?= getSelectBox('user'); ?>
-                <?= getSelectBox('checkin'); ?>
+                <?= Foursquare::getSelectBox('user'); ?>
+                <?= Foursquare::getSelectBox('checkin'); ?>
                 <input type="submit" class="btn btn-primary" name="foursquare"/>
             </fieldset>
         </form>
