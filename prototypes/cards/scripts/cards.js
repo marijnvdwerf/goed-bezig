@@ -71,10 +71,15 @@ $('#btn-close-overlay').hammer().on('tap', function (event) {
     var activeCardWrapper = $('.card-wrapper.focus');
     var card = activeCardWrapper.children('.card');
 
-    activeCardWrapper.removeClass('focus');
     card.css('top', '50%');
     card.css('left', '50%');
     card.css('transform', 'scale(' + card.data('scale') + ')');
+
+    var onTransitionEnd = function (event) {
+        activeCardWrapper.removeClass('focus');
+        this.removeEventListener('webkitTransitionEnd', onTransitionEnd);
+    };
+    card[0].addEventListener('webkitTransitionEnd', onTransitionEnd);
 
     overlay.hide();
     $('.navbar-overlay').hide();
