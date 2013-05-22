@@ -20,7 +20,24 @@ var overlay = {
 
 $('.card').each(function (index, card) {
     card = $(card);
-    card.height(card.outerWidth() * card.data('ratio'));
+    var thumbWidth = card.outerWidth();
+
+    var width = 320;
+    var height = width * card.data('ratio');
+
+    var scale = thumbWidth / width;
+
+    card.width(width);
+    card.height(height);
+    card.data('scale', scale);
+    card.css('transform', 'scale(' + scale + ')');
+    card.css('margin-left', -width / 2);
+    card.css('margin-right', -width / 2);
+    card.css('margin-top', -height / 2);
+    card.css('margin-bottom', -height / 2);
+
+    card.parent().width(thumbWidth);
+    card.parent().height(thumbWidth * card.data('ratio'));
 });
 
 $('body').removeClass('loading');
@@ -30,7 +47,17 @@ cardContainer.masonry({
 });
 
 cardContainer.hammer().on('tap', '.card', function (event) {
-    overlay.show();
     var card = $(this);
+
+    var viewportHeight = $(window).height();
+    var wrapperTop = $(this).parent().offset().top;
+
+    var viewportWidth = $(window).width();
+    var wrapperLeft = $(this).parent().offset().left;
+
+    overlay.show();
     card.parent().addClass('focus');
+    card.css('transform', 'scale(1) rotateY(180deg)');
+    card.css('top', viewportHeight / 2 - wrapperTop);
+    card.css('left', viewportWidth / 2 - wrapperLeft);
 });
