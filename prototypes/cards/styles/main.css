@@ -7,9 +7,34 @@ html, body {
     box-sizing: border-box;
 }
 
-
 .navbar {
     height: 44px;
     background: #00afe5;
     color: #fff;
+}
+
+.wrapper {
+    position: relative;
+    width: 320px;
+    margin: 0 auto;
+}
+
+#card-container {
+    padding: 4px;
+}
+
+.card {
+    background: #eee;
+    border: 1px solid #ddd;
+    width: 96px;
+    height: 60px;
+}
+
+.card-wrapper {
+    padding: 4px;
+}
+
+.card-placeholder {
+    background: none;
+    border: 3px dashed #eee;
 }
