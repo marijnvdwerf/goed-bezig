@@ -26,7 +26,7 @@ $('.card').each(function (index, card) {
     card = $(card);
     var thumbWidth = card.outerWidth();
 
-    var width = 320;
+    var width = 280;
     var height = width * card.data('ratio');
 
     var scale = thumbWidth / width;
