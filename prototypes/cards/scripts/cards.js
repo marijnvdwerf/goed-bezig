@@ -50,22 +50,29 @@ cardContainer.masonry({
     itemSelector: '.card-wrapper'
 });
 
-cardContainer.hammer().on('tap', '.card', function (event) {
-    var card = $(this);
+cardContainer.hammer()
+    .on('tap', '.card', function (event) {
+        var card = $(this);
 
-    var viewportHeight = $(window).height();
-    var wrapperTop = $(this).parent().offset().top;
+        var viewportHeight = $(window).height();
+        var wrapperTop = $(this).parent().offset().top;
 
-    var viewportWidth = $(window).width();
-    var wrapperLeft = $(this).parent().offset().left;
+        var viewportWidth = $(window).width();
+        var wrapperLeft = $(this).parent().offset().left;
 
-    overlay.show();
-    card.parent().addClass('focus');
-    card.css('transform', 'scale(1) rotateY(180deg)');
-    card.css('top', viewportHeight / 2 - wrapperTop);
-    card.css('left', viewportWidth / 2 - wrapperLeft);
-    $('.navbar-overlay').show();
-});
+        overlay.show();
+        card.parent().addClass('focus');
+        card.css('transform', 'scale(1) rotateY(180deg)');
+        card.css('top', viewportHeight / 2 - wrapperTop);
+        card.css('left', viewportWidth / 2 - wrapperLeft);
+        $('.navbar-overlay').show();
+    })
+    .on('touch', '.card-wrapper', function (event) {
+        $(this).addClass('hover');
+    })
+    .on('release', '.card-wrapper', function (event) {
+        $(this).removeClass('hover');
+    });
 
 $('#btn-close-overlay').hammer().on('tap', function (event) {
     var activeCardWrapper = $('.card-wrapper.focus');
