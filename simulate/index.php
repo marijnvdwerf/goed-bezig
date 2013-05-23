@@ -62,70 +62,66 @@ if(isset($_GET['facebook'])){
 
 
 	require 'facebook/config.php';
-	$json_user_content = file_get_contents('facebook/checkin-users/' . $_GET['fbusers']);
-	$json_checkin_content = file_get_contents('facebook/checkin-locations/' . $_GET['fblocations']);
+	$json_user_content = json_decode(file_get_contents('facebook/checkin-users/' . $_GET['fbusers']));
+	$json_checkin_content = json_decode(file_get_contents('facebook/checkin-locations/' . $_GET['fblocations']));
 	
 	$json_content = array(
-	    "date" => array(array(
+	    "data" => array(array(
 	        "id" => "100005427698197",
 	        "from" => $json_user_content,
-	        "location" => $json_checkin_content,
+	        "place" => $json_checkin_content,
 	        "application" => array(
 	            "name" => "Facebook for iPhone",
 	            "namespace" => "fbiphone",
 	            "id" => "7565757755"
 	            ),
-	        "created_time" => date('c')
+	        "created_time" => date(DATE_ATOM)
 	        )
 	    )
 	);
 	
 	
 	
-//	$json_content = array(
-//	    "date" => array(array(
-//	        "id" => "100005427698197",
-//	        
-//	         
-//	        "from" => array(
-//	            "name" => "Jeroen van der Sanden",
-//	            "id" => "39284902409842987"
-//	        ), 
-//	        
-//	        
-//	        
-//	        "place" =>array(
-//	            "id" => "464646466464",
-//	            "name" => "Sportcentrum",
-//	            
-//	            
-//	            
-//	            "location" => array(
-//	                "street" => "Straat",
-//	                "city" => "Eindhoven",
-//	                "state" => "",
-//	                "country" => "Holland",
-//	                "zip" => "5436 KJ",
-//	                "latitude" => 51.32354364644646,
-//	                "longitude" => 52.2435535353
-//	                )
-//	                
-//	                
-//	        ), 
-//	        "application" => array(
-//	            "name" => "Facebook for iPhone",
-//	            "namespace" => "fbiphone",
-//	            "id" => "7565757755"
-//	            ),
-//	        "created_time" => "2013-05-14T11:01:09+0000"
-//	        )
-//	    )
-//	);
-//	[
-//	   'user' => $json_user_content,
-//	   'checkin' => $json_checkin_content,
-//	   'time' => $seconds
-//	]; 
+	/*$json_content = array(
+	    "data" => array(array(
+	        "id" => "100005427698197",
+	        
+	         
+	        "from" => array(
+	            "name" => "Jeroen van der Sanden",
+	            "id" => "39284902409842987"
+	        ), 
+	        
+	        
+	        
+	        "place" =>array(
+	            "id" => "464646466464",
+	            "name" => "Sportcentrum",
+	            
+	            
+	            
+	            "location" => array(
+	                "street" => "Straat",
+	                "city" => "Eindhoven",
+	                "state" => "",
+	                "country" => "Holland",
+	                "zip" => "5436 KJ",
+	                "latitude" => 51.32354364644646,
+	                "longitude" => 52.2435535353
+	                )
+	                
+	                
+	        ), 
+	        "application" => array(
+	            "name" => "Facebook for iPhone",
+	            "namespace" => "fbiphone",
+	            "id" => "7565757755"
+	            ),
+	        "created_time" => "2013-05-14T11:01:09+0000"
+	        )
+	    )
+	);*/
+	
 
 	echo '<pre>'.json_encode($json_content, JSON_PRETTY_PRINT).'</pre>';
 
