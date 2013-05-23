@@ -38,6 +38,11 @@ body.loading * {
     -webkit-perspective: 400;
     position: absolute;
     box-sizing: content-box;
+    -webkit-transition-duration: 0.2s;
+}
+
+.card-wrapper.hover {
+    -webkit-transform: scale(0.95);
 }
 
 .card {
