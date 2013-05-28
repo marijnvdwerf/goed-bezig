@@ -248,4 +248,20 @@ $app->post('/checkin/foursquare', function() use($app){
     var_dump($relatedAchievements);
 });
 
+$app->get('/api/stamps', function() use($app) {
+    $count = rand(0, 1);
+    $stamps = [];
+
+    for($i = 0; $i < $count; $i++) {
+        $stamps[] = [
+            'datetime' => date('c'),
+            'type' => 'spa'
+        ];
+    }
+
+    $response = $app->response();
+    $response['Content-Type'] = 'application/json';
+    $response->body(json_encode(['stamps' => $stamps]));
+});
+
 $app->run();
