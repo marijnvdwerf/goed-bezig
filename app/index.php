@@ -165,6 +165,7 @@ $app->get('/api/stamps', function() use($app) {
 
     for($i = 0; $i < $count; $i++) {
         $stamps[] = [
+            'achievement_id' => 1,
             'datetime' => date('c'),
             'type' => 'spa'
         ];
@@ -179,6 +180,7 @@ $app->get('/api/cards', function() use($app) {
     $cards = [];
 
     $cards[] = [
+        'id' => 1,
         'name' => 'Waterrat',
         'description' => 'Lorem ipsum dolor sit amet',
         'icon' => 'waterrat',
@@ -194,6 +196,7 @@ $app->get('/api/cards', function() use($app) {
     ];
 
     $cards[] = [
+        'id' => 2,
         'name' => 'Boswandeling',
         'description' => 'Lorem ipsum dolor sit amet',
         'icon' => 'boswandeling',
