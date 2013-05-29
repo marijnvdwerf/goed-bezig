@@ -80,4 +80,38 @@ $app->get('/api/stamps', function() use($app) {
     $response->body(json_encode(['stamps' => $stamps]));
 });
 
+$app->get('/api/cards', function() use($app) {
+    $cards = [];
+
+    $cards[] = [
+        'name' => 'Waterrat',
+        'description' => 'Lorem ipsum dolor sit amet',
+        'icon' => 'waterrat',
+        'mystery' => false,
+        'progress' => 0.2,
+        'goodie' => null,
+        'stamps' => [
+            [
+                'datetime' => date('c', strtotime('2013-05-24 14:35:30')),
+                'type' => 'Pool / Lake'
+            ]
+        ]
+    ];
+
+    $cards[] = [
+        'name' => 'Boswandeling',
+        'description' => 'Lorem ipsum dolor sit amet',
+        'icon' => 'boswandeling',
+        'mystery' => false,
+        'progress' => 0,
+        'goodie' => null,
+        'stamps' => [
+        ]
+    ];
+
+    $response = $app->response();
+    $response['Content-Type'] = 'application/json';
+    $response->body(json_encode(['cards' => $cards]));
+});
+
 $app->run();
