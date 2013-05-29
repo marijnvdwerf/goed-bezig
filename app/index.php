@@ -220,14 +220,31 @@ $app->get('/achievements', function() use($app) {
     ]);
 });
 
-$app->get('/dbreset', function() use($app) {
+$app->get('/db/reset', function() use($app) {
     R::nuke();
-    $user = R::dispense('user');
-    $user ->email = 'trend@marijnvdwerf.nl';
-    $user ->name = 'Jeroen van der Sanden';
         
-    R::store($user);       //Create or Update
+});
+
+$app->get('/db/create-example', function() use($app){
     
+    $user = R::dispense('user');
+    $user ->name = 'John Doe';
+    $user ->email = "goedbezig@marijnvdwerf.nl";
+    $user ->sex = "Male";
+    $user ->age = 45;
+    $user ->foursquare_id = 00023043287276367263;
+    $user ->facebook_id = 100002392872387482;
+
+    R::store($user);
+
+    $address = R::dispense('address');
+    //$user ->ownAddress = [$adress];
+    $address ->user = $user;
+    $address ->address = "Hoofdstraat 5";
+
+    R::store($address)
+
+
 });
 
 $app->post('/checkin/foursquare', function() use($app){
