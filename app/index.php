@@ -19,8 +19,8 @@ $app->get('/achievements', function() use($app) {
     ]);
 });
 
-$app->get('/db', function() use($app) {
-        
+$app->get('/dbreset', function() use($app) {
+    R::nuke();
     $user = R::dispense('user');
     $user ->email = 'trend@marijnvdwerf.nl';
     $user ->name = 'Jeroen van der Sanden';
