@@ -242,7 +242,7 @@ $app->get('/db/create-example', function() use($app){
     $address ->user = $user;
     $address ->address = "Hoofdstraat 5";
 
-    R::store($address)
+    R::store($address);
 
 
 });
