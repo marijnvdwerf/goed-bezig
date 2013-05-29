@@ -34,6 +34,7 @@ $app->get('/db/create-example', function() use($app){
     $user ->sex = "Male";
     $user ->age = 45;
     $user ->foursquareId = "00023043287276367263";
+    $user ->foursquareToken = "RJJEHFDSHJFHJKHF34938598KJHFKJSHFJKHFJHSF9843UIHFJHSFJSIFH04823DHJ";
     $user ->facebookId = "01005002392872387482";
     $user ->facebookToken = "AJFNH764JHFJHFJ583HFHRJH987398479FHISJKJFGJ3476HDGJHGFJ98724JHGFJG";
     $user ->setMeta('cast.foursquareId', 'string');
