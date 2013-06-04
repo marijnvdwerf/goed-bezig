@@ -6,6 +6,7 @@ require 'includes/vendor/rb.php';
 require 'includes/createdatabase.php';
 
 
+
 R::setup('mysql:host=mysql.dd;dbname=' . $db_name, $db_user, $db_pass);
 
 $app = new \Slim\Slim();
@@ -41,13 +42,34 @@ $app->post('/checkin/foursquare', function() use($app){
     $categories = [];
     foreach($checkin->venue->categories as $category){
         $categories[] = $category->name;
-        $categories = array_merge($categories, $category->parents);
+        $categories = array_merge($category->parents,$categories);
     }
     
-    $relatedAchievements = R::find('achievement',
-    ' id in (SELECT achievement_id FROM requirement WHERE venue_category IN ('.R::genSlots($categories).'))',$categories);
+     
+    /* OUD:  $ors = [];
+     foreach($categories as $category) {
+        $ors[] = 'venue_category LIKE \'%' . $category . '%\'';
+    } 
+    var_dump($ors);
+        $relatedAchievements = R::find('achievement',
+    ' id in (SELECT achievement_id FROM requirement WHERE venue_category ' . implode(' OR ', $ors) . ')');
+    OUD */
     
-    var_dump($relatedAchievements);
+    //var_dump($checkin);
+    
+    //var_dump($relatedAchievements);
+    //R::debug(true);
+
+    $relatedRequirements = R::findAll('venuetype', ' WHERE type IN ('.R::genSlots($categories).') ', $categories);
+    
+
+    //var_dump($categories);
+    var_dump($relatedRequirements);
+
+
+
+
+
 });
 
 $app->get('/api/stamps', function() use($app) {
