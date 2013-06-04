@@ -32,9 +32,17 @@ function create_db()
     $achievement ->mystery = false;
     R::store($achievement);
 
+        $collegeGym = R::dispense('venuetype');
+        $collegeGym ->type = "College Gym";
+        R::store($collegeGym);
+
+        $gym = R::dispense('venuetype');
+        $gym ->type = "Gym";
+        R::store($gym);
+
         $requirement = R::dispense('requirement');
         $requirement ->achievement = $achievement;
-        $requirement ->venueType = "College Gym; Gym";
+        $requirement ->sharedVenueTypes = [$collegeGym, $gym];
         $requirement ->numberRequired = 2;
         R::store($requirement);
 
@@ -52,11 +60,25 @@ function create_db()
             $stamp ->datetime = new DateTime();
             R::store($stamp);
 
+        
+        $poolLake = R::dispense('venuetype');
+        $poolLake ->type = "Pool / Lake";
+        R::store($poolLake);
+
+        $waterpark = R::dispense('venuetype');
+        $waterpark ->type = "Waterpark";
+        R::store($waterpark);
+
+        $gymPool = R::dispense('venuetype');
+        $gymPool ->type = "Gym Pool";
+        R::store($gymPool);
+
         $requirement = R::dispense('requirement');
         $requirement ->achievement = $achievement;
-        $requirement ->venueType = "Pool / Lake;Waterpark;Gym Pool";
-        $requirement ->numberRequired = 10;
+        $requirement ->sharedVenueTypes = [$poolLake, $waterpark, $gymPool];
+        $requirement ->numberRequired = 2;
         R::store($requirement);
+
 
             $stamp = R::dispense('stamp');
             $stamp ->userachievement = $userAchievement;
@@ -80,10 +102,11 @@ function create_db()
         $goodie ->mystery = false;
         R::store($goodie);
 
+       
         $requirement = R::dispense('requirement');
         $requirement ->achievement = $achievement;
-        $requirement ->venueType = "College Gym; Gym";
-        $requirement ->numberRequired = 10;
+        $requirement ->sharedVenueTypes = [$collegeGym, $gym];
+        $requirement ->numberRequired = 2;
         R::store($requirement);
 
         $userAchievement = R::dispense('userachievement');
@@ -102,8 +125,8 @@ function create_db()
 
         $requirement = R::dispense('requirement');
         $requirement ->achievement = $achievement;
-        $requirement ->venueType = "Pool / Lake;Waterpark;Gym Pool";
-        $requirement ->numberRequired = 3;
+        $requirement ->sharedVenueTypes = [$poolLake, $waterpark, $gymPool];
+        $requirement ->numberRequired = 2;
         R::store($requirement);
 
             $stamp = R::dispense('stamp');
