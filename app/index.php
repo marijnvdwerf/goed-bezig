@@ -55,16 +55,31 @@ $app->post('/checkin/foursquare', function() use($app){
     ' id in (SELECT achievement_id FROM requirement WHERE venue_category ' . implode(' OR ', $ors) . ')');
     OUD */
     
-    //var_dump($checkin);
+    /*var_dump($checkin);
     
-    //var_dump($relatedAchievements);
-    //R::debug(true);
+    var_dump($relatedAchievements);
+    R::debug(true);*/
 
-    $relatedRequirements = R::findAll('venuetype', ' WHERE type IN ('.R::genSlots($categories).') ', $categories);
+    
+    $relatedVenueTypes = R::findAll('venuetype', ' WHERE type IN ('.R::genSlots($categories).') ', $categories);
+
+    //var_dump($relatedVenueTypes);
+    
+    R::preload($relatedVenueTypes, '*.requirement, *.achievement');
+    //$relatedRequirements = R::findAll('requirement_venuetype', 'requirement_id = 2');
+
+    foreach($relatedVenueTypes as $venueType) {
+        //var_dump($venueType->type);
+
+        //var_dump($categories);
+        foreach($venueType->sharedRequirement as $requirement) {
+            //var_dump($requirement);
+            /*var_dump($requirement->id);*/
+            var_dump($requirement->achievement->name);
+        }
+    }
     
 
-    //var_dump($categories);
-    var_dump($relatedRequirements);
 
 
 
