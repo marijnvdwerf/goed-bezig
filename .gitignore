@@ -13,6 +13,8 @@ simulate/foursquare/config.php
 # Composer
 simulate/vendor
 simulate/composer.lock
+app/vendor
+app/composer.lock
 
 #
 # OS X
