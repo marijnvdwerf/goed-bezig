@@ -4,6 +4,10 @@ setTimeout(function () {
 	window.scrollTo(0, 1);
 }, 50);
 
+setTimeout(function() {
+	$('.page-login').attr('data-state', 'login');
+}, 2000);
+
 function getExtraViewportHeight() {
     var isIphone = ~navigator.userAgent.indexOf('iPhone') || ~navigator.userAgent.indexOf('iPod');
     var isSafari = ~navigator.userAgent.indexOf('Safari');
