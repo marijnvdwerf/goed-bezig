@@ -222,12 +222,15 @@ $app->get('/achievements', function() use($app) {
     ]);
 });
 
-$app->get('/db/reset', function() use($app) {
-    R::nuke();
+$app->map('/db/reset', function() use($app) {
+    if($app->request()->isPost()) {
+        R::nuke();
+        echo 'Database nuked -> <a href="create-example">Create new example</a>';
+        return;
+    }
 
-    echo 'Database nuked -> <a href="create-example">Create new example</a>';
-        
-});
+     $app->render('db_reset.php');
+})->via('GET', 'POST');
 
 $app->get('/db/create-example', function() use ($app){
     //function in 'includes/createdatabase.php'
@@ -246,7 +249,6 @@ $app->post('/checkin/foursquare', function() use($app){
         $categories = array_merge($category->parents,$categories);
     }
     
-     
     /* OUD:  $ors = [];
      foreach($categories as $category) {
         $ors[] = 'venue_category LIKE \'%' . $category . '%\'';
@@ -261,24 +263,22 @@ $app->post('/checkin/foursquare', function() use($app){
     var_dump($relatedAchievements);
     R::debug(true);*/
 
-    
+    //GET venuetype ID
     $relatedVenueTypes = R::findAll('venuetype', ' WHERE type IN ('.R::genSlots($categories).') ', $categories);
 
-    //var_dump($relatedVenueTypes);
-    
+    //GET requirement and achievements owning the venuetype 
     R::preload($relatedVenueTypes, '*.requirement, *.achievement');
-    //$relatedRequirements = R::findAll('requirement_venuetype', 'requirement_id = 2');
+    
 
     foreach($relatedVenueTypes as $venueType) {
-        //var_dump($venueType->type);
-
-        //var_dump($categories);
+        //var_dump($venueType->type); //name of the venuetype
         foreach($venueType->sharedRequirement as $requirement) {
-            //var_dump($requirement);
-            /*var_dump($requirement->id);*/
+            //name of the achievement
             var_dump($requirement->achievement->name);
         }
     }
+
+
     
 
 
