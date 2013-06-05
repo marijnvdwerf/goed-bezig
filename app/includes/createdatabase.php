@@ -136,4 +136,25 @@ function create_db()
             $stamp ->datetime = new DateTime();
             R::store($stamp);
 
+    $user = R::dispense('user');
+    $user ->name = 'Jeroen van der Sanden';
+    $user ->email = "trend@marijnvdwerf.nl";
+    $user ->sex = "Male";
+    $user ->age = 21;
+    $user ->foursquareId = "55629080";
+    $user ->foursquareToken = "RJJEHFDSHJFHJKHF3493EEE98KJHFKJSHFJKHFJHSF9843UIHFJHSFJSIFH04823DHJ";
+    $user ->facebookId = "01005002393472387482";
+    $user ->facebookToken = "AJFNH764JHFJHFJ583HFHRRT587398479FHISJKJFGJ3476HDGJHGFJ98724JHGFJG";
+    $user ->setMeta('cast.foursquareId', 'string');
+    $user ->setMeta('cast.facebookId', 'string');
+    R::store($user);
+
+        $address = R::dispense('address');
+        //$user ->ownAddress = [$adress];
+        $address ->user = $user;
+        $address ->address = "Hoofdstraat 4";
+        $address ->postalCode = "1234AD";
+        $address ->town = "Amsterdam";
+        R::store($address);
+
         }
