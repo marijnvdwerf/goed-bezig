@@ -48,19 +48,7 @@ $app->post('/checkin/foursquare', function() use($app){
         $categories = array_merge($category->parents,$categories);
     }
     
-    /* OUD:  $ors = [];
-     foreach($categories as $category) {
-        $ors[] = 'venue_category LIKE \'%' . $category . '%\'';
-    } 
-    var_dump($ors);
-        $relatedAchievements = R::find('achievement',
-    ' id in (SELECT achievement_id FROM requirement WHERE venue_category ' . implode(' OR ', $ors) . ')');
-    OUD */
-    
-    /*var_dump($checkin);
-    
-    var_dump($relatedAchievements);
-    R::debug(true);*/
+    /*R::debug(true);*/
 
     //GET venuetype ID
     $relatedVenueTypes = R::findAll('venuetype', ' WHERE type IN ('.R::genSlots($categories).') ', $categories);
