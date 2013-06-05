@@ -56,14 +56,58 @@ $app->post('/checkin/foursquare', function() use($app){
     //GET requirement and achievements owning the venuetype 
     R::preload($relatedVenueTypes, '*.requirement, *.achievement');
     
-
+    //CREATE array with achievements per venue;
+    $venueAchievements = [];
     foreach($relatedVenueTypes as $venueType) {
         //var_dump($venueType->type); //name of the venuetype
         foreach($venueType->sharedRequirement as $requirement) {
             //name of the achievement
-            var_dump($requirement->achievement->name);
+            //var_dump($requirement->achievement->id);
+            $venueAchievements[] = $requirement->achievement;
+            //var_dump($requirement->achievement->name);
         }
     }
+    //var_dump($venueAchievements);
+
+    //CREATE array with current started achievements of the user
+    $user = R::findOne('user', 'foursquare_id = ? ',[$checkin->user->id]);
+    //$userAchievements = R::find('userachievement', 'user_id = ?', [$user->id]);
+
+    //DEBUG:
+    $userAchievements = R::find('userachievement', 'user_id = ?', ['1']);
+
+    
+    foreach($venueAchievements as $venueAchievement) {
+        //var_dump($venueAchievement->id);
+        $userAchievement = R::findOne('userachievement','achievement_id = ?', [$venueAchievement->id]);
+        var_dump($userAchievement->progress);
+    }
+
+
+
+/*foreach($userAchievements as $userAchievement) {
+    
+    if($userAchievement->progress < 1){
+        print_r("completed");
+    }
+    else {
+
+    }*/
+
+
+    //var_dump($userAchievement);
+
+
+//}
+
+
+
+
+/*WHERE user is jeroen
+{ if achievement in user achievement}
+dan ga naar stamps
+{ else }
+maak nieuwe aan*/
 
 
     
