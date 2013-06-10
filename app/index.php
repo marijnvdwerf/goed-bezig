@@ -3,12 +3,10 @@
 require 'vendor/autoload.php';
 require 'includes/config.php';
 require 'includes/vendor/rb.php';
-require 'includes/createdatabase.php';
+require 'includes/Application.php';
 
 
-
-R::setup('mysql:host=' . $db_host . ';dbname=' . $db_name, $db_user, $db_pass);
-
+$app = new Application();
 $slim = new \Slim\Slim();
 
 $slim->get('/', function() use($slim) {
@@ -21,20 +19,15 @@ $slim->get('/achievements', function() use($slim) {
     ]);
 });
 
-$slim->map('/db/reset', function() use($slim) {
+$slim->map('/db/reset', function() use($slim, $app) {
     if($slim->request()->isPost()) {
-        R::nuke();
-        echo 'Database nuked -> <a href="create-example">Create new example</a>';
+        $app->loadTestData();
+        echo 'Database nuked and filled with sample data';
         return;
     }
 
      $slim->render('db_reset.php');
 })->via('GET', 'POST');
-
-$slim->get('/db/create-example', function() use ($slim){
-    //function in 'includes/createdatabase.php'
-    create_db();
-});
 
 $slim->post('/checkin/foursquare', function() use($slim){
     $user = R::find('user', 1);
