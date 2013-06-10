@@ -7,7 +7,7 @@ require 'includes/createdatabase.php';
 
 
 
-R::setup('mysql:host=mysql.dd;dbname=' . $db_name, $db_user, $db_pass);
+R::setup('mysql:host=' . $db_host . ';dbname=' . $db_name, $db_user, $db_pass);
 
 $app = new \Slim\Slim();
 
