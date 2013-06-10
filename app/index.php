@@ -9,84 +9,76 @@ require 'includes/Application.php';
 $app = new Application();
 $slim = new \Slim\Slim();
 
-$slim->get('/', function() use($slim) {
+$slim->get('/', function () use ($slim) {
     $slim->render('index.php');
 });
 
-$slim->get('/achievements', function() use($slim) {
+$slim->get('/achievements', function () use ($slim) {
     $slim->render('achievements.php', [
         'achievements' => R::findAll('achievement')
     ]);
 });
 
-$slim->map('/db/reset', function() use($slim, $app) {
-    if($slim->request()->isPost()) {
+$slim->map('/db/reset', function () use ($slim, $app) {
+    if ($slim->request()->isPost()) {
         $app->loadTestData();
         echo 'Database nuked and filled with sample data';
         return;
     }
 
-     $slim->render('db_reset.php');
+    $slim->render('db_reset.php');
 })->via('GET', 'POST');
 
-$slim->post('/checkin/foursquare', function() use($slim, $app){
+$slim->post('/checkin/foursquare', function () use ($slim, $app) {
     $user = R::find('user', 1);
-    
+
     $checkin = $slim->request()->params('checkin');
     $checkin = json_decode($checkin);
-    
+
     $categories = [];
-    foreach($checkin->venue->categories as $category){
+    foreach ($checkin->venue->categories as $category) {
         $categories[] = $category->name;
-        $categories = array_merge($category->parents,$categories);
+        $categories = array_merge($category->parents, $categories);
     }
-    
+
     /*R::debug(true);*/
 
     $venueAchievements = $app->getAchievementsForCategories($categories);
     //var_dump($venueAchievements);
 
     //CREATE array with current started achievements of the user
-    $user = R::findOne('user', 'foursquare_id = ? ',[$checkin->user->id]);
-    
+    $user = R::findOne('user', 'foursquare_id = ? ', [$checkin->user->id]);
+
 
     //DEBUG:
     //$userAchievements = R::find('userachievement', 'user_id = ?', ['1']);
-    
-    foreach($venueAchievements as $venueAchievement) {
+
+    foreach ($venueAchievements as $venueAchievement) {
         //var_dump($venueAchievement->id);
         $userAchievement = R::findOne('userachievement',
-                                      'achievement_id = :venueAchievement AND user_id = :userID',
-                                      array(
-                                            ':venueAchievement'=>$venueAchievement->id,
-                                            ':userID'=>$user->id
-                                            //':userID'=>'1' DEBUG!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                                           )
-                                     );
-        
-        
-
-
-
+            'achievement_id = :venueAchievement AND user_id = :userID',
+            array(
+                ':venueAchievement' => $venueAchievement->id,
+                ':userID' => $user->id
+                //':userID'=>'1' DEBUG!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            )
+        );
 
 
         var_dump($userAchievement->progress);
 
 
-
     }
 
 
+    /*foreach($userAchievements as $userAchievement) {
 
+        if($userAchievement->progress < 1){
+            print_r("completed");
+        }
+        else {
 
-/*foreach($userAchievements as $userAchievement) {
-    
-    if($userAchievement->progress < 1){
-        print_r("completed");
-    }
-    else {
-
-    }*/
+        }*/
 
 
     //var_dump($userAchievement);
@@ -95,29 +87,20 @@ $slim->post('/checkin/foursquare', function() use($slim, $app){
 //}
 
 
-
-
-/*WHERE user is jeroen
-{ if achievement in user achievement}
-dan ga naar stamps
-{ else }
-maak nieuwe aan*/
-
-
-    
-
-
-
-
+    /*WHERE user is jeroen
+    { if achievement in user achievement}
+    dan ga naar stamps
+    { else }
+    maak nieuwe aan*/
 
 
 });
 
-$slim->get('/api/stamps', function() use($slim) {
+$slim->get('/api/stamps', function () use ($slim) {
     $count = rand(0, 1);
     $stamps = [];
 
-    for($i = 0; $i < $count; $i++) {
+    for ($i = 0; $i < $count; $i++) {
         $stamps[] = [
             'achievement_id' => 1,
             'datetime' => date('c'),
@@ -130,7 +113,7 @@ $slim->get('/api/stamps', function() use($slim) {
     $response->body(json_encode(['stamps' => $stamps]));
 });
 
-$slim->get('/api/cards', function() use($slim) {
+$slim->get('/api/cards', function () use ($slim) {
     $cards = [];
 
     $cards[] = [
