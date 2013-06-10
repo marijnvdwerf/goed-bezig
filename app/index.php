@@ -9,37 +9,37 @@ require 'includes/createdatabase.php';
 
 R::setup('mysql:host=' . $db_host . ';dbname=' . $db_name, $db_user, $db_pass);
 
-$app = new \Slim\Slim();
+$slim = new \Slim\Slim();
 
-$app->get('/', function() use($app) {
-    $app->render('index.php');
+$slim->get('/', function() use($slim) {
+    $slim->render('index.php');
 });
 
-$app->get('/achievements', function() use($app) {
-    $app->render('achievements.php', [
+$slim->get('/achievements', function() use($slim) {
+    $slim->render('achievements.php', [
         'achievements' => R::findAll('achievement')
     ]);
 });
 
-$app->map('/db/reset', function() use($app) {
-    if($app->request()->isPost()) {
+$slim->map('/db/reset', function() use($slim) {
+    if($slim->request()->isPost()) {
         R::nuke();
         echo 'Database nuked -> <a href="create-example">Create new example</a>';
         return;
     }
 
-     $app->render('db_reset.php');
+     $slim->render('db_reset.php');
 })->via('GET', 'POST');
 
-$app->get('/db/create-example', function() use ($app){
+$slim->get('/db/create-example', function() use ($slim){
     //function in 'includes/createdatabase.php'
     create_db();
 });
 
-$app->post('/checkin/foursquare', function() use($app){
+$slim->post('/checkin/foursquare', function() use($slim){
     $user = R::find('user', 1);
     
-    $checkin = $app->request()->params('checkin');
+    $checkin = $slim->request()->params('checkin');
     $checkin = json_decode($checkin);
     
     $categories = [];
@@ -137,7 +137,7 @@ maak nieuwe aan*/
 
 });
 
-$app->get('/api/stamps', function() use($app) {
+$slim->get('/api/stamps', function() use($slim) {
     $count = rand(0, 1);
     $stamps = [];
 
@@ -149,12 +149,12 @@ $app->get('/api/stamps', function() use($app) {
         ];
     }
 
-    $response = $app->response();
+    $response = $slim->response();
     $response['Content-Type'] = 'application/json';
     $response->body(json_encode(['stamps' => $stamps]));
 });
 
-$app->get('/api/cards', function() use($app) {
+$slim->get('/api/cards', function() use($slim) {
     $cards = [];
 
     $cards[] = [
@@ -185,9 +185,9 @@ $app->get('/api/cards', function() use($app) {
         ]
     ];
 
-    $response = $app->response();
+    $response = $slim->response();
     $response['Content-Type'] = 'application/json';
     $response->body(json_encode(['cards' => $cards]));
 });
 
-$app->run();
+$slim->run();
