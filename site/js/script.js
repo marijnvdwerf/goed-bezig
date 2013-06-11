@@ -4,9 +4,23 @@ setTimeout(function () {
 	window.scrollTo(0, 1);
 }, 50);
 
-setTimeout(function() {
-	$('.page-login').attr('data-state', 'login');
-}, 2000);
+var uri = new Uri(window.location.href);
+// parse #foo=bar as if it was ?foo=bar
+uri.query(uri.anchor());
+
+if (uri.getQueryParamValue('login-foursquare') !== undefined
+    || uri.getQueryParamValue('login-facebook') !== undefined) {
+    // #login-foursquare or #login-facebook are set
+    $('.page-login').attr('data-state', 'loading');
+
+    // TODO: Post token to server in exchange for user information
+} else {
+    // Animate the logo out
+
+    setTimeout(function () {
+        $('.page-login').attr('data-state', 'login');
+    }, 2000);
+}
 
 function getExtraViewportHeight() {
     var isIphone = ~navigator.userAgent.indexOf('iPhone') || ~navigator.userAgent.indexOf('iPod');
@@ -29,7 +43,6 @@ $('.button-foursquare').on('click', function () {
     var appUri = new Uri(window.location.href);
     // remove ? and # parts
     appUri
-        .setAnchor('')
         .setQuery('');
 
     var foursquareLoginUri = new Uri('https://foursquare.com/oauth2/authenticate');

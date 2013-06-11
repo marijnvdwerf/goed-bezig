@@ -21,6 +21,8 @@ require 'config.php';
             <button class="button-facebook">Facebook</button>
             <button class="button-foursquare">Foursquare</button>
         </div>
+
+        <div class="loader"></div>
     </div>
 
     <div class="page page-main">

@@ -68,3 +68,25 @@ display: block;
 	opacity: 1;
 	-webkit-transform: translate3d(0, 0, 0);
 }
+
+.page-login .loader {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    margin: -30px;
+    left: 50%;
+    top: 50%;
+    opacity: 0;
+    background: #fff;
+    border-radius: 30px;
+    -webkit-transition: .25s;
+}
+
+.page-login[data-state="loading"] .logo {
+    display: none;
+    -webkit-transition-duration: 0s;
+}
+
+.page-login[data-state="loading"] .loader {
+    opacity: 1;
+}
