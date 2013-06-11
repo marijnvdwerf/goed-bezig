@@ -19,3 +19,7 @@ function getExtraViewportHeight() {
     
     return 0;
 }
+
+$('button').click(function(){
+    //$('.page-login').css('display','none');
+});
