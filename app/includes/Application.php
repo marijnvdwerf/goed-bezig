@@ -1,5 +1,7 @@
 <?php
 
+include 'TextMessage.php';
+
 class Application
 {
     function __construct()
@@ -11,13 +13,16 @@ class Application
 
     function loadTestData()
     {
+        R::setup('sqlite::memory:');
         R::nuke();
 
         $user = R::dispense('user');
-        $user->name = 'John Doe';
+        $user->name = 'John';
+        $user->surname = 'Doe';
         $user->email = "goedbezig@marijnvdwerf.nl";
         $user->sex = "Male";
         $user->age = 45;
+        $user->phone = '31612345678';
         $user->foursquareId = "00023043287276367263";
         $user->foursquareToken = "RJJEHFDSHJFHJKHF34938598KJHFKJSHFJKHFJHSF9843UIHFJHSFJSIFH04823DHJ";
         $user->facebookId = "01005002392872387482";
@@ -40,6 +45,7 @@ class Application
         $achievement->description = "Je bent sportief bezig";
         $achievement->icon = "sporter";
         $achievement->mystery = false;
+        $achievement->earnMessage = 'Laat die spierballen maar zien!';
         R::store($achievement);
 
         $collegeGym = R::dispense('venuetype');
@@ -102,6 +108,7 @@ class Application
         $achievement->description = "Je bent graag in het water";
         $achievement->icon = "waterrat";
         $achievement->mystery = false;
+        $achievement->earnMessage = 'Pas maar op dat je geen vinnen krijgt!';
         R::store($achievement);
 
         $goodie = R::dispense('goodie');
@@ -147,7 +154,8 @@ class Application
         R::store($stamp);
 
         $user = R::dispense('user');
-        $user->name = 'Jeroen van der Sanden';
+        $user->name = 'Jeroen';
+        $user->surname = 'van der Sanden';
         $user->email = "trend@marijnvdwerf.nl";
         $user->sex = "Male";
         $user->age = 21;
@@ -189,5 +197,27 @@ class Application
         }
 
         return $venueAchievements;
+    }
+
+    /**
+     * @return TextMessage
+     */
+    public function getNotificationMessage($userId, $notificationType, $data)
+    {
+        $user = R::findOne('user', $userId);
+
+
+        switch ($notificationType) {
+            case 'achievement-earned':
+                $achievement = R::findOne('achievement', $data);
+                $body = 'Gefeliciteerd ' . $user->name . ', je hebt een achievement vrijgespeeld. ' . $achievement->earnMessage;
+                break;
+        }
+
+        $message = new TextMessage();
+        $message->body = $body;
+        $message->origin = 'GoedBezig';
+        $message->recipient = $user->phone;
+        return $message;
     }
 }
