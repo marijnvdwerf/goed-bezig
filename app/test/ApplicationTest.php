@@ -27,4 +27,13 @@ class ApplicationTest extends PHPUnit_Framework_TestCase
         $this->assertCount(2, $achievements);
     }
 
+    function testNotificationGeneration()
+    {
+        $message = $this->app->getNotificationMessage(1, 'achievement-earned', 1);
+        $this->assertInstanceOf('TextMessage', $message);
+        $this->assertSame('Gefeliciteerd John, je hebt een achievement vrijgespeeld. Laat die spierballen maar zien!', $message->body);
+        $this->assertSame('31612345678', $message->recipient);
+        $this->assertSame('GoedBezig', $message->origin);
+    }
+
 }
