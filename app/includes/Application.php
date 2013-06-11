@@ -11,6 +11,7 @@ class Application
 
     function loadTestData()
     {
+        R::setup('sqlite::memory:');
         R::nuke();
 
         $user = R::dispense('user');
