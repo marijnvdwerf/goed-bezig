@@ -196,13 +196,21 @@ class Application
 
     public function getUserAchievement($achievementId, $userId)
     {
-        return R::findOne('userachievement',
+        $userAchievement = R::findOne('userachievement',
             'achievement_id = :venueAchievement AND user_id = :userID',
             array(
                 ':venueAchievement' => $achievementId,
                 ':userID' => $userId
             )
         );
+
+        if ($userAchievement === null) {
+            $userAchievement = R::dispense('userachievement');
+            $userAchievement->user = R::load('user', $userId);
+            $userAchievement->achievement = R::load('achievement', $achievementId);
+        }
+
+        return $userAchievement;
     }
 
 
