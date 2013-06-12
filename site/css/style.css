@@ -43,22 +43,33 @@ html, body {
 	margin:-50px -150px;
 	left:  50%;
 	top: 50%;
-		opacity: 0;
+    opacity: 0;
 	-webkit-transition: .25s;
 	-webkit-transform: translate3d(0, 100px, 0);
 }
 
 .page-login .form button {
-display: block;
+    display: block;
 	height: 50px;
 	width: 100%;
 	display: block;
 	margin: 0;
+	color: #FFF;
+	box-shadow: 1px 3px 3px #293D69;
+	border: 1px solid #2C4C84;
+	border-radius: 3px;
 	box-sizing: border-box;
 	-webkit-appearance: none;
+	text-size: 13px;
 }
-
-
+.page-login .form button.button-facebook{
+    background: #3d5a9a;
+    margin-bottom: 25px;
+}
+.page-login .form button.button-foursquare{
+    background: #2065AD;
+    margin-top:  25px;
+}
 .page-login[data-state="login"] .logo {
 	opacity: 0;
 	-webkit-transform: translate3d(0, -100px, 0);
