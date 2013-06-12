@@ -1,6 +1,5 @@
 <?php
 include dirname(__FILE__) . '/../vendor/autoload.php';
-require dirname(__FILE__) . '/../includes/config.php';
 include dirname(__FILE__) . '/../includes/vendor/rb.php';
 include dirname(__FILE__) . '/../includes/Application.php';
 
