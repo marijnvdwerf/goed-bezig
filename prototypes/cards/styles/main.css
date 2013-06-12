@@ -1,0 +1,131 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body.loading * {
+    -webkit-transition: none;
+}
+
+.navbar {
+    height: 44px;
+    background: #00afe5;
+    color: #fff;
+}
+
+.wrapper {
+    position: relative;
+    width: 320px;
+    margin: 0 auto;
+}
+
+.main-content {
+    padding-top: 44px;
+}
+
+#card-container {
+    padding: 4px;
+}
+
+.card-wrapper {
+    padding: 4px;
+    -webkit-perspective: 400;
+    position: absolute;
+    box-sizing: content-box;
+    -webkit-transition-duration: 0.2s;
+}
+
+.card-wrapper.hover {
+    -webkit-transform: scale(0.95);
+}
+
+.card {
+    position: absolute;
+    width: 96px;
+    height: 60px;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition-duration: .3s;
+    z-index: 0;
+
+    left: 50%;
+    top: 50%;
+}
+
+.card-wrapper.focus {
+    z-index: 120;
+}
+
+.card-front,
+.card-back {
+    border: 1px solid rgba(0, 0, 0, .1);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    border-radius: 3px;
+}
+
+.card-front {
+    background: crimson;
+}
+
+.card-back {
+    background: #eee;
+    -webkit-transform: rotateY(180deg);
+}
+
+.card-placeholder {
+    background: none;
+    border: 10px dashed #eee;
+}
+
+.card-placeholder .card-front,
+.card-placeholder .card-back {
+    display: none;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .8);
+    opacity: 0;
+    -webkit-transition: opacity .2s;
+    display: none;
+    z-index: 100;
+}
+
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.navbar .btn {
+    display: block;
+    float: left;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 3px;
+    color: #fff;
+    height: 30px;
+    line-height: 28px;
+    margin: 7px;
+    padding: 0 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.navbar-overlay {
+    background: none;
+    z-index: 120;
+}

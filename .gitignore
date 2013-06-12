@@ -1,6 +1,17 @@
-app/includes/config.php
-app/composer.lock
+simulate/facebook/config.php
+simulate/facebook/postData.txt
+simulate/facebook/postData.json
+simulate/facebook/testData.json
+simulate/facebook/data.json
+
+simulate/foursquare/config.php
+
+
+# Composer
+simulate/vendor
+simulate/composer.lock
 app/vendor
+app/composer.lock
 
 #
 # OS X
@@ -35,14 +46,4 @@ Desktop.ini
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
-
-
-#
-# PhpStorm
-#
-
-*.iml
-*.ipr
-*.iws
-.idea/
 *.espressostorage
