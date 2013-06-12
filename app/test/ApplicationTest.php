@@ -33,15 +33,21 @@ class ApplicationTest extends PHPUnit_Framework_TestCase
 
         $userAchievement = $this->app->getUserAchievement(1, 1);
         $this->assertEquals(0.5, $userAchievement->getProgress());
+        $this->assertTrue(is_array($userAchievement->ownStamp));
+        $this->assertCount(2, $userAchievement->ownStamp);
 
         $userAchievement = $this->app->getUserAchievement(2, 1);
         $this->assertEquals(0.5, $userAchievement->getProgress());
+        $this->assertTrue(is_array($userAchievement->ownStamp));
+        $this->assertCount(1, $userAchievement->ownStamp);
 
         $userAchievement = $this->app->getUserAchievement(1, 2);
-        $this->assertSame(null, $userAchievement);
+        $this->assertEquals(0, $userAchievement->getProgress());
+        $this->assertCount(0, $userAchievement->ownStamp);
 
         $userAchievement = $this->app->getUserAchievement(2, 2);
-        $this->assertSame(null, $userAchievement);
+        $this->assertEquals(0, $userAchievement->getProgress());
+        $this->assertCount(0, $userAchievement->ownStamp);
     }
 
     function testGetUserForFoursquareId()
