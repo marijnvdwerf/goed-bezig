@@ -13,7 +13,7 @@ class ApplicationTest extends PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->app = new Application();
+        $this->app = new Application(true);
     }
 
 
