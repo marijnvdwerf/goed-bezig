@@ -213,6 +213,47 @@ class Application
         return $userAchievement;
     }
 
+    public function addFourSquareCheckin($foursquareUserId, $checkinData)
+    {
+        $user = $this->getUserForFoursquareId($foursquareUserId);
+
+        $categories = [];
+        foreach ($checkinData->venue->categories as $category) {
+            $categories[] = $category->name;
+            $categories = array_merge($category->parents, $categories);
+        }
+
+        $relatedAchievements = $this->getAchievementsForCategories($categories);
+
+        foreach ($relatedAchievements as $achievement) {
+            $userAchievement = $this->getUserAchievement($achievement->id, $user->id);
+            if ($userAchievement->getProgress() < 1) {
+                $userAchievement->ownStamp[] = $this->getNewStamp($achievement->id, $categories);
+                R::store($userAchievement);
+            }
+        }
+    }
+
+    public function getNewStamp($achievementId, $categories)
+    {
+        $requirements = R::find('requirement', ' achievement_id = ?', [$achievementId]);
+
+        foreach ($requirements as $requirement) {
+            foreach ($requirement->sharedVenuetype as $venueType) {
+                if (!in_array($venueType->type, $categories)) {
+                    continue;
+                }
+                $stamp = R::dispense('stamp');
+                $stamp->venueType = $venueType;
+                $stamp->requirement = $requirement;
+                $stamp->datetime = new DateTime();
+                return $stamp;
+            }
+        }
+
+        throw new Exception('No relevant requirement found');
+    }
+
 
     /**
      * @return TextMessage
