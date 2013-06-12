@@ -68,7 +68,6 @@ class Application
         $userAchievement = R::dispense('userachievement');
         $userAchievement->user = $user;
         $userAchievement->achievement = $achievement;
-        $userAchievement->progress = 0.80;
         $userAchievement->goodieClaimed = null;
         R::store($userAchievement);
 
@@ -126,13 +125,12 @@ class Application
         $requirement = R::dispense('requirement');
         $requirement->achievement = $achievement;
         $requirement->sharedVenueTypes = [$collegeGym, $gym];
-        $requirement->numberRequired = 2;
+        $requirement->numberRequired = 1;
         R::store($requirement);
 
         $userAchievement = R::dispense('userachievement');
         $userAchievement->user = $user;
         $userAchievement->achievement = $achievement;
-        $userAchievement->progress = 0.40;
         $userAchievement->goodieClaimed = null;
         R::store($userAchievement);
 
@@ -146,15 +144,8 @@ class Application
         $requirement = R::dispense('requirement');
         $requirement->achievement = $achievement;
         $requirement->sharedVenueTypes = [$poolLake, $waterpark, $gymPool];
-        $requirement->numberRequired = 2;
+        $requirement->numberRequired = 1;
         R::store($requirement);
-
-        $stamp = R::dispense('stamp');
-        $stamp->userachievement = $userAchievement;
-        $stamp->venueType = "Gym";
-        $stamp->requirement = $requirement;
-        $stamp->datetime = new DateTime();
-        R::store($stamp);
 
         $user = R::dispense('user');
         $user->name = 'Jeroen';
@@ -235,5 +226,21 @@ class Application
         $message->origin = 'GoedBezig';
         $message->recipient = $user->phone;
         return $message;
+    }
+}
+
+
+class Model_Userachievement extends RedBean_SimpleModel
+{
+    public function getProgress()
+    {
+        $totalRequired = 0;
+
+        $requirements = $this->bean->achievement->ownRequirement;
+        foreach ($requirements as $requirement) {
+            $totalRequired += (int)$requirement->numberRequired;
+        }
+
+        return count($this->bean->ownStamp) / $totalRequired;
     }
 }

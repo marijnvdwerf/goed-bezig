@@ -237,19 +237,7 @@ $slim->post('/checkin/foursquare', function () use ($slim, $app) {
     $fourSquareUser = $slim->request()->params('user');
     $fourSquareUser = json_decode($fourSquareUser);
 
-    $user = $app->getUserForFoursquareId($fourSquareUser->id);
-
-    $categories = [];
-    foreach ($checkin->venue->categories as $category) {
-        $categories[] = $category->name;
-        $categories = array_merge($category->parents, $categories);
-    }
-
-    $venueAchievements = $app->getAchievementsForCategories($categories);
-
-    foreach ($venueAchievements as $achievement) {
-        $userAchievement = $app->getRelevantUserAchievements($achievement->id, [$user->id]);
-    }
+    $app->addFourSquareCheckin($fourSquareUser->id, $checkin);
 });
 
 $slim->get('/api/stamps', function () use ($slim) {

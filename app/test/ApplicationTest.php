@@ -1,8 +1,8 @@
 <?php
-include dirname(__FILE__) . '/../includes/Application.php';
 include dirname(__FILE__) . '/../vendor/autoload.php';
-include dirname(__FILE__) . '/../includes/vendor/rb.php';
 require dirname(__FILE__) . '/../includes/config.php';
+include dirname(__FILE__) . '/../includes/vendor/rb.php';
+include dirname(__FILE__) . '/../includes/Application.php';
 
 class ApplicationTest extends PHPUnit_Framework_TestCase
 {
@@ -32,10 +32,10 @@ class ApplicationTest extends PHPUnit_Framework_TestCase
         $this->app->loadTestData();
 
         $userAchievement = $this->app->getUserAchievement(1, 1);
-        $this->assertEquals(0.80, $userAchievement->progress);
+        $this->assertEquals(0.5, $userAchievement->getProgress());
 
         $userAchievement = $this->app->getUserAchievement(2, 1);
-        $this->assertEquals(0.40, $userAchievement->progress);
+        $this->assertEquals(0.5, $userAchievement->getProgress());
 
         $userAchievement = $this->app->getUserAchievement(1, 2);
         $this->assertSame(null, $userAchievement);
