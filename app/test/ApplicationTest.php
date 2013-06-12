@@ -18,9 +18,7 @@ class ApplicationTest extends PHPUnit_Framework_TestCase
 
     function testGetRelevantAchievements()
     {
-        $start = microtime(true);
         $this->app->loadTestData();
-        echo microtime(true) - $start . 's';
         $categories = ['Gym', "Shop & Service", "Gym / Fitness Center"];
         $achievements = $this->app->getAchievementsForCategories($categories);
         $this->assertCount(2, $achievements);
