@@ -1,5 +1,6 @@
 <?php
 
+
 require 'config.php';
 ?>
 <!DOCTYPE html>
@@ -18,8 +19,8 @@ require 'config.php';
         <h1 class="logo">Inloggen</h1>
 
         <div class="form">
-            <button class="button-facebook hammer-tappable">Facebook</button>
-            <button class="button-foursquare hammer-tappable">Foursquare</button>
+            <button class="button-facebook hammer-tappable">Meld aan met Facebook</button>
+            <button class="button-foursquare hammer-tappable"><span>Meld aan met</span> <img src="img/foursquare.svg" alt="foursquare" /></button>
         </div>
 
         <div class="loader"></div>
