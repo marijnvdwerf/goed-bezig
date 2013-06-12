@@ -40,6 +40,7 @@ require 'config.php';
     </script>
     <script src="components/jquery/jquery.min.js"></script>
     <script src="components/jsUri/Uri.js"></script>
+    <script src="components/hammer/jquery.hammer.min.js"></script>
     <script src="js/script.js"></script>
 
 </body>
