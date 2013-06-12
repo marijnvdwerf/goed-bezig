@@ -20,7 +20,7 @@ require 'config.php';
 
         <div class="form">
             <button class="button-facebook">Meld aan met Facebook</button>
-            <button class="button-foursquare">Meld aan met Foursquare</button>
+            <button class="button-foursquare"><span>Meld aan met</span> <img src="img/foursquare.svg" alt="foursquare" /></button>
         </div>
 
         <div class="loader"></div>
