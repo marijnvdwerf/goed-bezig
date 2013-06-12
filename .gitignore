@@ -2,6 +2,18 @@ app/includes/config.php
 app/composer.lock
 app/vendor
 
+simulate/facebook/config.php
+simulate/facebook/postData.txt
+simulate/facebook/postData.json
+simulate/facebook/testData.json
+simulate/facebook/data.json
+
+simulate/foursquare/config.php
+
+# Composer
+simulate/vendor
+simulate/composer.lock
+
 #
 # OS X
 #
@@ -45,3 +57,5 @@ $RECYCLE.BIN/
 *.ipr
 *.iws
 .idea/
+
+*.espressostorage
