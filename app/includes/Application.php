@@ -192,12 +192,32 @@ class Application
         foreach ($relatedVenueTypes as $venueType) {
             foreach ($venueType->sharedRequirement as $requirement) {
                 $venueAchievements[] = $requirement->achievement;
-                var_dump($requirement->achievement->name);
+
             }
         }
-
         return $venueAchievements;
     }
+
+    public function getRelevantUserAchievements($venueAchievements)
+    {
+        //GET user id
+        $user = R::findOne('user', 'foursquare_id = ? ', [$checkin->user->id]);
+
+        //CREATE ARRAY with achievements selected by user + venue
+        $relevantUserAchievements = [];
+        foreach ($venueAchievements as $venueAchievement) {
+            $userAchievement = R::findOne('userachievement',
+                'achievement_id = :venueAchievement AND user_id = :userID',
+                array(
+                    ':venueAchievement' => $venueAchievement->id,
+                    ':userID' => $user->id
+
+                ));
+            $relevantUserAchievements[] = $userAchievement;
+        }
+        return $relevantUserAchievements;
+    }
+
 
     /**
      * @return TextMessage
