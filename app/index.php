@@ -43,32 +43,11 @@ $slim->post('/checkin/foursquare', function () use ($slim, $app) {
 
     /*R::debug(true);*/
 
+    //after the check-in, get all the achievements relevant to those categories
+
     $venueAchievements = $app->getAchievementsForCategories($categories);
-    //var_dump($venueAchievements);
 
-    //CREATE array with current started achievements of the user
-    $user = R::findOne('user', 'foursquare_id = ? ', [$checkin->user->id]);
-
-
-    //DEBUG:
-    //$userAchievements = R::find('userachievement', 'user_id = ?', ['1']);
-
-    foreach ($venueAchievements as $venueAchievement) {
-        //var_dump($venueAchievement->id);
-        $userAchievement = R::findOne('userachievement',
-            'achievement_id = :venueAchievement AND user_id = :userID',
-            array(
-                ':venueAchievement' => $venueAchievement->id,
-                ':userID' => $user->id
-                //':userID'=>'1' DEBUG!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            )
-        );
-
-
-        var_dump($userAchievement->progress);
-
-
-    }
+    $relevantUserAchievements = $app->getRelevantUserAchievements($venueAchievements);
 
 
     /*foreach($userAchievements as $userAchievement) {
