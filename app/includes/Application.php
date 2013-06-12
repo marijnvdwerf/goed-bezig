@@ -4,16 +4,19 @@ include 'TextMessage.php';
 
 class Application
 {
-    function __construct()
+    function __construct($testing = false)
     {
         global $db_host, $db_name, $db_user, $db_pass;
-        R::setup('mysql:host=' . $db_host . ';dbname=' . $db_name, $db_user, $db_pass);
+        if (!$testing) {
+            R::setup('mysql:host=' . $db_host . ';dbname=' . $db_name, $db_user, $db_pass);
+        } else {
+            R::setup('sqlite::memory:');
+        }
     }
 
 
     function loadTestData()
     {
-        R::setup('sqlite::memory:');
         R::nuke();
 
         $user = R::dispense('user');
@@ -187,12 +190,9 @@ class Application
         //CREATE array with achievements per venue;
         $venueAchievements = [];
         foreach ($relatedVenueTypes as $venueType) {
-            //var_dump($venueType->type); //name of the venuetype
             foreach ($venueType->sharedRequirement as $requirement) {
-                //name of the achievement
-                //var_dump($requirement->achievement->id);
                 $venueAchievements[] = $requirement->achievement;
-                //var_dump($requirement->achievement->name);
+                var_dump($requirement->achievement->name);
             }
         }
 
