@@ -83,6 +83,15 @@ class ApplicationTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(0.5, $jeroen->ownUserachievement[4]->getProgress());
 
         $johnId = '00023043287276367263';
+
+        // For John we need to check if a notification is sent, so we create a fake NotificationManager
+        // We create a class that only has the sendMessage method
+        $fakeNotificationManager = $this->getMock('NotificationManager', array('sendMessage'));
+        $fakeNotificationManager
+            ->expects($this->once())
+            ->method('sendMessage');
+        $this->app->notificationManager = $fakeNotificationManager;
+
         $this->app->addFourSquareCheckin($johnId, $checkinData);
         $john = $this->app->getUserForFoursquareId($johnId);
         $this->assertCount(2, $john->ownUserachievement);

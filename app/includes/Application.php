@@ -1,9 +1,15 @@
 <?php
 
 include 'TextMessage.php';
+include 'NotificationManager.php';
 
 class Application
 {
+    /**
+     * @var NotificationManager
+     */
+    public $notificationManager;
+
     function __construct($testing = false)
     {
         global $db_host, $db_name, $db_user, $db_pass;
@@ -12,6 +18,8 @@ class Application
         } else {
             R::setup('sqlite::memory:');
         }
+
+        $this->notificationManager = new NotificationManager();
     }
 
 
@@ -230,6 +238,11 @@ class Application
             if ($userAchievement->getProgress() < 1) {
                 $userAchievement->ownStamp[] = $this->getNewStamp($achievement->id, $categories);
                 R::store($userAchievement);
+
+                if ($userAchievement->getProgress() == 1) {
+                    $message = $this->getNotificationMessage($user->id, 'achievement-earned', $achievement->id);
+                    $this->notificationManager->sendMessage($message);
+                }
             }
         }
     }
