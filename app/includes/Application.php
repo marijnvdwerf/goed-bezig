@@ -132,7 +132,7 @@ class Application
         $userAchievement = R::dispense('userachievement');
         $userAchievement->user = $user;
         $userAchievement->achievement = $achievement;
-        $userAchievement->progress = 0.80;
+        $userAchievement->progress = 0.40;
         $userAchievement->goodieClaimed = null;
         R::store($userAchievement);
 
@@ -179,6 +179,11 @@ class Application
         R::store($address);
     }
 
+    public function getUserForFoursquareId($userId)
+    {
+        return $user = R::findOne('user', 'foursquare_id = ? ', [$userId]);
+    }
+
     public function getAchievementsForCategories($categories)
     {
         //GET venuetype ID
@@ -198,24 +203,15 @@ class Application
         return $venueAchievements;
     }
 
-    public function getRelevantUserAchievements($venueAchievements)
+    public function getUserAchievement($achievementId, $userId)
     {
-        //GET user id
-        $user = R::findOne('user', 'foursquare_id = ? ', [$checkin->user->id]);
-
-        //CREATE ARRAY with achievements selected by user + venue
-        $relevantUserAchievements = [];
-        foreach ($venueAchievements as $venueAchievement) {
-            $userAchievement = R::findOne('userachievement',
-                'achievement_id = :venueAchievement AND user_id = :userID',
-                array(
-                    ':venueAchievement' => $venueAchievement->id,
-                    ':userID' => $user->id
-
-                ));
-            $relevantUserAchievements[] = $userAchievement;
-        }
-        return $relevantUserAchievements;
+        return R::findOne('userachievement',
+            'achievement_id = :venueAchievement AND user_id = :userID',
+            array(
+                ':venueAchievement' => $achievementId,
+                ':userID' => $userId
+            )
+        );
     }
 
 

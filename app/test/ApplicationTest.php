@@ -27,6 +27,34 @@ class ApplicationTest extends PHPUnit_Framework_TestCase
         $this->assertCount(2, $achievements);
     }
 
+    function testGetUserAchievements()
+    {
+        $this->app->loadTestData();
+
+        $userAchievement = $this->app->getUserAchievement(1, 1);
+        $this->assertEquals(0.80, $userAchievement->progress);
+
+        $userAchievement = $this->app->getUserAchievement(2, 1);
+        $this->assertEquals(0.40, $userAchievement->progress);
+
+        $userAchievement = $this->app->getUserAchievement(1, 2);
+        $this->assertSame(null, $userAchievement);
+
+        $userAchievement = $this->app->getUserAchievement(2, 2);
+        $this->assertSame(null, $userAchievement);
+    }
+
+    function testGetUserForFoursquareId()
+    {
+        $userA = $this->app->getUserForFoursquareId('00023043287276367263');
+        $this->assertSame('John', $userA->name);
+        $this->assertSame('1', $userA->id);
+
+        $userB = $this->app->getUserForFoursquareId('55629080');
+        $this->assertSame('Jeroen', $userB->name);
+        $this->assertSame('2', $userB->id);
+    }
+
     function testNotificationGeneration()
     {
         $message = $this->app->getNotificationMessage(1, 'achievement-earned', 1);

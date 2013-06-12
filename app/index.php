@@ -30,10 +30,13 @@ $slim->map('/db/reset', function () use ($slim, $app) {
 })->via('GET', 'POST');
 
 $slim->post('/checkin/foursquare', function () use ($slim, $app) {
-    $user = R::find('user', 1);
-
     $checkin = $slim->request()->params('checkin');
     $checkin = json_decode($checkin);
+
+    $fourSquareUser = $slim->request()->params('user');
+    $fourSquareUser = json_decode($fourSquareUser);
+
+    $user = $app->getUserForFoursquareId($fourSquareUser->id);
 
     $categories = [];
     foreach ($checkin->venue->categories as $category) {
@@ -41,38 +44,11 @@ $slim->post('/checkin/foursquare', function () use ($slim, $app) {
         $categories = array_merge($category->parents, $categories);
     }
 
-    /*R::debug(true);*/
-
-    //after the check-in, get all the achievements relevant to those categories
-
     $venueAchievements = $app->getAchievementsForCategories($categories);
 
-    $relevantUserAchievements = $app->getRelevantUserAchievements($venueAchievements);
-
-
-    /*foreach($userAchievements as $userAchievement) {
-
-        if($userAchievement->progress < 1){
-            print_r("completed");
-        }
-        else {
-
-        }*/
-
-
-    //var_dump($userAchievement);
-
-
-//}
-
-
-    /*WHERE user is jeroen
-    { if achievement in user achievement}
-    dan ga naar stamps
-    { else }
-    maak nieuwe aan*/
-
-
+    foreach ($venueAchievements as $achievement) {
+        $userAchievement = $app->getRelevantUserAchievements($achievement->id, [$user->id]);
+    }
 });
 
 $slim->get('/api/stamps', function () use ($slim) {
