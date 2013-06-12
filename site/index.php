@@ -18,8 +18,8 @@ require 'config.php';
         <h1 class="logo">Inloggen</h1>
 
         <div class="form">
-            <button class="button-facebook">Facebook</button>
-            <button class="button-foursquare">Foursquare</button>
+            <button class="button-facebook hammer-tappable">Facebook</button>
+            <button class="button-foursquare hammer-tappable">Foursquare</button>
         </div>
 
         <div class="loader"></div>
@@ -42,6 +42,7 @@ require 'config.php';
     <script src="components/jsUri/Uri.js"></script>
     <script src="components/hammer/jquery.hammer.min.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/tappable.js"></script>
 
 </body>
 </html>

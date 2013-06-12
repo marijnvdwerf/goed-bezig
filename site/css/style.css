@@ -90,3 +90,11 @@ display: block;
 .page-login[data-state="loading"] .loader {
     opacity: 1;
 }
+
+.hammer-tappable {
+    -webkit-transition: .25s;
+}
+
+.hammer-touch {
+    -webkit-transform: scale(.95);
+}
