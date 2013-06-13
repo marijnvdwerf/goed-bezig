@@ -222,7 +222,30 @@ $slim->get('/achievements', function () use ($slim) {
 
 $slim->map('/db/reset', function () use ($slim, $app) {
     if ($slim->request()->isPost()) {
+        $achievements = file_get_contents('data/achievements.json');
+        $achievements = json_decode($achievements);
         $app->loadTestData();
+        $app->emptyDatabase();
+
+        $venueTypes = [];
+        foreach ($achievements as $achievementData) {
+            $achievement = R::dispense('achievement');
+            $achievement->name = $achievementData->name;
+            $achievement->mystery = false;
+            foreach ($achievementData->requirements as $requirementData) {
+                $requirement = R::dispense('requirement');
+                $requirement->numberRequired = $requirementData->required;
+                foreach ($requirementData->types as $type) {
+                    if (!isset($venueTypes[$type])) {
+                        $venueTypes[$type] = R::dispense('venuetype');
+                        $venueTypes[$type]->type = $type;
+                    }
+                    $requirement->sharedVenuetype[] = $venueTypes[$type];
+                }
+                $achievement->ownRequirement[] = $requirement;
+            }
+            R::store($achievement);
+        }
         echo 'Database nuked and filled with sample data';
         return;
     }
