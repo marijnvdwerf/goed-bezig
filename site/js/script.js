@@ -70,13 +70,26 @@ function foursquareLogin(token) {
         }
 
     }).done(function (data) {
-            console.log(data)
+            sortData(data);
             
             $('.page-login').hide();
             $('.page-main').show();
         });
 
 }
+
+function sortData(data) {
+    $.each(data.achievements, function (i, achievement) {
+        createCard(achievement);
+    })
+
+}
+
+function createCard(achievement) {
+    //create div
+    console.log(achievement);
+}
+
 
 
 $('#settings')
