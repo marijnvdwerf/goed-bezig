@@ -7,7 +7,8 @@ html, body {
 
 .page {
 	position: absolute;
-	background-color: #0082bb;
+	background: #0082bb url('../img/bg-intro.png') no-repeat center;
+	background-size: cover;
 	width: 100%;
 	height: 100%;
 	left: 0;
@@ -25,13 +26,13 @@ html, body {
 
 
 .page-login .logo {
-	background: url('../img/logo-intro.png');
+	background: url('../img/logo-intro.svg') no-repeat center center;
 	text-indent: -999999px;
 	display: block;
 	position: absolute;
-	width: 100px;
-	height: 133px;
-	margin: -66px 0px 0 -50px;
+	width: 80px;
+	height: 118px;
+	margin: -59px 0px 0 -40px;
 	left: 50%;
 	top: 50%;
 	-webkit-transition: .25s;
@@ -39,9 +40,9 @@ html, body {
 
 .page-login .form {
 	position: absolute;
-	width: 196px;
+	width: 236px;
 	height: 92px;
-	margin: -46px -98px;
+	margin: -46px -118px;
 	left:  50%;
 	top: 50%;
     opacity: 0;
@@ -51,7 +52,7 @@ html, body {
 
 .page-login .form button {
     display: block;
-	height: 34px;
+	height: 40px;
 	width:  100%;
 	margin: 0;
 	color: #FFF;
@@ -60,15 +61,15 @@ html, body {
 	border-radius: 3px;
 	box-sizing: border-box;
 	-webkit-appearance: none;
-	font-size: 12px;
+	font-size: 14px;
 	line-height: 29px;
 }
 .page-login .form button.button-facebook{
     background: #3d5a9a url('../img/img-fb-button.png') center left no-repeat;
-    background-size: 43px;
+    background-size: 51px;
     margin-bottom: 25px;
     text-align: left;
-    padding-left:  48px;
+    padding-left:  54px;
 }
 .page-login .form button.button-foursquare{
     background: #2065AD;
@@ -80,7 +81,7 @@ html, body {
     width: 77px;
     height: 22px;
     display: inline-block;
-    margin: 0 0 -7px 0;
+    margin: 0 0 -6px 0;
 }
 .page-login[data-state="login"] .logo {
 	opacity: 0;
