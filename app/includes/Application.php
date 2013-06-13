@@ -302,6 +302,11 @@ class Application
         $message->recipient = $user->phone;
         return $message;
     }
+
+    public function getAchievements()
+    {
+        return R::findAll('achievement');
+    }
 }
 
 
