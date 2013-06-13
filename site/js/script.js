@@ -14,7 +14,7 @@ if (uri.getQueryParamValue('login-foursquare') !== undefined
     $('.page-login').attr('data-state', 'loading');
 
     // TODO: Post token to server in exchange for user information
-    foursquareLogin(uri.getQueryParamValue('token'));
+    foursquareLogin(uri.getQueryParamValue('access_token'));
 } else {
     // Animate the logo out
 
