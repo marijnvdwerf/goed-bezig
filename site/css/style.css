@@ -166,6 +166,8 @@ html, body {
     left: 0;
     top: 0;
     overflow: hidden;
+    padding: 48px 0 0;
+    box-sizing: border-box;
 }
 
 .content-settings {
@@ -220,7 +222,7 @@ html, body {
 .content-settings .mailadres,
 .content-settings .woonplaats,
 .content-settings .uitloggen {
-    margin:0;
+    margin:0 auto;
     width:288px;
     box-sizing:border-box;
     display:block;    
@@ -228,12 +230,13 @@ html, body {
 .content-settings .uitloggen{
     background:#ce3434;
     border:1px solid #b22f2f;
-    margin:20px 0 0 0;
     color:#fff;
+    margin-top: 20px;
     -webkit-font-smoothing: antialiased;
     font-weight: bold;
 }
 .content-settings .un-checked{
+    margin:0 auto;
     border:1px solid #929292;
     color:#3f3f3f;
     background:#fff;
