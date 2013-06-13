@@ -1,0 +1,340 @@
+[
+    {
+        "name": "Boswandeling",
+        "requirements": [
+            {
+                "required": "1",
+                "types": [
+                    "Hiking Trail"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Boswachter",
+        "requirements": [
+            {
+                "required": "5",
+                "types": [
+                    "Hiking Trail"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Bomenknuffelaar",
+        "requirements": [
+            {
+                "required": "10",
+                "types": [
+                    "Hiking Trail"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Bommetje!",
+        "requirements": [
+            {
+                "required": "1",
+                "types": [
+                    "Pool / Lake",
+                    "Water Park",
+                    "Gym Pool"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Waterrat",
+        "requirements": [
+            {
+                "required": "5",
+                "types": [
+                    "Pool / Lake",
+                    "Water Park",
+                    "Gym Pool"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "dolfijn",
+        "requirements": [
+            {
+                "required": "10",
+                "types": [
+                    "Pool / Lake",
+                    "Water Park",
+                    "Gym Pool"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Poseidon",
+        "requirements": [
+            {
+                "required": "25",
+                "types": [
+                    "Pool / Lake",
+                    "Water Park",
+                    "Gym Pool"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Karatekid",
+        "requirements": [
+            {
+                "required": "1",
+                "types": [
+                    "Martial Arts Dojo"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Wax in, wax out",
+        "requirements": [
+            {
+                "required": "5",
+                "types": [
+                    "Martial Arts Dojo"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "bruce lee",
+        "requirements": [
+            {
+                "required": "10",
+                "types": [
+                    "Martial Arts Dojo"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Chuck norris",
+        "requirements": [
+            {
+                "required": "25",
+                "types": [
+                    "Martial Arts Dojo"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Conan",
+        "requirements": [
+            {
+                "required": "25",
+                "types": [
+                    "Martial Arts Dojo"
+                ]
+            },
+            {
+                "required": "25",
+                "types": [
+                    "College Gym",
+                    "Gym"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "knvb",
+        "requirements": [
+            {
+                "required": "5",
+                "types": [
+                    "Soccer Field"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "europa league",
+        "requirements": [
+            {
+                "required": "15",
+                "types": [
+                    "Soccer Field"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "champions league",
+        "requirements": [
+            {
+                "required": "25",
+                "types": [
+                    "Soccer Field"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Messi",
+        "requirements": [
+            {
+                "required": "30",
+                "types": [
+                    "Soccer Field"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Popeye",
+        "requirements": [
+            {
+                "required": "10",
+                "types": [
+                    "College Gym",
+                    "Gym"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "arnold",
+        "requirements": [
+            {
+                "required": "25",
+                "types": [
+                    "College Gym",
+                    "Gym"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "vergrootglas",
+        "requirements": [
+            {
+                "required": "1",
+                "types": [
+                    "Museum",
+                    "Historic Site"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "historicus",
+        "requirements": [
+            {
+                "required": "5",
+                "types": [
+                    "Museum",
+                    "Historic Site"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Archeoloog",
+        "requirements": [
+            {
+                "required": "15",
+                "types": [
+                    "Museum",
+                    "Historic Site"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Indiana Jones",
+        "requirements": [
+            {
+                "required": "25",
+                "types": [
+                    "Museum",
+                    "Historic Site"
+                ]
+            },
+            {
+                "required": "1",
+                "types": [
+                    "Temple"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "sssst!",
+        "requirements": [
+            {
+                "required": "1",
+                "types": [
+                    "College Library",
+                    "Library"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Leesgraag",
+        "requirements": [
+            {
+                "required": "5",
+                "types": [
+                    "College Library",
+                    "Library"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "boekenwurm",
+        "requirements": [
+            {
+                "required": "15",
+                "types": [
+                    "College Library",
+                    "Library"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Genieten",
+        "requirements": [
+            {
+                "required": "1",
+                "types": [
+                    "Food"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Bourgondiër",
+        "requirements": [
+            {
+                "required": "10",
+                "types": [
+                    "Food"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Bacchus",
+        "requirements": [
+            {
+                "required": "25",
+                "types": [
+                    "Food"
+                ]
+            }
+        ]
+    }
+]

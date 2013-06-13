@@ -178,6 +178,19 @@ class Application
         R::store($address);
     }
 
+    public function emptyDatabase()
+    {
+        R::exec('SET FOREIGN_KEY_CHECKS=0;');
+        R::wipe('achievement');
+        R::wipe('address');
+        R::wipe('goodie');
+        R::wipe('requirement');
+        R::wipe('stamp');
+        R::wipe('user');
+        R::wipe('userachievement');
+        R::wipe('venuetype');
+    }
+
     public function getUserForFoursquareId($userId)
     {
         return $user = R::findOne('user', 'foursquare_id = ? ', [$userId]);
