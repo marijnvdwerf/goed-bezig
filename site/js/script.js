@@ -71,9 +71,21 @@ function foursquareLogin(token) {
 
     }).done(function (data) {
             console.log(data)
+            
+            $('.page-login').hide();
+            $('.page-main').show();
         });
 
 }
 
 
+$('#settings')
+    .hammer()
+    .on('tap', function() {
+        if($('.page-main').attr('data-state') === 'settings') {
+            $('.page-main').attr('data-state', 'overview');
+        } else {
+            $('.page-main').attr('data-state', 'settings');
+        }
+    });
 
