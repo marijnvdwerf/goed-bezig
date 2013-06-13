@@ -21,7 +21,7 @@ $slim->post('/api/login/foursquare', function () use ($slim) {
     $response['Content-Type'] = 'application/json';
 
     $token = $request->params('token');
-    if($token === null) {
+    if ($token === null) {
         $response->status(400);
         $response->body(json_encode([
             'error' => 'Missing token parameter'
@@ -57,7 +57,8 @@ $slim->post('/api/login/foursquare', function () use ($slim) {
                 'name' => 'Completed and collected',
                 'description' => 'Lorem ipsum',
                 'completed' => true,
-                'progress' => 1,
+                'progress' => 1.0,
+                'stamps_required' => 5,
                 'stamps' => [
                     [
                         'timestamp' => '2013-06-01T14:30',
@@ -91,7 +92,8 @@ $slim->post('/api/login/foursquare', function () use ($slim) {
                 'name' => 'Completed and unclaimed',
                 'description' => 'Lorem ipsum',
                 'completed' => true,
-                'progress' => 1,
+                'progress' => 1.0,
+                'stamps_required' => 5,
                 'stamps' => [
                     [
                         'timestamp' => '2013-06-01T14:30',
@@ -130,29 +132,31 @@ $slim->post('/api/login/foursquare', function () use ($slim) {
                 'name' => 'Some progress (1/5)',
                 'description' => 'Lorem ipsum',
                 'completed' => false,
+                'progress' => 0.0,
                 'stamps_required' => 5,
-                'goodie' => [],
                 'stamps' => [
                     [
                         'timestamp' => '2013-01-01T14:30',
                         'type' => 'train'
                     ]
-                ]
+                ],
+                'goodie' => null
             ],
 
             [
                 'name' => 'Some progress (1/10)',
                 'description' => 'Lorem ipsum',
                 'completed' => false,
+                'progress' => 0.0,
                 'stamps_required' => 10,
-                'goodie' => [],
                 'stamps' => [
                     [
                         'timestamp' => '2013-01-01T14:30',
                         'type' => 'gym',
                         'new' => false
                     ]
-                ]
+                ],
+                'goodie' => null
             ],
 
 
@@ -160,28 +164,30 @@ $slim->post('/api/login/foursquare', function () use ($slim) {
                 'name' => 'NEW progress (1/10)',
                 'description' => 'Lorem ipsum',
                 'completed' => false,
+                'progress' => 0.0,
                 'stamps_required' => 10,
-                'goodie' => [],
                 'stamps' => [
                     [
                         'timestamp' => '2013-01-01T14:30',
                         'type' => 'pool',
                         'new' => true
                     ]
-                ]
+                ],
+                'goodie' => null
             ],
 
             [
                 'name' => 'No progress (5)',
                 'description' => 'Lorem ipsum',
                 'completed' => false,
+                'progress' => 0.0,
                 'stamps_required' => 5,
+                'stamps' => [
+                ],
                 'goodie' => [
                     'mystery' => false,
                     'title' => 'Visible goodie',
                     'claimed' => false
-                ],
-                'stamps' => [
                 ]
             ],
 
@@ -189,24 +195,30 @@ $slim->post('/api/login/foursquare', function () use ($slim) {
                 'name' => 'No progress (10)',
                 'description' => 'Lorem ipsum',
                 'completed' => false,
+                'progress' => 0.0,
                 'stamps_required' => 10,
-                'stamps' => []
+                'stamps' => [],
+                'goodie' => null
             ],
 
             [
                 'name' => 'No progress (15)',
                 'description' => 'Lorem ipsum',
                 'completed' => false,
+                'progress' => 0.0,
                 'stamps_required' => 15,
-                'stamps' => []
+                'stamps' => [],
+                'goodie' => null
             ],
 
             [
                 'name' => 'No progress (20)',
                 'description' => 'Lorem ipsum',
                 'completed' => false,
+                'progress' => 0.0,
                 'stamps_required' => 20,
-                'stamps' => []
+                'stamps' => [],
+                'goodie' => null
             ]
         ]
     ];
