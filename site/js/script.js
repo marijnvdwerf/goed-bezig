@@ -89,3 +89,25 @@ $('#settings')
         }
     });
 
+
+
+$('.content-settings')
+    .on('click', ".option-checkable", function () {
+        var input = $(this).find('input');
+        if(input.attr('type') === 'radio' && input.prop('checked')) {
+            // do nothing
+        } else {
+            input.prop('checked', !input.prop('checked'));
+            $('input[name="' + input.attr('name') + '"]').trigger('change');
+        }
+    })
+    .on('change', '.option-checkable input', function() {
+        var input = $(this);
+        var container = input.parent();
+        
+        if(input.prop('checked')) {
+            //container.removeClass('un-checked');
+        } else {
+            //container.addClass('un-checked');
+        }
+    });
