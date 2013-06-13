@@ -108,4 +108,21 @@ class ApplicationTest extends PHPUnit_Framework_TestCase
         $this->assertSame('GoedBezig', $message->origin);
     }
 
+    function testGetAchievements()
+    {
+        $achievements = $this->app->getAchievements();
+        $this->assertCount(2, $achievements);
+
+        $achievement = $achievements[1];
+        $this->assertEquals('Sporter', $achievement->name);
+        $this->assertEquals('Je bent sportief bezig', $achievement->description);
+        $this->assertEquals('sporter', $achievement->icon);
+        $this->assertEquals(false, (boolean)$achievement->mystery);
+
+        $achievement = $achievements[2];
+        $this->assertEquals('Waterrat', $achievement->name);
+        $this->assertEquals('Je bent graag in het water', $achievement->description);
+        $this->assertEquals('sporter', $achievement->icon);
+        $this->assertEquals(false, (boolean)$achievement->mystery);
+    }
 }
