@@ -36,8 +36,9 @@ require 'config.php';
         </div>
 
         <div class="content content-main">
-            <div class="wrapper">
-
+            <div class="scrollable">
+                <div class="wrapper">
+                </div>
             </div>
         </div>
 
@@ -85,8 +86,9 @@ require 'config.php';
                 <div class="card-back">
                     <span class="card-title">:achievementTitle</span><br>
                     <span class="card-description">:achievementDescription</span><br>
+
                     <div class="stamp-wrapper">
-                    :achievementStamps
+                        :achievementStamps
                     </div>
                 </div>
             </div>
@@ -94,7 +96,7 @@ require 'config.php';
     </script>
 
     <script type="text/html" id="template-stamp">
-           <div class="stamp" style="width:50px; height:50px; background-color:#f90;float:left;">:stampStamp</div>
+        <div class="stamp" style="width:50px; height:50px; background-color:#f90;float:left;">:stampStamp</div>
     </script>
 
 

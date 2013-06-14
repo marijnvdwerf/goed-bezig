@@ -115,7 +115,7 @@ function createCard(achievement) {
     template = template.replace(':achievementStamps', stampsFinal);
 
 
-    $("#home > .page > .content-main > .wrapper").append(template);
+    $("#home > .page > .content-main > .scrollable > .wrapper").append(template);
     //console.log(achievement);
     //console.log(achievement["name"]); //name //description //goodie(object //completed //prograss //stamps (array) //stamps_required:
 }
