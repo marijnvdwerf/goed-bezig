@@ -67,7 +67,7 @@ function foursquareLogin(token) {
 
     }).done(function (data) {
             sortData(data);
-            
+
             $('.page-login').hide();
             $('.page-main').show();
         });
@@ -82,16 +82,35 @@ function sortData(data) {
 }
 
 function createCard(achievement) {
-    //create div
-    console.log(achievement);
-}
+    var template = $('#template-card').html();
+    //template = template.replace(':achievementTitle', achievement.name);
 
+    switch (achievement.stamps_required) {
+        case 5:
+            template = template.replace(':achievementDataRatio', 80);
+            break;
+        case 10:
+            template = template.replace(':achievementDataRatio', 100);
+            break;
+        case 15:
+            template = template.replace(':achievementDataRatio', 120);
+            break;
+        case 20:
+            template = template.replace(':achievementDataRatio', 140);
+            break;
+    }
+
+
+    $("#home > .page > .content-main > .wrapper").append("Hello world")
+    console.log(achievement);
+    //console.log(achievement["name"]); //name //description //goodie(object //completed //prograss //stamps (array) //stamps_required:
+}
 
 
 $('#settings')
     .hammer()
-    .on('tap', function() {
-        if($('.page-main').attr('data-state') === 'settings') {
+    .on('tap', function () {
+        if ($('.page-main').attr('data-state') === 'settings') {
             $('.page-main').attr('data-state', 'overview');
         } else {
             $('.page-main').attr('data-state', 'settings');
@@ -99,25 +118,24 @@ $('#settings')
     });
 
 
-
 $('.content-settings')
     .hammer()
     .on('tap', ".option-checkable", function (e) {
-    e.preventDefault();
+        e.preventDefault();
         var input = $(this).find('input');
-        if(input.attr('type') === 'radio' && input.prop('checked')) {
+        if (input.attr('type') === 'radio' && input.prop('checked')) {
             // do nothing
-        } else if(e.target !== input[0]) {
+        } else if (e.target !== input[0]) {
             input.prop('checked', !input.prop('checked'));
         }
-        
-            $('input[name="' + input.attr('name') + '"]').trigger('change');
+
+        $('input[name="' + input.attr('name') + '"]').trigger('change');
     })
-    .on('tap', '.option-checkable input', function() {
+    .on('tap', '.option-checkable input', function () {
         var input = $(this);
         var container = input.parent();
-        
-        if(input.prop('checked')) {
+
+        if (input.prop('checked')) {
             //container.removeClass('un-checked');
         } else {
             //container.addClass('un-checked');
