@@ -100,6 +100,7 @@ require 'config.php';
     <script src="components/hammer/jquery.hammer.min.js"></script>
     <script src="js/script.js"></script>
     <script src="js/tappable.js"></script>
+    <script src="scripts/jquery.masonry.min.js"></script>
 
 </body>
 </html>
