@@ -208,9 +208,15 @@ html, body {
     color:#3f3f3f;
 }
 
-#scrollable {
-    overflow: scroll;
-    height: 100%;
+.scrollable {
+    top: 48px; 
+    left: 0; 
+    bottom: 0; 
+    right: 0; 
+    overflow: scroll; 
+    position: absolute;
+    -webkit-overflow-scrolling: touch;
+    
 }
 
 .settings-wrapper {

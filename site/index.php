@@ -43,7 +43,7 @@ require 'config.php';
 
 
         <div class="content content-settings">
-            <div style="top: 48px; left: 0; bottom: 0; right: 0; overflow: scroll; position: absolute;">
+            <div class="scrollable">
                 <div class="wrapper settings-wrapper">
                     <p>Gegevens</p>
                     <input type="text" class="mailadres" name="mailadres" placeholder="Mailadres">

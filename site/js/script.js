@@ -1,5 +1,5 @@
-$('body').css('height', $(window).height() + getExtraViewportHeight());
-
+$('body').css('height', $('body').height());//$(window).height() + getExtraViewportHeight());
+console.log($('body').height());
 setTimeout(function () {
     window.scrollTo(0, 1);
 }, 50);
