@@ -58,7 +58,8 @@ class ApplicationTest extends PHPUnit_Framework_TestCase
         $this->assertSame('2', $userB->id);
     }
 
-    function testGetUserForFoursquareToken() {
+    function testGetUserForFoursquareToken()
+    {
         $userA = $this->app->getUserForFoursquareToken('RJJEHFDSHJFHJKHF34938598KJHFKJSHFJKHFJHSF9843UIHFJHSFJSIFH04823DHJ');
         $this->assertEquals('1', $userA->id);
         $this->assertEquals('John', $userA->name);
@@ -119,11 +120,21 @@ class ApplicationTest extends PHPUnit_Framework_TestCase
 
     function testNotificationGeneration()
     {
+        $user = R::findOne('user', 1);
+
+        $user->setNotificationSetting('achievement-earned', true);
+        R::store($user);
+
         $message = $this->app->getNotificationMessage(1, 'achievement-earned', 1);
         $this->assertInstanceOf('TextMessage', $message);
         $this->assertSame('Gefeliciteerd John, je hebt een achievement vrijgespeeld. Laat die spierballen maar zien!', $message->body);
         $this->assertSame('31612345678', $message->recipient);
         $this->assertSame('GoedBezig', $message->origin);
+
+        $user->setNotificationSetting('achievement-earned', false);
+        R::store($user);
+        $message = $this->app->getNotificationMessage(1, 'achievement-earned', 1);
+        $this->assertSame(null, $message);
     }
 
     function testGetAchievements()
@@ -142,5 +153,32 @@ class ApplicationTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('Je bent graag in het water', $achievement->description);
         $this->assertEquals('waterrat', $achievement->icon);
         $this->assertEquals(false, (boolean)$achievement->mystery);
+    }
+
+    function testUserSettings()
+    {
+        $this->app->loadTestData();
+        $user = R::findOne('User', 1);
+
+        $this->assertSame(false, (boolean)$user->getSetting('test', false));
+        $this->assertSame(false, (boolean)$user->getSetting('test', true));
+
+        $this->assertSame(true, $user->getNotificationSetting('achievement-earned'));
+        $this->assertSame(true, $user->getNotificationSetting('goodie-earned'));
+        $this->assertSame(false, $user->getNotificationSetting('new-stamp'));
+
+        $this->assertSame(['achievement-earned', 'goodie-earned'], $user->getSelectedNotifications());
+
+        $user->facebookToken = null;
+        $user->phone = '0612345678';
+        $this->assertSame(['sms', 'email'], $user->getNotificationMediumOptions());
+        $this->assertSame('sms', $user->getNotificationMedium());
+
+        $user->phone = null;
+        $this->assertSame(['email'], $user->getNotificationMediumOptions());
+        $this->assertSame('email', $user->getNotificationMedium());
+
+        $user->facebookToken = '663366';
+        $this->assertSame('facebook', $user->getNotificationMedium());
     }
 }

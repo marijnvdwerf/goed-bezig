@@ -288,6 +288,9 @@ class Application
     {
         $user = R::findOne('user', $userId);
 
+        if ($user->getNotificationSetting($notificationType) === false) {
+            return null;
+        }
 
         switch ($notificationType) {
             case 'achievement-earned':
@@ -359,5 +362,94 @@ class Model_Userachievement extends RedBean_SimpleModel
         }
 
         return count($this->bean->ownStamp) / $totalRequired;
+    }
+}
+
+
+class Model_User extends RedBean_SimpleModel
+{
+    private $notificationDefaults = [
+        'achievement-earned' => true,
+        'goodie-earned' => true,
+        'new-stamp' => false,
+    ];
+
+    public function getSetting($settingName, $defaultValue)
+    {
+        $setting = R::findOne('usersetting', 'user_id = :userid AND name = :setting', [
+            ':setting' => $settingName,
+            ':userid' => $this->bean->id
+        ]);
+
+        if ($setting === null) {
+            $setting = R::dispense('usersetting');
+            $setting->userId = $this->bean->id;
+            $setting->name = $settingName;
+            $setting->value = $defaultValue;
+            R::store($setting);
+        }
+
+        return $setting->value;
+    }
+
+    public function setSetting($settingName, $value)
+    {
+        $setting = R::findOne('usersetting', 'user_id = :userid AND name = :setting', [
+            ':setting' => $settingName,
+            ':userid' => $this->bean->id
+        ]);
+
+        $setting->value = $value;
+
+        R::store($setting);
+    }
+
+    public function getNotificationSetting($type)
+    {
+        return (boolean)$this->getSetting('notify-' . $type, $this->notificationDefaults[$type]);
+    }
+
+    public function getSelectedNotifications()
+    {
+        $output = [];
+        foreach ($this->notificationDefaults as $type => $value) {
+            if ($this->getNotificationSetting($type)) {
+                $output[] = $type;
+            }
+        }
+        return $output;
+    }
+
+    public function setNotificationSetting($type, $value)
+    {
+        $this->setSetting('notify-' . $type, $value);
+    }
+
+    public function getNotificationMedium()
+    {
+        $options = $this->getNotificationMediumOptions();
+        $selectedMedium = $this->getSetting('notification-medium', $options[0]);
+
+        if (!in_array($selectedMedium, $options)) {
+            $this->setSetting('notification-medium', $options[0]);
+        }
+
+        return $this->getSetting('notification-medium', $options[0]);
+    }
+
+    public function getNotificationMediumOptions()
+    {
+        if ($this->bean->facebook_token !== null) {
+            return ['facebook'];
+        }
+
+        $options = [];
+        if ($this->bean->phone !== null) {
+            $options[] = 'sms';
+        }
+
+        $options[] = 'email';
+
+        return $options;
     }
 }

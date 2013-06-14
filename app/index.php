@@ -55,10 +55,8 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
                     'get-goodie',
                     'get-achievement'
                 ],
-                'availableMethods' => [
-                    'facebook', 'email', 'sms'
-                ],
-                'selectedMethod' => 'sms'
+                'availableMethods' => $user->getNotificationMediumOptions(),
+                'selectedMethod' => $user->getNotificationMedium()
             ]
         ],
 
