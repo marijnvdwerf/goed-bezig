@@ -98,9 +98,10 @@ require 'config.php';
     <script src="components/jquery/jquery.min.js"></script>
     <script src="components/jsUri/Uri.js"></script>
     <script src="components/hammer/jquery.hammer.min.js"></script>
+    <script src="components/masonry/jquery.masonry.min.js"></script>
     <script src="js/script.js"></script>
     <script src="js/tappable.js"></script>
-    <script src="scripts/jquery.masonry.min.js"></script>
+
 
 </body>
 </html>
