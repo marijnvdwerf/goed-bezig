@@ -58,6 +58,24 @@ class ApplicationTest extends PHPUnit_Framework_TestCase
         $this->assertSame('2', $userB->id);
     }
 
+    function testGetUserForFoursquareToken() {
+        $userA = $this->app->getUserForFoursquareToken('RJJEHFDSHJFHJKHF34938598KJHFKJSHFJKHFJHSF9843UIHFJHSFJSIFH04823DHJ');
+        $this->assertEquals('1', $userA->id);
+        $this->assertEquals('John', $userA->name);
+
+        $userB = $this->app->getUserForFoursquareToken('MWZW05JBGRLOYSEOC35JWYEPATTBNTJNJOUWOKR23XMGO3VM');
+        $this->assertEquals('3', $userB->id);
+        $this->assertEquals('Jeroen', $userB->name);
+        $this->assertEquals('van der Sanden', $userB->surname);
+        $this->assertEquals(null, $userB->phone);
+        $this->assertEquals('trend@marijnvdwerf.nl', $userB->email);
+        $this->assertEquals('55629080', $userB->foursquareId);
+        $this->assertEquals('MWZW05JBGRLOYSEOC35JWYEPATTBNTJNJOUWOKR23XMGO3VM', $userB->foursquareToken);
+
+        $userC = $this->app->getUserForFoursquareToken('MWZW05JBGRLOYSEOC35JWYEPATTBNTJNJOUWOKR23XMGO3VN');
+        $this->assertSame(false, $userC);
+    }
+
     function testAddingFoursquareCheckin()
     {
         $checkinData = '{"id":"51a0ecad498ec1fa9824f0ff","createdAt":1369500845,"type":"checkin","timeZone":
@@ -122,7 +140,7 @@ class ApplicationTest extends PHPUnit_Framework_TestCase
         $achievement = $achievements[2];
         $this->assertEquals('Waterrat', $achievement->name);
         $this->assertEquals('Je bent graag in het water', $achievement->description);
-        $this->assertEquals('sporter', $achievement->icon);
+        $this->assertEquals('waterrat', $achievement->icon);
         $this->assertEquals(false, (boolean)$achievement->mystery);
     }
 }

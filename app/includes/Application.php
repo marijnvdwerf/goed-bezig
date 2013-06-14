@@ -307,6 +307,43 @@ class Application
     {
         return R::findAll('achievement');
     }
+
+    public function getUserForFoursquareToken($token)
+    {
+        $user = R::findOne('user', 'foursquare_token = ?', [$token]);
+        if ($user !== null) {
+            return $user;
+        }
+
+        $user = R::dispense('user');
+
+        try {
+            $foursquare = file_get_contents('https://api.foursquare.com/v2/users/self?v=20130614&oauth_token=' . $token);
+        } catch (Exception $e) {
+            return false;
+        }
+
+        $foursquare = json_decode($foursquare);
+
+        $user->foursquareId = $foursquare->response->user->id;
+        $user->foursquareToken = $token;
+
+        $user->name = $foursquare->response->user->firstName;
+        if (isset($foursquare->response->user->lastName)) {
+            $user->surname = $foursquare->response->user->lastName;
+        }
+
+        if (isset($foursquare->response->user->contact->email)) {
+            $user->email = $foursquare->response->user->contact->email;
+        }
+
+        if (isset($foursquare->response->user->contact->phone)) {
+            $user->phone = $foursquare->response->user->contact->phone;
+        }
+
+        R::store($user);
+        return $user;
+    }
 }
 
 

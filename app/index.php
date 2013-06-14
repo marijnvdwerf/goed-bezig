@@ -13,7 +13,7 @@ $slim->get('/', function () use ($slim) {
     $slim->render('index.php');
 });
 
-$slim->post('/api/login/foursquare', function () use ($slim) {
+$slim->post('/api/login/foursquare', function () use ($slim, $app) {
     $request = $slim->request();
 
     $response = $slim->response();
@@ -29,16 +29,26 @@ $slim->post('/api/login/foursquare', function () use ($slim) {
         return;
     }
 
+    $user = $app->getUserForFoursquareToken($token);
+
+    if ($user === false) {
+        $response->status(400);
+        $response->body(json_encode([
+            'error' => 'Invalid token'
+        ], JSON_PRETTY_PRINT));
+        return;
+    }
+
     $body = [
         'settings' => [
             'user' => [
-                'id' => '663366',
-                'firstName' => 'Jeroen',
-                'surName' => 'van der Sanden',
-                'address' => 'Straat 1',
-                'town' => 'Plaatsnaam',
-                'mail' => 'jeroen@goedbezig.nl',
-                'phone' => '0612345678',
+                'id' => $user->id,
+                'firstName' => $user->name,
+                'lastName' => $user->surname,
+                'address' => $user->street,
+                'town' => $user->town,
+                'email' => $user->email,
+                'phone' => $user->phone,
             ],
             'notifications' => [
                 'types' => [
