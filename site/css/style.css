@@ -1,102 +1,105 @@
 html, body {
-	height: 100%;
-	margin: 0;
-	padding: 0;
-	position: relative;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
 }
 
 .wrapper {
-	position: relative;
-	width: 320px;
-	margin: 0 auto;
+    position: relative;
+    width: 320px;
+    margin: 0 auto;
 }
 
 .page {
-	position: absolute;
-	background: #0082bb url('../img/bg-intro.png') no-repeat center;
-	background-size: cover;
-	width: 100%;
-	height: 100%;
-	left: 0;
-	top: 0;
-	color: #fff;
-	font-family: arial;
+    position: absolute;
+    background: #0082bb url('../img/bg-intro.png') no-repeat center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    color: #fff;
+    font-family: arial;
 }
 
 .page-main {
-	display: none;
-}
-.page-settings {
-	display: none;
+    display: none;
 }
 
+.page-settings {
+    display: none;
+}
 
 .page-login .logo {
-	background: url('../img/logo-intro.svg') no-repeat center center;
-	text-indent: -999999px;
-	display: block;
-	position: absolute;
-	width: 120px;
-	height: 140px;
-	margin: -70px 0px 0 -60px;
-	left: 50%;
-	top: 50%;
-	-webkit-transition: .25s;
+    background: url('../img/logo-intro.svg') no-repeat center center;
+    text-indent: -999999px;
+    display: block;
+    position: absolute;
+    width: 120px;
+    height: 140px;
+    margin: -70px 0px 0 -60px;
+    left: 50%;
+    top: 50%;
+    -webkit-transition: .25s;
 }
 
 .page-login .form {
-	position: absolute;
-	width: 236px;
-	height: 92px;
-	margin: -46px -118px;
-	left:  50%;
-	top: 50%;
+    position: absolute;
+    width: 236px;
+    height: 92px;
+    margin: -46px -118px;
+    left: 50%;
+    top: 50%;
     opacity: 0;
-	-webkit-transition: .25s;
-	-webkit-transform: translate3d(0, 100px, 0);
+    -webkit-transition: .25s;
+    -webkit-transform: translate3d(0, 100px, 0);
 }
 
 .page-login .form button {
     display: block;
-	height: 40px;
-	width:  100%;
-	margin: 0;
-	color: #FFF;
-	box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
-	border: 1px solid #155484;
-	border-radius: 3px;
-	box-sizing: border-box;
-	-webkit-appearance: none;
-	font-size: 14px;
-	line-height: 29px;
+    height: 40px;
+    width: 100%;
+    margin: 0;
+    color: #FFF;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+    border: 1px solid #155484;
+    border-radius: 3px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    font-size: 14px;
+    line-height: 29px;
 }
-.page-login .form button.button-facebook{
+
+.page-login .form button.button-facebook {
     background: #3d5a9a url('../img/img-fb-button.png') center left no-repeat;
     background-size: 51px;
     margin-bottom: 25px;
     text-align: left;
-    padding-left:  54px;
+    padding-left: 54px;
 }
-.page-login .form button.button-foursquare{
+
+.page-login .form button.button-foursquare {
     background: #2065AD;
-    margin-top:  25px;
+    margin-top: 25px;
     text-align: center;
 }
 
-.page-login .form button.button-foursquare img{
+.page-login .form button.button-foursquare img {
     width: 77px;
     height: 22px;
     display: inline-block;
     margin: 0 0 -6px 0;
 }
+
 .page-login[data-state="login"] .logo {
-	opacity: 0;
-	-webkit-transform: translate3d(0, -100px, 0);
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100px, 0);
 }
 
 .page-login[data-state="login"] .form {
-	opacity: 1;
-	-webkit-transform: translate3d(0, 0, 0);
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
 }
 
 .page-login .loader {
@@ -123,53 +126,54 @@ html, body {
 
 /*______________Main Page___________*/
 .page-main .header {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	height: 48px;
-	width: 100%;
-	background-color: #0082bb;
-	z-index: 5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 48px;
+    width: 100%;
+    background-color: #0082bb;
+    z-index: 5;
 }
+
 .page-main .header h1 {
-	position: absolute;
-	margin-top: 10px;
-	margin-left: 20px;
-	font-weight: 100;
-	font-size: 24px;
-	width: 50%;
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 20px;
+    font-weight: 100;
+    font-size: 24px;
+    width: 50%;
 }
 
 .page-main .header #settings {
-	position: absolute;
-	float: right;
-	top: 0px;
-	right: 00px;
-	height: 46px;
-	width: 74px;
-	background: #00688c;
+    position: absolute;
+    float: right;
+    top: 0px;
+    right: 00px;
+    height: 46px;
+    width: 74px;
+    background: #00688c;
 }
 
-.page-main .header #settings .cog{
+.page-main .header #settings .cog {
     position: absolute;
     height: 21px;
-    
+
     -webkit-transition-duration: 0.75s;
 }
 
-.page-main .header #settings .cog1{
+.page-main .header #settings .cog1 {
     left: 26px;
     height: 18px;
     top: 5px;
 }
 
-.page-main .header #settings .cog2{
+.page-main .header #settings .cog2 {
     left: 41px;
     top: 13px;
 }
 
-.page-main .header #settings .cog3{
+.page-main .header #settings .cog3 {
     left: 15px;
     top: 20px;
 }
@@ -188,8 +192,7 @@ html, body {
     -webkit-transform: rotate(-360deg);
 }
 
-
-.page-main .header #settings .settings-frame{
+.page-main .header #settings .settings-frame {
     position: absolute;
     left: 0;
     right: 0;
@@ -198,12 +201,12 @@ html, body {
 }
 
 .page-main .main {
-	position: relative;
-	width: 320px;
-	margin: 0 auto;
-	margin-top: 0;
-	background-color: #000;
-	z-index: 1;
+    position: relative;
+    width: 320px;
+    margin: 0 auto;
+    margin-top: 0;
+    background-color: #000;
+    z-index: 1;
 }
 
 .content {
@@ -224,8 +227,8 @@ html, body {
 
 .content-main {
     z-index: 2;
-	background-color: #0082bb;
-    box-shadow: 0 4px 8px rgba(0,0,0,.5);
+    background-color: #0082bb;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .5);
     -webkit-transition: .75s;
 }
 
@@ -241,78 +244,78 @@ html, body {
     -webkit-transform: scale(.95);
 }
 
-.wrapper{
-    width:320px;
-    position:relative;
-    margin:0 auto;
+.wrapper {
+    width: 320px;
+    position: relative;
+    margin: 0 auto;
 }
 
 .content-settings p {
-    font-size:16px;
+    font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
-    margin:25px 0 12px 20px;
-    color:#3f3f3f;
+    margin: 25px 0 12px 20px;
+    color: #3f3f3f;
 }
 
 .scrollable {
-    top: 48px; 
-    left: 0; 
-    bottom: 0; 
-    right: 0; 
-    overflow: auto; 
+    top: 48px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
     position: absolute;
     -webkit-overflow-scrolling: touch;
-    
+
 }
 
 .settings-wrapper {
-    margin-top: 20px!important;
+    margin-top: 20px !important;
 }
 
 .content-settings span {
-    color:#929292;
+    color: #929292;
     font-family: Arial, Helvetica, sans-serif;
-    font-size:16px;
+    font-size: 16px;
 }
 
 .content-settings input[type=text],
 .content-settings input[type=button],
-.content-settings input[type=submit]  {
+.content-settings input[type=submit] {
     font-family: Arial, Helvetica, sans-serif;
-    font-size:16px;
-    padding:12px 20px 12px 20px;
-    border:1px solid #929292;
-    color:#3f3f3f;
+    font-size: 16px;
+    padding: 12px 20px 12px 20px;
+    border: 1px solid #929292;
+    color: #3f3f3f;
     -webkit-appearance: none;
     margin: 0 auto;
-    width:288px;
-    box-sizing:border-box;
-    display:block;
+    width: 288px;
+    box-sizing: border-box;
+    display: block;
     -moz-border-radius: 0px;
     -webkit-border-radius: 0px;
     border-radius: 0px;
-    margin-top: -1px;   
+    margin-top: -1px;
 }
 
-.content-settings input.uitloggen{
-    background:#ce3434;
-    border:1px solid #b22f2f;
-    color:#fff;
+.content-settings input.uitloggen {
+    background: #ce3434;
+    border: 1px solid #b22f2f;
+    color: #fff;
     margin-top: 20px;
     margin-bottom: 40px;
     -webkit-font-smoothing: antialiased;
     font-weight: bold;
 }
 
-.content-settings .un-checked{
+.content-settings .un-checked {
     margin: -1px auto 0;
-    border:1px solid #929292;
-    color:#3f3f3f;
-    background:#fff;
-    box-sizing:border-box;
-    padding:12px 20px 12px 20px;
-    width:288px;
+    border: 1px solid #929292;
+    color: #3f3f3f;
+    background: #fff;
+    box-sizing: border-box;
+    padding: 12px 20px 12px 20px;
+    width: 288px;
     -webkit-transition: background 0.25s;
 }
 
@@ -324,8 +327,9 @@ html, body {
 
 .content-settings input[type="checkbox"],
 .content-settings input[type="radio"] {
-    float:right;
+    float: right;
 }
-textarea:focus, input:focus{
+
+textarea:focus, input:focus {
     outline: 0;
 }
