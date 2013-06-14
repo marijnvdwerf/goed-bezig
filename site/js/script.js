@@ -83,26 +83,40 @@ function sortData(data) {
 
 function createCard(achievement) {
     var template = $('#template-card').html();
-    //template = template.replace(':achievementTitle', achievement.name);
+    var stampsTemplate = $('#template-stamp').html();
+    var stampsFinal = "";
+    template = template.replace(':achievementTitle', achievement.name);
+    template = template.replace(':achievementDescription', achievement.description);
+
+    //console.log(achievement.stamps);
 
     switch (achievement.stamps_required) {
         case 5:
-            template = template.replace(':achievementDataRatio', 80);
+            template = template.replace(':achievementDataRatio', '100px');
             break;
         case 10:
-            template = template.replace(':achievementDataRatio', 100);
+            template = template.replace(':achievementDataRatio', '150px');
             break;
         case 15:
-            template = template.replace(':achievementDataRatio', 120);
+            template = template.replace(':achievementDataRatio', '200px');
             break;
         case 20:
-            template = template.replace(':achievementDataRatio', 140);
+            template = template.replace(':achievementDataRatio', '250px');
             break;
     }
 
 
-    $("#home > .page > .content-main > .wrapper").append("Hello world")
-    console.log(achievement);
+    $.each(achievement.stamps, function (i, stamp){
+        console.log(stamp.type); //also timestamp
+        stampsFinal  += stampsTemplate.replace(':stampStamp',stamp.type);
+        //make template
+    })
+
+    template = template.replace(':achievementStamps', stampsFinal);
+
+
+    $("#home > .page > .content-main > .wrapper").append(template);
+    //console.log(achievement);
     //console.log(achievement["name"]); //name //description //goodie(object //completed //prograss //stamps (array) //stamps_required:
 }
 
