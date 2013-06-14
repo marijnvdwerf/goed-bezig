@@ -140,14 +140,61 @@ html, body {
 	font-size: 24px;
 	width: 50%;
 }
+
 .page-main .header #settings {
 	position: absolute;
 	float: right;
-	top: 10px;
-	right: 20px;
-	height: 30px;
-	width: 35px;
-	background-color: #fff;
+	top: 0px;
+	right: 00px;
+	height: 46px;
+	width: 74px;
+	background: #00688c;
+}
+
+.page-main .header #settings .cog{
+    position: absolute;
+    height: 21px;
+    
+    -webkit-transition-duration: 0.75s;
+}
+
+.page-main .header #settings .cog1{
+    left: 26px;
+    height: 18px;
+    top: 5px;
+}
+
+.page-main .header #settings .cog2{
+    left: 41px;
+    top: 13px;
+}
+
+.page-main .header #settings .cog3{
+    left: 15px;
+    top: 20px;
+}
+
+.page-main .header #settings.hammer-touch {
+    -webkit-transform: scale(1);
+    background: rgba(0, 104, 140, 0.5);
+    -webkit-transition-duration: 0.1;
+}
+
+.page-main[data-state="settings"] .cog {
+    -webkit-transform: rotate(360deg);
+}
+
+.page-main[data-state="settings"] .cog1 {
+    -webkit-transform: rotate(-360deg);
+}
+
+
+.page-main .header #settings .settings-frame{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
 }
 
 .page-main .main {
@@ -213,14 +260,14 @@ html, body {
     left: 0; 
     bottom: 0; 
     right: 0; 
-    overflow: scroll; 
+    overflow: auto; 
     position: absolute;
     -webkit-overflow-scrolling: touch;
     
 }
 
 .settings-wrapper {
-    margin-top: 40px!important;
+    margin-top: 20px!important;
 }
 
 .content-settings span {
@@ -228,6 +275,7 @@ html, body {
     font-family: Arial, Helvetica, sans-serif;
     font-size:16px;
 }
+
 .content-settings input[type=text],
 .content-settings input[type=button],
 .content-settings input[type=submit]  {
@@ -237,13 +285,14 @@ html, body {
     border:1px solid #929292;
     color:#3f3f3f;
     -webkit-appearance: none;
-    margin:0 auto;
+    margin: 0 auto;
     width:288px;
     box-sizing:border-box;
     display:block;
     -moz-border-radius: 0px;
     -webkit-border-radius: 0px;
-    border-radius: 0px;   
+    border-radius: 0px;
+    margin-top: -1px;   
 }
 
 .content-settings input.uitloggen{
@@ -257,17 +306,20 @@ html, body {
 }
 
 .content-settings .un-checked{
-    margin:0 auto;
+    margin: -1px auto 0;
     border:1px solid #929292;
     color:#3f3f3f;
     background:#fff;
     box-sizing:border-box;
     padding:12px 20px 12px 20px;
     width:288px;
+    -webkit-transition: background 0.25s;
 }
 
 .content-settings .un-checked.hammer-touch {
-    background: blue;
+    background: #aae0f9;
+    -webkit-transform: scale(1);
+    -webkit-transition-duration: 0.1s;
 }
 
 .content-settings input[type="checkbox"],

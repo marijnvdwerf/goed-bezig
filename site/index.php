@@ -20,8 +20,7 @@ require 'config.php';
 
         <div class="form">
             <button class="button-facebook hammer-tappable">Meld aan met Facebook</button>
-            <button class="button-foursquare hammer-tappable"><span>Meld aan met</span> <img src="img/foursquare.svg"
-                                                                                             alt="foursquare"/></button>
+            <button class="button-foursquare hammer-tappable"><span>Meld aan met</span> <img src="img/foursquare.svg" alt="foursquare"/></button>
         </div>
 
         <div class="loader"></div>
@@ -31,7 +30,12 @@ require 'config.php';
         <div class="header">
             <div class="wrapper">
                 <h1>Ditzo</h1>
-                <button id="settings"></button>
+                <div id="settings" class="hammer-tappable">
+                    <img class="cog cog1" src="img/cog.svg"/>
+                    <img class="cog cog2" src="img/cog.svg"/>
+                    <img class="cog cog3" src="img/cog.svg"/>
+                    <img class="settings-frame" src="img/settings-frame.png"/>
+                </div>
             </div>
         </div>
 
