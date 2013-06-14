@@ -84,11 +84,19 @@ function sortData(data) {
 function createCard(achievement) {
     var template = $('#template-card').html();
     var stampsTemplate = $('#template-stamp').html();
+    var goodieTemplate = $('#template-goodie').html();
     var stampsFinal = "";
     template = template.replace(':achievementTitle', achievement.name);
     template = template.replace(':achievementDescription', achievement.description);
 
-    //console.log(achievement.stamps);
+    if(achievement.goodie === null){
+        template = template.replace(':achievementGoodie', "");
+        console.log("goodie is null");
+    } else {
+        template = template.replace(':achievementGoodie', goodieTemplate);
+        console.log("FOUND goodie");
+    }
+
 
     switch (achievement.stamps_required) {
         case 5:
@@ -105,19 +113,15 @@ function createCard(achievement) {
             break;
     }
 
-
     $.each(achievement.stamps, function (i, stamp){
-        console.log(stamp.type); //also timestamp
+        //console.log(stamp.type); //also timestamp
         stampsFinal  += stampsTemplate.replace(':stampStamp',stamp.type);
-        //make template
     })
 
     template = template.replace(':achievementStamps', stampsFinal);
 
-
     $("#home > .page > .content-main > .scrollable > .wrapper").append(template);
-    //console.log(achievement);
-    //console.log(achievement["name"]); //name //description //goodie(object //completed //prograss //stamps (array) //stamps_required:
+
 }
 
 

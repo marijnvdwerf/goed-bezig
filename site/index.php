@@ -86,11 +86,12 @@ require 'config.php';
     <script type="text/html" id="template-card">
         <div class="card-wrapper">
             <div class="card" style="height::achievementDataRatio;">
-                <div class="card-front"></div>
+                <div class="card-front">
+                    :achievementGoodie
+                </div>
                 <div class="card-back">
                     <span class="card-title">:achievementTitle</span><br>
                     <span class="card-description">:achievementDescription</span><br>
-
                     <div class="stamp-wrapper">
                         :achievementStamps
                     </div>
@@ -101,6 +102,14 @@ require 'config.php';
 
     <script type="text/html" id="template-stamp">
         <div class="stamp" style="width:50px; height:50px; background-color:#f90;float:left;">:stampStamp</div>
+    </script>
+
+    <script type="text/html" id="template-stamp">
+        <div class="stamp" style="width:50px; height:50px; background-color:#f90;float:left;">:stampStamp</div>
+    </script>
+
+    <script type="text/html" id="template-goodie">
+        <div class="goodie-label" style="height:50px;width:100%;background-color:#ff0;"></div>
     </script>
 
 
