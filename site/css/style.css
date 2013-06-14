@@ -199,6 +199,7 @@ html, body {
     position:relative;
     margin:0 auto;
 }
+
 .content-settings p {
     font-size:16px;
     font-family: Arial, Helvetica, sans-serif;
@@ -206,35 +207,49 @@ html, body {
     margin:25px 0 12px 20px;
     color:#3f3f3f;
 }
+
+#scrollable {
+    overflow: scroll;
+    height: 100%;
+}
+
+.settings-wrapper {
+    margin-top: 40px!important;
+}
+
 .content-settings span {
     color:#929292;
     font-family: Arial, Helvetica, sans-serif;
     font-size:16px;
 }
-.content-settings input {
+.content-settings input[type=text],
+.content-settings input[type=button],
+.content-settings input[type=submit]  {
     font-family: Arial, Helvetica, sans-serif;
     font-size:16px;
     padding:12px 20px 12px 20px;
     border:1px solid #929292;
     color:#3f3f3f;
-}
-.content-settings .adres,
-.content-settings .mailadres,
-.content-settings .woonplaats,
-.content-settings .uitloggen {
+    -webkit-appearance: none;
     margin:0 auto;
     width:288px;
     box-sizing:border-box;
-    display:block;    
+    display:block;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;   
 }
-.content-settings .uitloggen{
+
+.content-settings input.uitloggen{
     background:#ce3434;
     border:1px solid #b22f2f;
     color:#fff;
     margin-top: 20px;
+    margin-bottom: 40px;
     -webkit-font-smoothing: antialiased;
     font-weight: bold;
 }
+
 .content-settings .un-checked{
     margin:0 auto;
     border:1px solid #929292;
@@ -244,6 +259,11 @@ html, body {
     padding:12px 20px 12px 20px;
     width:288px;
 }
+
+.content-settings .un-checked.hammer-touch {
+    background: blue;
+}
+
 .content-settings input[type="checkbox"],
 .content-settings input[type="radio"] {
     float:right;

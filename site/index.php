@@ -40,32 +40,32 @@ require 'config.php';
     	</div>
     	
     	<div class="content content-settings">
-	    	<div class="wrapper">
-                <form>
+    	    <div style="top: 48px; left: 0; bottom: 0; right: 0; overflow: scroll; position: absolute;">
+    	    	<div class="wrapper settings-wrapper">
                     <p>Gegevens</p>
                     <input type="text" class="mailadres" name="mailadres" placeholder="Mailadres">
                     <input type="text" class="adres" name="adres" placeholder="Adres">
                     <input type="text" class="woonplaats" name="woonplaats" placeholder="Woonplaats">
                     <p>Meldingen</p>
-                    <div class="option-checkable un-checked">
+                    <div class="option-checkable hammer-tappable un-checked">
                         <span>Achievements</span>
                         <input type="checkbox" name="meldingen" value="achievements">
                     </div>
-                    <div class="option-checkable un-checked">
+                    <div class="option-checkable hammer-tappable un-checked">
                         <span>Goodies</span>
                         <input type="checkbox" name="meldingen" value="goodies">
                     </div>
                     <p>Medium</p>
-                    <div class="option-checkable un-checked">
+                    <div class="option-checkable hammer-tappable un-checked">
                         <span>Mail</span>
                         <input type="radio" name="medium" value="mail">
                     </div>
-                    <div class="option-checkable un-checked">
+                    <div class="option-checkable hammer-tappable un-checked">
                         <span>SMS</span>
                         <input type="radio" name="medium" value="sms">
                     </div>
                     <input type="submit" class="uitloggen" value="Uitloggen">
-                </form>
+	    	    </div>        
 	    	</div>
     	</div>
 

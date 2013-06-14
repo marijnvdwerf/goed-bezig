@@ -35,10 +35,6 @@ function getExtraViewportHeight() {
     return 0;
 }
 
-$('button').click(function () {
-    //$('.page-login').css('display','none');
-});
-
 
 $('.button-foursquare')
     .hammer()
@@ -105,16 +101,19 @@ $('#settings')
 
 
 $('.content-settings')
-    .on('click', ".option-checkable", function () {
+    .hammer()
+    .on('tap', ".option-checkable", function (e) {
+    e.preventDefault();
         var input = $(this).find('input');
         if(input.attr('type') === 'radio' && input.prop('checked')) {
             // do nothing
-        } else {
+        } else if(e.target !== input[0]) {
             input.prop('checked', !input.prop('checked'));
-            $('input[name="' + input.attr('name') + '"]').trigger('change');
         }
+        
+            $('input[name="' + input.attr('name') + '"]').trigger('change');
     })
-    .on('change', '.option-checkable input', function() {
+    .on('tap', '.option-checkable input', function() {
         var input = $(this);
         var container = input.parent();
         
