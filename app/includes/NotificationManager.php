@@ -2,8 +2,14 @@
 
 class NotificationManager
 {
+
+    /**
+     * @param $message Message
+     */
     public function sendMessage($message)
     {
-        throw new Exception('Method unimplemented');
+        if ($message !== null) {
+            $message->send();
+        }
     }
 }

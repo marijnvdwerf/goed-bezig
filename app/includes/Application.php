@@ -325,28 +325,33 @@ class Application
 
 
     /**
-     * @return TextMessage
+     * @param $userId
+     * @param $notificationType
+     * @param $data
+     * @throws Exception
+     * @return Message|null
      */
     public function getNotificationMessage($userId, $notificationType, $data)
     {
+        /**
+         * @var $user Model_User
+         */
         $user = R::findOne('user', $userId);
 
         if ($user->getNotificationSetting($notificationType) === false) {
             return null;
         }
 
-        switch ($notificationType) {
-            case 'achievement-earned':
-                $achievement = R::findOne('achievement', $data);
-                $body = 'Gefeliciteerd ' . $user->name . ', je hebt een achievement vrijgespeeld. ' . $achievement->earnMessage;
+        switch ($user->getNotificationMedium()) {
+            case 'facebook':
+            case 'email':
+                throw new Exception('Message type unimplemented');
                 break;
+            case 'sms';
+                return new TextMessage($user, $notificationType, $data);
         }
 
-        $message = new TextMessage();
-        $message->body = $body;
-        $message->origin = 'GoedBezig';
-        $message->recipient = $user->phone;
-        return $message;
+        return null;
     }
 
     public function getAchievements()
