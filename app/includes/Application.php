@@ -241,7 +241,13 @@ class Application
         $categories = [];
         foreach ($checkinData->venue->categories as $category) {
             $categories[] = $category->name;
-            $categories = array_merge($category->parents, $categories);
+            if (isset($category->parents)) {
+                $categories = array_merge($category->parents, $categories);
+            }
+        }
+
+        if (count($categories) < 1) {
+            return;
         }
 
         $relatedAchievements = $this->getAchievementsForCategories($categories);
