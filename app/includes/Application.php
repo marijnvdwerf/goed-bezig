@@ -10,7 +10,16 @@ class Application
      */
     public $notificationManager;
 
-    function __construct($testing = false)
+    /**
+     * @var \Monolog\Logger
+     */
+    private $logger;
+
+    /**
+     * @param \Monolog\Logger $logger
+     * @param bool $testing
+     */
+    function __construct($logger, $testing = false)
     {
         global $db_host, $db_name, $db_user, $db_pass;
         if (!$testing) {
@@ -20,6 +29,7 @@ class Application
         }
 
         $this->notificationManager = new NotificationManager();
+        $this->logger = $logger;
     }
 
 
@@ -238,6 +248,11 @@ class Application
     {
         $user = $this->getUserForFoursquareId($foursquareUserId);
 
+        $this->logger->addDebug('User checked in', [
+            'user' => $user->export(),
+            'checkin' => $checkinData
+        ]);
+
         $categories = [];
         foreach ($checkinData->venue->categories as $category) {
             $categories[] = $category->name;
@@ -245,6 +260,7 @@ class Application
                 $categories = array_merge($category->parents, $categories);
             }
         }
+        $this->logger->addDebug('Categories for venue', $categories);
 
         if (count($categories) < 1) {
             return;
@@ -252,15 +268,31 @@ class Application
 
         $relatedAchievements = $this->getAchievementsForCategories($categories);
 
+        $this->logger->addDebug('Related achievements', $relatedAchievements);
+
         foreach ($relatedAchievements as $achievement) {
+            $this->logger->addDebug('Relevante achievement gevonden', $achievement->export());
             $userAchievement = $this->getUserAchievement($achievement->id, $user->id);
             if ($userAchievement->getProgress() < 1) {
-                $userAchievement->ownStamp[] = $this->getNewStamp($achievement->id, $categories);
+                $stamp = $this->getNewStamp($achievement->id, $categories);
+                $this->logger->addInfo('User received stamp', [
+                    'achievement' => $achievement->export(),
+                    'userAchievement' => $userAchievement->export(),
+                    'stamp' => $stamp->export()
+                ]);
+
+                $userAchievement->ownStamp[] = $stamp;
                 R::store($userAchievement);
 
                 if ($userAchievement->getProgress() == 1) {
                     $message = $this->getNotificationMessage($user->id, 'achievement-earned', $achievement->id);
                     $this->notificationManager->sendMessage($message);
+
+                    $this->logger->addInfo('User completed achievement', [
+                        'achievement' => $achievement->export(),
+                        'userAchievement' => $userAchievement->export(),
+                        'stamp' => $stamp->export()
+                    ]);
                 }
             }
         }
@@ -283,6 +315,11 @@ class Application
             }
         }
 
+        $this->logger->addError('No relevant requirement found', [
+            'achievement' => R::findOne('achievement', $achievementId)->export(),
+            'requirements' => $requirements,
+            'categories' => $categories
+        ]);
         throw new Exception('No relevant requirement found');
     }
 

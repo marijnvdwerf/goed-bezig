@@ -6,8 +6,38 @@ require 'includes/vendor/rb.php';
 require 'includes/Application.php';
 
 
-$app = new Application();
-$slim = new \Slim\Slim();
+$logger = new Monolog\Logger('Logger', [], [
+    // Adds the line/file/class/method from which the log call originated.
+    new Monolog\Processor\IntrospectionProcessor(),
+
+    // Adds the current request URI, request method and client IP to a log record.
+    new Monolog\Processor\WebProcessor()
+]);
+
+// Log warnings (and up) to log+goedbezig@marijnvdwerf.nl
+$mailHandler = new MarijnvdWerf\Monolog\Handler\NativeHtmlMailerHandler('log+goedbezig@marijnvdwerf.nl', 'LOG', 'goedbezig@marijnvdwerf.nl', Monolog\Logger::WARNING);
+$mailHandler->setFormatter(new MarijnvdWerf\Monolog\Formatter\HtmlFormatter());
+$logger->pushHandler($mailHandler);
+
+// Log to ChromeLogger
+$chromePhpHandler = new Monolog\Handler\ChromePHPHandler();
+$logger->pushHandler($chromePhpHandler);
+
+
+$app = new Application($logger);
+
+
+$slim = new \Slim\Slim([
+    'debug' => true,
+    'log.level' => \Slim\Log::WARN,
+    'log.writer' => new \Flynsarmy\SlimMonolog\Log\MonologWriter([
+        'handlers' => [
+            $mailHandler,
+            $chromePhpHandler
+        ]
+    ])
+]);
+
 
 $slim->get('/', function () use ($slim) {
     $slim->render('index.php');
