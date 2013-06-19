@@ -77,8 +77,11 @@ function foursquareLogin(token) {
 function sortData(data) {
     $.each(data.achievements, function (i, achievement) {
         createCard(achievement);
-    })
+    });
 
+    cardContainer.masonry({
+        itemSelector: '.card-wrapper'
+    });
 }
 
 function createCard(achievement) {
@@ -113,6 +116,8 @@ function createCard(achievement) {
             break;
     }
 
+    var height = (achievement.stamps_required) * 10 + 50;
+
     $.each(achievement.stamps, function (i, stamp){
         //console.log(stamp.type); //also timestamp
         stampsFinal  += stampsTemplate.replace(':stampStamp',stamp.type);
@@ -120,6 +125,10 @@ function createCard(achievement) {
 
     template = template.replace(':achievementStamps', stampsFinal);
 
+    template = $(template);
+template.css('height', height);
+    template.css('width', 96);
+    template.css('padding', '4px');
     $("#home > .page > .content-main > .scrollable > .wrapper").append(template);
 
 }
@@ -159,3 +168,78 @@ $('.content-settings')
             //container.addClass('un-checked');
         }
     });
+
+
+var cardContainer = $('#card-container');
+var overlay = {
+    el: $('.overlay'),
+
+    show: function () {
+        this.el.css('display', 'block');
+
+        window.setTimeout(function (el) {
+            el.css('opacity', 1);
+        }, 1, this.el);
+    },
+
+    hide: function () {
+        this.el.css('opacity', 0);
+
+        var onTransitionEnd = function (event) {
+            $(this).css('display', 'none');
+            this.removeEventListener('webkitTransitionEnd', onTransitionEnd);
+        };
+
+        this.el[0].addEventListener('webkitTransitionEnd', onTransitionEnd);
+    }
+};
+
+
+$('body').removeClass('loading');
+
+console.log(cardContainer);
+
+
+cardContainer.hammer()
+    .on('tap', '.card', function (event) {
+        var card = $(this);
+
+        var viewportHeight = $(window).height();
+        var wrapperTop = $(this).parent().offset().top;
+
+        var viewportWidth = $(window).width();
+        var wrapperLeft = $(this).parent().offset().left;
+
+        overlay.show();
+        card.parent().addClass('focus');
+        card.css('transform', 'scale(1) rotateY(180deg)');
+        card.css('top', viewportHeight / 2 - wrapperTop);
+        card.css('left', viewportWidth / 2 - wrapperLeft);
+        $('.navbar-overlay').show();
+    })
+    .on('touch', '.card-wrapper', function (event) {
+        $(this).addClass('hover');
+    })
+    .on('release', '.card-wrapper', function (event) {
+        $(this).removeClass('hover');
+    });
+
+
+
+$('.overlay').hammer().on('tap', function (event) {
+    var activeCardWrapper = $('.card-wrapper.focus');
+    var card = activeCardWrapper.children('.card');
+
+    card.css('top', '50%');
+    card.css('left', '50%');
+    card.css('transform', 'scale(' + card.data('scale') + ')');
+
+    var onTransitionEnd = function (event) {
+        activeCardWrapper.removeClass('focus');
+        this.removeEventListener('webkitTransitionEnd', onTransitionEnd);
+    };
+    card[0].addEventListener('webkitTransitionEnd', onTransitionEnd);
+
+    overlay.hide();
+    $('.navbar-overlay').hide();
+});

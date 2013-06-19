@@ -41,11 +41,13 @@ require 'config.php';
 
         <div class="content content-main">
             <div class="scrollable">
-                <div class="wrapper">
+                <div id="card-container" class="wrapper">
                 </div>
+
             </div>
         </div>
 
+        <div class="content overlay"></div>
 
         <div class="content content-settings">
             <div class="scrollable">
