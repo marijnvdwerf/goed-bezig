@@ -433,17 +433,25 @@ textarea:focus, input:focus {
 }
 
 .stamp-wrapper {
-    margin-left: 4px;
-    margin-top: 30px;
-
+    margin-top: 26px;
+    padding: 4px;
 }
 
 .stamp-box {
     width: 72px;
     height: 72px;
     float: left;
-    background-color: green;
+    box-sizing: border-box;
+    border-right: 1px dashed #ccc;
     position: relative;
+}
+
+.stamp-box:nth-child(4n) {
+    border-right: none;
+}
+
+.stamp-box:nth-child(n+5) {
+    border-top: 1px dashed #ccc;
 }
 
 .stamp {
