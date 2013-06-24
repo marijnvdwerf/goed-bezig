@@ -1,6 +1,8 @@
 app/includes/config.php
-app/composer.lock
 app/vendor
+
+
+config.php
 
 
 simulate/facebook/config.php
@@ -13,10 +15,6 @@ simulate/foursquare/config.php
 
 # Composer
 simulate/vendor
-simulate/composer.lock
-
-
-site/config.php
 
 
 #
