@@ -1,6 +1,7 @@
 <?php
 
 include 'TextMessage.php';
+include 'EmailMessage.php';
 include 'NotificationManager.php';
 
 class Application
@@ -46,8 +47,8 @@ class Application
         $user->phone = '31612345678';
         $user->foursquareId = "00023043287276367263";
         $user->foursquareToken = "RJJEHFDSHJFHJKHF34938598KJHFKJSHFJKHFJHSF9843UIHFJHSFJSIFH04823DHJ";
-        $user->facebookId = "01005002392872387482";
-        $user->facebookToken = "AJFNH764JHFJHFJ583HFHRJH987398479FHISJKJFGJ3476HDGJHGFJ98724JHGFJG";
+        $user->facebookId = "";
+        $user->facebookToken = "";
         $user->setMeta('cast.foursquareId', 'string');
         $user->setMeta('cast.facebookId', 'string');
         R::store($user);
@@ -173,8 +174,8 @@ class Application
         $user->age = 21;
         $user->foursquareId = "55629080";
         $user->foursquareToken = "RJJEHFDSHJFHJKHF3493EEE98KJHFKJSHFJKHFJHSF9843UIHFJHSFJSIFH04823DHJ";
-        $user->facebookId = "01005002393472387482";
-        $user->facebookToken = "AJFNH764JHFJHFJ583HFHRRT587398479FHISJKJFGJ3476HDGJHGFJ98724JHGFJG";
+        $user->facebookId = "";
+        $user->facebookToken = "";
         $user->setMeta('cast.foursquareId', 'string');
         $user->setMeta('cast.facebookId', 'string');
         R::store($user);
@@ -285,7 +286,7 @@ class Application
                 R::store($userAchievement);
 
                 if ($userAchievement->getProgress() == 1) {
-                    $message = $this->getNotificationMessage($user->id, 'achievement-earned', $achievement->id);
+                    $message = $this->getNotificationMessage($user->id, 'achievement-earned', $achievement);
                     $this->notificationManager->sendMessage($message);
 
                     $this->logger->addInfo('User completed achievement', [
@@ -341,12 +342,13 @@ class Application
         if ($user->getNotificationSetting($notificationType) === false) {
             return null;
         }
-
+        $this->logger->debug($user->getNotificationMedium());
         switch ($user->getNotificationMedium()) {
             case 'facebook':
-            case 'email':
                 throw new Exception('Message type unimplemented');
                 break;
+            case 'email':
+                return new EmailMessage($user, $notificationType, $data);
             case 'sms';
                 return new TextMessage($user, $notificationType, $data);
         }
@@ -476,6 +478,7 @@ class Model_User extends RedBean_SimpleModel
     public function getNotificationMedium()
     {
         $options = $this->getNotificationMediumOptions();
+
         $selectedMedium = $this->getSetting('notification-medium', $options[0]);
 
         if (!in_array($selectedMedium, $options)) {
@@ -487,9 +490,9 @@ class Model_User extends RedBean_SimpleModel
 
     public function getNotificationMediumOptions()
     {
-        if ($this->bean->facebook_token !== null) {
-            return ['facebook'];
-        }
+//        if ($this->bean->facebook_token !== null) {
+//            return ['facebook'];
+//        }
 
         $options = [];
         if ($this->bean->phone !== null) {
