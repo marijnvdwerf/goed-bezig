@@ -96,27 +96,27 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
                 'description' => 'Lorem ipsum',
                 'completed' => true,
                 'progress' => 1.0,
-                'stamps_required' => 5,
+                'stamps_required' => 4,
                 'stamps' => [
                     [
                         'timestamp' => '2013-06-01T14:30',
-                        'type' => 'pool'
+                        'type' => 'pool',
+                        'new' => false
                     ],
                     [
                         'timestamp' => '2013-06-02T14:30',
-                        'type' => 'gym'
+                        'type' => 'gym',
+                        'new' => false
                     ],
                     [
                         'timestamp' => '2013-01-03T14:30',
-                        'type' => 'school'
+                        'type' => 'school',
+                        'new' => false
                     ],
                     [
                         'timestamp' => '2013-01-04T14:30',
-                        'type' => 'library'
-                    ],
-                    [
-                        'timestamp' => '2013-01-05T14:30',
-                        'type' => 'train'
+                        'type' => 'library',
+                        'new' => false
                     ]
                 ],
                 'goodie' => [
@@ -131,7 +131,7 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
                 'description' => 'Lorem ipsum',
                 'completed' => true,
                 'progress' => 1.0,
-                'stamps_required' => 5,
+                'stamps_required' => 4,
                 'stamps' => [
                     [
                         'timestamp' => '2013-06-01T14:30',
@@ -152,11 +152,6 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
                         'timestamp' => '2013-01-04T14:30',
                         'type' => 'library',
                         'new' => false
-                    ],
-                    [
-                        'timestamp' => '2013-01-05T14:30',
-                        'type' => 'train',
-                        'new' => false
                     ]
                 ],
                 'goodie' => [
@@ -167,11 +162,11 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
             ],
 
             [
-                'name' => 'Some progress (1/5)',
+                'name' => 'Some progress (1/4)',
                 'description' => 'Lorem ipsum',
                 'completed' => false,
-                'progress' => 0.0,
-                'stamps_required' => 5,
+                'progress' => (1/4),
+                'stamps_required' => 4,
                 'stamps' => [
                     [
                         'timestamp' => '2013-01-01T14:30',
@@ -182,11 +177,11 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
             ],
 
             [
-                'name' => 'Some progress (1/10)',
+                'name' => 'Some progress (1/8)',
                 'description' => 'Lorem ipsum',
                 'completed' => false,
-                'progress' => 0.0,
-                'stamps_required' => 10,
+                'progress' => (1/8),
+                'stamps_required' => 8,
                 'stamps' => [
                     [
                         'timestamp' => '2013-01-01T14:30',
@@ -199,11 +194,11 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
 
 
             [
-                'name' => 'NEW progress (1/10)',
+                'name' => 'NEW progress (1/8)',
                 'description' => 'Lorem ipsum',
                 'completed' => false,
-                'progress' => 0.0,
-                'stamps_required' => 10,
+                'progress' => (1/8),
+                'stamps_required' => 8,
                 'stamps' => [
                     [
                         'timestamp' => '2013-01-01T14:30',
@@ -215,11 +210,11 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
             ],
 
             [
-                'name' => 'No progress (5)',
+                'name' => 'No progress (4)',
                 'description' => 'Lorem ipsum',
                 'completed' => false,
                 'progress' => 0.0,
-                'stamps_required' => 5,
+                'stamps_required' => 4,
                 'stamps' => [
                 ],
                 'goodie' => [
@@ -230,31 +225,31 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
             ],
 
             [
-                'name' => 'No progress (10)',
+                'name' => 'No progress (8)',
                 'description' => 'Lorem ipsum',
                 'completed' => false,
                 'progress' => 0.0,
-                'stamps_required' => 10,
+                'stamps_required' => 8,
                 'stamps' => [],
                 'goodie' => null
             ],
 
             [
-                'name' => 'No progress (15)',
+                'name' => 'No progress (12)',
                 'description' => 'Lorem ipsum',
                 'completed' => false,
                 'progress' => 0.0,
-                'stamps_required' => 15,
+                'stamps_required' => 12,
                 'stamps' => [],
                 'goodie' => null
             ],
 
             [
-                'name' => 'No progress (20)',
+                'name' => 'No progress (16)',
                 'description' => 'Lorem ipsum',
                 'completed' => false,
                 'progress' => 0.0,
-                'stamps_required' => 20,
+                'stamps_required' => 16,
                 'stamps' => [],
                 'goodie' => null
             ]
