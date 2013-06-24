@@ -94,7 +94,7 @@ require 'config.php';
                 <div class="card-back">
                     <span class="card-title">:achievementTitle</span><br>
                     <span class="card-description">:achievementDescription</span><br>
-                    <div class="stamp-wrapper">
+                    <div class="stamp-wrapper clearfix">
                         <!--:achievementStamps-->
                     </div>
                 </div>
