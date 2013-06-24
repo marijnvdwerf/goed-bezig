@@ -356,7 +356,7 @@ textarea:focus, input:focus {
 
 .card-front,
 .card-back {
-    border: 1px solid rgba(0, 0, 0, .1);
+/*    border: 1px solid rgba(0, 0, 0, .1);*/
     position: absolute;
     width: 100%;
     -webkit-backface-visibility: hidden;
@@ -399,4 +399,25 @@ textarea:focus, input:focus {
     -webkit-transition: opacity .2s;
     display: none;
     z-index: 100;
+}
+
+.stamp {
+    width: 72px;
+    height: 72px;
+    float: left;
+    background-color: green;
+}
+
+.stamp-wrapper{
+    margin-left:4px;
+    margin-top:30px;
+
+}
+
+.card-title {
+    margin-left:70px;
+    font-size:120%;
+
+    }
+.card-description { margin-left:70px;    font-size:80%;
 }
