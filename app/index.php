@@ -92,6 +92,7 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
 
         'achievements' => [
             [
+                'id' => 1,
                 'name' => 'Completed and collected',
                 'description' => 'Lorem ipsum',
                 'completed' => true,
@@ -127,6 +128,7 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
             ],
 
             [
+                'id' => 2,
                 'name' => 'Completed and unclaimed',
                 'description' => 'Lorem ipsum',
                 'completed' => true,
@@ -162,6 +164,7 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
             ],
 
             [
+                'id' => 2,
                 'name' => 'Some progress (1/4)',
                 'description' => 'Lorem ipsum',
                 'completed' => false,
@@ -177,6 +180,7 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
             ],
 
             [
+                'id' => 3,
                 'name' => 'Some progress (1/8)',
                 'description' => 'Lorem ipsum',
                 'completed' => false,
@@ -194,6 +198,7 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
 
 
             [
+                'id' => 4,
                 'name' => 'NEW progress (1/8)',
                 'description' => 'Lorem ipsum',
                 'completed' => false,
@@ -210,6 +215,7 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
             ],
 
             [
+                'id' => 5,
                 'name' => 'No progress (4)',
                 'description' => 'Lorem ipsum',
                 'completed' => false,
@@ -225,6 +231,7 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
             ],
 
             [
+                'id' => 6,
                 'name' => 'No progress (8)',
                 'description' => 'Lorem ipsum',
                 'completed' => false,
@@ -235,6 +242,7 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
             ],
 
             [
+                'id' => 7,
                 'name' => 'No progress (12)',
                 'description' => 'Lorem ipsum',
                 'completed' => false,
@@ -245,6 +253,7 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
             ],
 
             [
+                'id' => 8,
                 'name' => 'No progress (16)',
                 'description' => 'Lorem ipsum',
                 'completed' => false,
