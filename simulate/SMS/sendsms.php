@@ -23,10 +23,10 @@ require('classes/class.mollie.php');
   $sms->addRecipients('316'.($_POST["telnummer"]));
   // Add reference (needed for delivery reports)
   $sms->setReference('1234');
-  $name = 'Dylan'
-  $achievementName = 'Waterrat';
+  $name = 'Dylan';
+  $achievementName = 'Poseidon';
   // Send the SMS Message
-  $sms->sendSMS('Gefeliciteerd'.$name.', je hebt de achievement '.$achievementName.' behaald!');
+  $sms->sendSMS('Gefeliciteerd '.$name.', je hebt de achievement '.$achievementName.' behaald!');
 
   if ($sms->getSuccess()) {
     echo '<b>SMS message is sent to '.$sms->getSuccessCount().' number(s)!</b>';
