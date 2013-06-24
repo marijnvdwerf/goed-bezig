@@ -1,0 +1,475 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+.clearfix {
+    *zoom: 1;
+}
+
+.wrapper {
+    position: relative;
+    width: 320px;
+    margin: 0 auto;
+}
+
+.page {
+    position: absolute;
+    background: #0082bb url('../img/bg-intro.png') no-repeat center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    color: #fff;
+    font-family: arial;
+}
+
+.page-main {
+    z-index: -1;
+}
+
+.page-main.show {
+    z-index: 1;
+}
+
+.page-login .logo {
+    background: url('../img/logo-intro.svg') no-repeat center center;
+    text-indent: -999999px;
+    display: block;
+    position: absolute;
+    width: 120px;
+    height: 140px;
+    margin: -70px 0px 0 -60px;
+    left: 50%;
+    top: 50%;
+    -webkit-transition: .25s;
+}
+
+.page-login .form {
+    position: absolute;
+    width: 236px;
+    height: 92px;
+    margin: -46px -118px;
+    left: 50%;
+    top: 50%;
+    opacity: 0;
+    -webkit-transition: .25s;
+    -webkit-transform: translate3d(0, 100px, 0);
+}
+
+.page-login .form button {
+    display: block;
+    height: 40px;
+    width: 100%;
+    margin: 0;
+    color: #FFF;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+    border: 1px solid #155484;
+    border-radius: 3px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    font-size: 14px;
+    line-height: 29px;
+}
+
+.page-login .form button.button-facebook {
+    background: #3d5a9a url('../img/img-fb-button.png') center left no-repeat;
+    background-size: 51px;
+    margin-bottom: 25px;
+    text-align: left;
+    padding-left: 54px;
+}
+
+.page-login .form button.button-foursquare {
+    background: #2065AD;
+    margin-top: 25px;
+    text-align: center;
+}
+
+.page-login .form button.button-foursquare img {
+    width: 77px;
+    height: 22px;
+    display: inline-block;
+    margin: 0 0 -6px 0;
+}
+
+.page-login[data-state="login"] .logo {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100px, 0);
+}
+
+.page-login[data-state="login"] .form {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+}
+
+.page-login .loader {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    margin: -30px;
+    left: 50%;
+    top: 50%;
+    opacity: 0;
+    background: #fff;
+    border-radius: 30px;
+    -webkit-transition: .25s;
+}
+
+.page-login[data-state="loading"] .logo {
+    display: none;
+    -webkit-transition-duration: 0s;
+}
+
+.page-login[data-state="loading"] .loader {
+    opacity: 1;
+}
+
+/*______________Main Page___________*/
+.page-main .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 48px;
+    width: 100%;
+    background-color: #0082bb;
+    z-index: 5;
+}
+
+.page-main .header h1 {
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 20px;
+    font-weight: 100;
+    font-size: 24px;
+    width: 50%;
+}
+
+.page-main .header #settings {
+    position: absolute;
+    float: right;
+    top: 0px;
+    right: 00px;
+    height: 46px;
+    width: 74px;
+    background: #00688c;
+}
+
+.page-main .header #settings .cog {
+    position: absolute;
+    height: 21px;
+
+    -webkit-transition-duration: 0.75s;
+}
+
+.page-main .header #settings .cog1 {
+    left: 26px;
+    height: 18px;
+    top: 5px;
+}
+
+.page-main .header #settings .cog2 {
+    left: 41px;
+    top: 13px;
+}
+
+.page-main .header #settings .cog3 {
+    left: 15px;
+    top: 20px;
+}
+
+.page-main .header #settings.hammer-touch {
+    -webkit-transform: scale(1);
+    background: rgba(0, 104, 140, 0.5);
+    -webkit-transition-duration: 0.1;
+}
+
+.page-main[data-state="settings"] .cog {
+    -webkit-transform: rotate(360deg);
+}
+
+.page-main[data-state="settings"] .cog1 {
+    -webkit-transform: rotate(-360deg);
+}
+
+.page-main .header #settings .settings-frame {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+
+.page-main .main {
+    position: relative;
+    width: 320px;
+    margin: 0 auto;
+    margin-top: 0;
+    background-color: #000;
+    z-index: 1;
+}
+
+.content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    padding: 48px 0 0;
+    box-sizing: border-box;
+}
+
+.content-settings {
+    z-index: 1;
+    background: #e5e5e5;
+}
+
+.content-main {
+    z-index: 2;
+    background-color: #0082bb;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .5);
+    -webkit-transition: .75s;
+}
+
+.page-main[data-state="settings"] .content-main {
+    -webkit-transform: translate3d(0, -100%, 0);
+}
+
+.hammer-tappable {
+    -webkit-transition: .25s;
+}
+
+.hammer-touch {
+    -webkit-transform: scale(.95);
+}
+
+.wrapper {
+    width: 320px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.content-settings p {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    margin: 25px 0 12px 20px;
+    color: #3f3f3f;
+}
+
+.scrollable {
+    top: 48px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+    position: absolute;
+    -webkit-overflow-scrolling: touch;
+
+}
+
+.settings-wrapper {
+    margin-top: 20px !important;
+}
+
+.content-settings span {
+    color: #929292;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+.content-settings input[type=text],
+.content-settings input[type=button],
+.content-settings input[type=submit] {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    padding: 12px 20px 12px 20px;
+    border: 1px solid #929292;
+    color: #3f3f3f;
+    -webkit-appearance: none;
+    margin: 0 auto;
+    width: 288px;
+    box-sizing: border-box;
+    display: block;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    margin-top: -1px;
+}
+
+.content-settings input.uitloggen {
+    background: #ce3434;
+    border: 1px solid #b22f2f;
+    color: #fff;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    -webkit-font-smoothing: antialiased;
+    font-weight: bold;
+}
+
+.content-settings .un-checked {
+    margin: -1px auto 0;
+    border: 1px solid #929292;
+    color: #3f3f3f;
+    background: #fff;
+    box-sizing: border-box;
+    padding: 12px 20px 12px 20px;
+    width: 288px;
+    -webkit-transition: background 0.25s;
+}
+
+.content-settings .un-checked.hammer-touch {
+    background: #aae0f9;
+    -webkit-transform: scale(1);
+    -webkit-transition-duration: 0.1s;
+}
+
+.content-settings input[type="checkbox"],
+.content-settings input[type="radio"] {
+    float: right;
+}
+
+textarea:focus, input:focus {
+    outline: 0;
+}
+
+/*______________Cards___________*/
+.card-wrapper {
+    width: 96px;
+}
+
+.card {
+    width: 96px;
+    height: 60px;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition-duration: .6s;
+    z-index: 0;
+
+    left: 50%;
+    top: 50%;
+}
+
+.card-wrapper.focus {
+    z-index: 120;
+}
+
+.card-front,
+.card-back {
+    /*    border: 1px solid rgba(0, 0, 0, .1);*/
+    position: absolute;
+    width: 100%;
+    -webkit-backface-visibility: hidden;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.card-front {
+    background: crimson;
+    height: 100%;
+}
+
+.card-back {
+    left: 50%;
+    top: 50%;
+    width: 296px;
+    background: #eee;
+    -webkit-transform: rotateY(180deg) scale(0.32432432432432434);
+}
+
+.card-placeholder {
+    background: none;
+    border: 10px dashed #eee;
+}
+
+.card-placeholder .card-front,
+.card-placeholder .card-back {
+    display: none;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .8);
+    opacity: 0;
+    -webkit-transition: opacity .2s;
+    display: none;
+    z-index: 100;
+    -webkit-perspective: 2000;
+}
+
+.stamp-wrapper {
+    margin-top: 26px;
+    padding: 4px;
+}
+
+.stamp-box {
+    width: 72px;
+    height: 72px;
+    float: left;
+    box-sizing: border-box;
+    border-right: 1px dashed #ccc;
+    position: relative;
+}
+
+.stamp-box:nth-child(4n) {
+    border-right: none;
+}
+
+.stamp-box:nth-child(n+5) {
+    border-top: 1px dashed #ccc;
+}
+
+.stamp {
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, .8);
+    border-radius: 10px;
+    position: absolute;
+    margin: -25px;
+}
+
+.card-title {
+    margin-left: 70px;
+    font-size: 120%;
+
+}
+
+.card-description {
+    margin-left: 70px;
+    font-size: 80%;
+}
