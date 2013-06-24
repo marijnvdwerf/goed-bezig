@@ -111,7 +111,7 @@ require 'config.php';
     </script>
 
     <script type="text/html" id="template-goodie">
-        <div class="goodie-label" style="height:50px;width:100%;background-color:#ff0;"></div>
+        <div class="goodie-label" style="height:20px; width:20px; background-color:#ff0; position: absolute; top: 0; right: 0"></div>
     </script>
 
 

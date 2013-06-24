@@ -361,6 +361,7 @@ textarea:focus, input:focus {
     height: 100%;
     -webkit-backface-visibility: hidden;
     border-radius: 3px;
+    box-sizing: border-box;
 }
 
 .card-front {
@@ -368,7 +369,9 @@ textarea:focus, input:focus {
 }
 
 .card-back {
+    width: 296px;
     background: #eee;
+    overflow: auto;
     -webkit-transform: rotateY(180deg);
 }
 

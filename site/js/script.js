@@ -92,7 +92,7 @@ function createCard(achievement) {
     template = template.replace(':achievementTitle', achievement.name);
     template = template.replace(':achievementDescription', achievement.description);
 
-    if(achievement.goodie === null){
+    if (achievement.goodie === null) {
         template = template.replace(':achievementGoodie', "");
         console.log("goodie is null");
     } else {
@@ -101,35 +101,29 @@ function createCard(achievement) {
     }
 
 
-    switch (achievement.stamps_required) {
-        case 5:
-            template = template.replace(':achievementDataRatio', '100px');
-            break;
-        case 10:
-            template = template.replace(':achievementDataRatio', '150px');
-            break;
-        case 15:
-            template = template.replace(':achievementDataRatio', '200px');
-            break;
-        case 20:
-            template = template.replace(':achievementDataRatio', '250px');
-            break;
+    var wrapper = $(template);
+
+    for (var i = 0; i < achievement.stamps_required; i++) {
+        $('<div class="stamp"></div>').appendTo(wrapper.find('.stamp-wrapper'));
     }
 
-    var height = (achievement.stamps_required) * 10 + 50;
 
-    $.each(achievement.stamps, function (i, stamp){
-        //console.log(stamp.type); //also timestamp
-        stampsFinal  += stampsTemplate.replace(':stampStamp',stamp.type);
-    })
+    $("#home > .page > .content-main > .scrollable > .wrapper").append(wrapper);
 
-    template = template.replace(':achievementStamps', stampsFinal);
+    var back = wrapper.find('.card-back');
+    var backRatio = back.outerHeight() / back.outerWidth();
+    back.css({
+        'transform': 'scale(' + (96 / back.outerWidth()) + ')',
+        'transform-origin': '0 0'
+    });
 
-    template = $(template);
-template.css('height', height);
-    template.css('width', 96);
-    template.css('padding', '4px');
-    $("#home > .page > .content-main > .scrollable > .wrapper").append(template);
+    var card = wrapper.find('.card');
+    card.css('width', 96);
+    card.css('height', 96 * backRatio);
+    console.log(96, backRatio, 96 * backRatio);
+
+    wrapper.css('height', 96 * backRatio);
+    wrapper.css('padding', '4px');
 
 }
 
@@ -223,7 +217,6 @@ cardContainer.hammer()
     .on('release', '.card-wrapper', function (event) {
         $(this).removeClass('hover');
     });
-
 
 
 $('.overlay').hammer().on('tap', function (event) {
