@@ -89,6 +89,7 @@ function createCard(achievement) {
     var stampsTemplate = $('#template-stamp').html();
     var goodieTemplate = $('#template-goodie').html();
     var stampsFinal = "";
+    template = template.replace(':achievementId', achievement.id);
     template = template.replace(':achievementTitle', achievement.name);
     template = template.replace(':achievementDescription', achievement.description);
 
@@ -206,37 +207,28 @@ cardContainer.hammer()
     .on('tap', '.card', function (event) {
         var card = $(this);
 
-        if (card.parent().hasClass('focus')) {
+        var offset = card.offset();
 
-            card.css('top', '50%');
-            card.css('left', '50%');
-            card.css('transform', 'scale(1)');
+        var clonedCard = card.clone();
+        clonedCard.css({
+            position: 'absolute',
+            left: offset.left,
+            top: offset.top
+        });
+        clonedCard.appendTo(overlay.el);
 
-            var onTransitionEnd = function (event) {
-                card.parent().removeClass('focus');
-                this.removeEventListener('webkitTransitionEnd', onTransitionEnd);
-            };
-            card[0].addEventListener('webkitTransitionEnd', onTransitionEnd);
-            return;
-        }
+        overlay.show();
 
-        //card.appendTo(overlay.el);
-
-        var viewportHeight = $(window).height();
-        var wrapperTop = $(this).parent().offset().top;
-
-        var viewportWidth = $(window).width();
-        var wrapperLeft = $(this).parent().offset().left;
-
-        //overlay.show();
-        card
+        clonedCard
             .css({
                 transform: 'scale(3.0833333333) rotateY(-180deg)',
-                top: viewportHeight / 2 - wrapperTop,
-                left: viewportWidth / 2 - wrapperLeft
+                top: '50%',
+                left: '50%',
+                margin: '-' + (card.outerHeight() / 2) + 'px -' + (card.outerWidth() / 2) + 'px'
             })
-            .parent().addClass('focus');
-        //$('.navbar-overlay').show();
+            .addClass('focus');
+
+        card.hide();
     })
     .on('touch', '.card-wrapper', function (event) {
         $(this).addClass('hover');
@@ -247,6 +239,19 @@ cardContainer.hammer()
 
 
 $('.overlay').hammer().on('tap', function (event) {
+    overlay.hide();
+
+    var overlayCard = $(this).find('.card');
+    var cardId = overlayCard.data('id');
+    overlayCard.remove();
+
+    var originalCard = cardContainer.find('.card[data-id="' + cardId + '"]');
+    originalCard.show();
+
+    overlay.hide();
+
+    return;
+
     var activeCardWrapper = $('.card-wrapper.focus');
     var card = activeCardWrapper.find('.card');
 

@@ -87,7 +87,7 @@ require 'config.php';
 
     <script type="text/html" id="template-card">
         <div class="card-wrapper">
-            <div class="card" style="height::achievementDataRatio;">
+            <div class="card" style="height::achievementDataRatio;" data-id=":achievementId">
                 <div class="card-front">
                     :achievementGoodie
                 </div>
