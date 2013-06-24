@@ -282,6 +282,8 @@ $slim->map('/db/reset', function () use ($slim, $app) {
             $achievement = R::dispense('achievement');
             $achievement->name = $achievementData->name;
             $achievement->mystery = false;
+            $achievement->description = $achievementData->description;
+            $achievement->icon = $achievementData->description;
             foreach ($achievementData->requirements as $requirementData) {
                 $requirement = R::dispense('requirement');
                 $requirement->numberRequired = $requirementData->required;
