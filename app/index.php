@@ -268,12 +268,6 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
     $response->body(json_encode($body, JSON_PRETTY_PRINT));
 });
 
-$slim->get('/achievements', function () use ($slim) {
-    $slim->render('achievements.php', [
-        'achievements' => R::findAll('achievement')
-    ]);
-});
-
 $slim->map('/db/reset', function () use ($slim, $app) {
     if ($slim->request()->isPost()) {
         $achievements = file_get_contents('data/achievements.json');
@@ -317,59 +311,6 @@ $slim->post('/checkin/foursquare', function () use ($slim, $app) {
     $fourSquareUser = json_decode($fourSquareUser);
 
     $app->addFourSquareCheckin($fourSquareUser->id, $checkin);
-});
-
-$slim->get('/api/stamps', function () use ($slim) {
-    $count = rand(0, 1);
-    $stamps = [];
-
-    for ($i = 0; $i < $count; $i++) {
-        $stamps[] = [
-            'achievement_id' => 1,
-            'datetime' => date('c'),
-            'type' => 'spa'
-        ];
-    }
-
-    $response = $slim->response();
-    $response['Content-Type'] = 'application/json';
-    $response->body(json_encode(['stamps' => $stamps]));
-});
-
-$slim->get('/api/cards', function () use ($slim) {
-    $cards = [];
-
-    $cards[] = [
-        'id' => 1,
-        'name' => 'Waterrat',
-        'description' => 'Lorem ipsum dolor sit amet',
-        'icon' => 'waterrat',
-        'mystery' => false,
-        'progress' => 0.2,
-        'goodie' => null,
-        'stamps' => [
-            [
-                'datetime' => date('c', strtotime('2013-05-24 14:35:30')),
-                'type' => 'Pool / Lake'
-            ]
-        ]
-    ];
-
-    $cards[] = [
-        'id' => 2,
-        'name' => 'Boswandeling',
-        'description' => 'Lorem ipsum dolor sit amet',
-        'icon' => 'boswandeling',
-        'mystery' => false,
-        'progress' => 0,
-        'goodie' => null,
-        'stamps' => [
-        ]
-    ];
-
-    $response = $slim->response();
-    $response['Content-Type'] = 'application/json';
-    $response->body(json_encode(['cards' => $cards]));
 });
 
 $slim->run();
