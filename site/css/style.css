@@ -24,11 +24,11 @@ html, body {
 }
 
 .page-main {
-    display: none;
+    z-index: -1;
 }
 
-.page-settings {
-    display: none;
+.page-main.show {
+    z-index: 1;
 }
 
 .page-login .logo {

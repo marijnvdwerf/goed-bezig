@@ -69,7 +69,7 @@ function foursquareLogin(token) {
             sortData(data);
 
             $('.page-login').hide();
-            $('.page-main').show();
+            $('.page-main').addClass('show');
         });
 
 }

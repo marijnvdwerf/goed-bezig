@@ -26,7 +26,7 @@ require 'config.php';
         <div class="loader"></div>
     </div>
 
-    <div class="page page-main" data-state="overview" style="display: none;">
+    <div class="page page-main" data-state="overview">
         <div class="header">
             <div class="wrapper">
                 <h1>Ditzo</h1>
