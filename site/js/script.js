@@ -113,18 +113,15 @@ function createCard(achievement) {
     var back = wrapper.find('.card-back');
     var backRatio = back.outerHeight() / back.outerWidth();
     back.css({
-        'transform': 'scale(' + (96 / back.outerWidth()) + ')',
-        'transform-origin': '0 0'
+        margin: '-' + (back.outerHeight() / 2) + 'px -' + (back.outerWidth() / 2) + 'px'
     });
 
     var card = wrapper.find('.card');
     card.css('width', 96);
     card.css('height', 96 * backRatio);
-    console.log(96, backRatio, 96 * backRatio);
 
     wrapper.css('height', 96 * backRatio);
     wrapper.css('padding', '4px');
-
 }
 
 
@@ -191,12 +188,28 @@ var overlay = {
 
 $('body').removeClass('loading');
 
-console.log(cardContainer);
-
+var activeWrapper;
+var activeCard;
 
 cardContainer.hammer()
     .on('tap', '.card', function (event) {
         var card = $(this);
+
+        if (card.parent().hasClass('focus')) {
+
+            card.css('top', '50%');
+            card.css('left', '50%');
+            card.css('transform', 'scale(1)');
+
+            var onTransitionEnd = function (event) {
+                card.parent().removeClass('focus');
+                this.removeEventListener('webkitTransitionEnd', onTransitionEnd);
+            };
+            card[0].addEventListener('webkitTransitionEnd', onTransitionEnd);
+            return;
+        }
+
+        //card.appendTo(overlay.el);
 
         var viewportHeight = $(window).height();
         var wrapperTop = $(this).parent().offset().top;
@@ -204,12 +217,15 @@ cardContainer.hammer()
         var viewportWidth = $(window).width();
         var wrapperLeft = $(this).parent().offset().left;
 
-        overlay.show();
-        card.parent().addClass('focus');
-        card.css('transform', 'scale(1) rotateY(180deg)');
-        card.css('top', viewportHeight / 2 - wrapperTop);
-        card.css('left', viewportWidth / 2 - wrapperLeft);
-        $('.navbar-overlay').show();
+        //overlay.show();
+        card
+            .css({
+                transform: 'scale(3.0833333333) rotateY(-180deg)',
+                top: viewportHeight / 2 - wrapperTop,
+                left: viewportWidth / 2 - wrapperLeft
+            })
+            .parent().addClass('focus');
+        //$('.navbar-overlay').show();
     })
     .on('touch', '.card-wrapper', function (event) {
         $(this).addClass('hover');
@@ -221,11 +237,11 @@ cardContainer.hammer()
 
 $('.overlay').hammer().on('tap', function (event) {
     var activeCardWrapper = $('.card-wrapper.focus');
-    var card = activeCardWrapper.children('.card');
+    var card = activeCardWrapper.find('.card');
 
     card.css('top', '50%');
     card.css('left', '50%');
-    card.css('transform', 'scale(' + card.data('scale') + ')');
+    card.css('transform', 'scale(1)');
 
     var onTransitionEnd = function (event) {
         activeCardWrapper.removeClass('focus');
@@ -233,6 +249,6 @@ $('.overlay').hammer().on('tap', function (event) {
     };
     card[0].addEventListener('webkitTransitionEnd', onTransitionEnd);
 
-    overlay.hide();
+    //overlay.hide();
     $('.navbar-overlay').hide();
 });

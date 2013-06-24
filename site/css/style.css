@@ -338,6 +338,7 @@ textarea:focus, input:focus {
 .card-wrapper {
     width: 96px;
 }
+
 .card {
     width: 96px;
     height: 60px;
@@ -369,10 +370,12 @@ textarea:focus, input:focus {
 }
 
 .card-back {
+    left: 50%;
+    top: 50%;
     width: 296px;
     background: #eee;
     overflow: auto;
-    -webkit-transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg) scale(0.32432432432432434);
 }
 
 .card-placeholder {
