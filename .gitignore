@@ -1,9 +1,5 @@
-app/includes/config.php
-app/vendor
-
-
-config.php
-
+includes/config.php
+vendor
 
 simulate/facebook/config.php
 simulate/facebook/postData.txt

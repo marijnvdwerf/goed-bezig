@@ -1,133 +1,318 @@
 <?php
 
-
-require 'config.php';
-?>
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>GoedBezig</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body id="home">
+require 'vendor/autoload.php';
+require 'includes/config.php';
+require 'includes/vendor/rb.php';
+require 'includes/Application.php';
 
 
-    <div class="page page-login" data-state="logo" style="display: block;">
-        <h1 class="logo">Inloggen</h1>
+$logger = new Monolog\Logger('Logger', [], [
+    // Adds the line/file/class/method from which the log call originated.
+    new Monolog\Processor\IntrospectionProcessor(),
 
-        <div class="form">
-            <button class="button-facebook hammer-tappable">Meld aan met Facebook</button>
-            <button class="button-foursquare hammer-tappable"><span>Meld aan met</span> <img src="img/foursquare.svg" alt="foursquare"/></button>
-        </div>
+    // Adds the current request URI, request method and client IP to a log record.
+    new Monolog\Processor\WebProcessor()
+]);
 
-        <div class="loader"></div>
-    </div>
+// Log warnings (and up) to log+goedbezig@marijnvdwerf.nl
+$mailHandler = new MarijnvdWerf\Monolog\Handler\NativeHtmlMailerHandler('log+goedbezig@marijnvdwerf.nl', 'LOG', 'goedbezig@marijnvdwerf.nl', Monolog\Logger::WARNING);
+$mailHandler->setFormatter(new MarijnvdWerf\Monolog\Formatter\HtmlFormatter());
+$logger->pushHandler($mailHandler);
 
-    <div class="page page-main" data-state="overview">
-        <div class="header">
-            <div class="wrapper">
-                <h1>Ditzo</h1>
-                <div id="settings" class="hammer-tappable">
-                    <img class="cog cog1" src="img/cog.svg"/>
-                    <img class="cog cog2" src="img/cog.svg"/>
-                    <img class="cog cog3" src="img/cog.svg"/>
-                    <img class="settings-frame" src="img/settings-frame.png"/>
-                </div>
-            </div>
-        </div>
-
-        <div class="content content-main">
-            <div class="scrollable">
-                <div id="card-container" class="wrapper">
-                </div>
-
-            </div>
-        </div>
-
-        <div class="content overlay"></div>
-
-        <div class="content content-settings">
-            <div class="scrollable">
-                <div class="wrapper settings-wrapper">
-                    <p>Gegevens</p>
-                    <input type="text" class="mailadres" name="mailadres" placeholder="Mailadres">
-                    <input type="text" class="adres" name="adres" placeholder="Adres">
-                    <input type="text" class="woonplaats" name="woonplaats" placeholder="Woonplaats">
-
-                    <p>Meldingen</p>
-
-                    <div class="option-checkable hammer-tappable un-checked">
-                        <span>Achievements</span>
-                        <input type="checkbox" name="meldingen" value="achievements">
-                    </div>
-                    <div class="option-checkable hammer-tappable un-checked">
-                        <span>Goodies</span>
-                        <input type="checkbox" name="meldingen" value="goodies">
-                    </div>
-                    <p>Medium</p>
-
-                    <div class="option-checkable hammer-tappable un-checked">
-                        <span>Mail</span>
-                        <input type="radio" name="medium" value="mail">
-                    </div>
-                    <div class="option-checkable hammer-tappable un-checked">
-                        <span>SMS</span>
-                        <input type="radio" name="medium" value="sms">
-                    </div>
-                    <input type="submit" class="uitloggen" value="Uitloggen">
-                </div>
-            </div>
-        </div>
+// Log to ChromeLogger
+$chromePhpHandler = new Monolog\Handler\ChromePHPHandler();
+$logger->pushHandler($chromePhpHandler);
 
 
-    </div>
-
-    <script type="text/html" id="template-card">
-        <div class="card-wrapper">
-            <div class="card" style="height::achievementDataRatio;" data-id=":achievementId">
-                <div class="card-front">
-                    :achievementGoodie
-                </div>
-                <div class="card-back">
-                    <span class="card-title">:achievementTitle</span><br>
-                    <span class="card-description">:achievementDescription</span><br>
-                    <div class="stamp-wrapper clearfix">
-                        <!--:achievementStamps-->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </script>
-
-    <script type="text/html" id="template-stamp">
-        <div class="stamp" style="width:50px; height:50px; background-color:#f90;float:left;">:stampStamp</div>
-    </script>
-
-    <script type="text/html" id="template-stamp">
-        <div class="stamp" style="width:50px; height:50px; background-color:#f90;float:left;">:stampStamp</div>
-    </script>
-
-    <script type="text/html" id="template-goodie">
-        <div class="goodie-label"
-             style="height:20px; width:20px; background-color:#ff0; position: absolute; top: 0; right: 0"></div>
-    </script>
+$app = new Application($logger);
 
 
-    <script>
-        window.config = {
-            foursquare_id: <?= json_encode($foursquare_client_id); ?>
-        };
-    </script>
-    <script src="components/jquery/jquery.min.js"></script>
-    <script src="components/jsUri/Uri.js"></script>
-    <script src="components/hammer/jquery.hammer.min.js"></script>
-    <script src="components/masonry/jquery.masonry.min.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/tappable.js"></script>
+$slim = new \Slim\Slim([
+    'debug' => true,
+    'log.level' => \Slim\Log::WARN,
+    'log.writer' => new \Flynsarmy\SlimMonolog\Log\MonologWriter([
+        'handlers' => [
+            $mailHandler,
+            $chromePhpHandler
+        ]
+    ])
+]);
 
 
-</body>
-</html>
+$slim->get('/', function () use ($slim, $foursquare_client_id) {
+    $slim->render('index.php', [
+        'foursquare_client_id' => $foursquare_client_id
+    ]);
+});
+
+$slim->post('/api/login/foursquare', function () use ($slim, $app) {
+    $request = $slim->request();
+
+    $response = $slim->response();
+    $response['Access-Control-Allow-Origin'] = '*';
+    $response['Content-Type'] = 'application/json';
+
+    $token = $request->params('token');
+    if($token === null) {
+        $response->status(400);
+        $response->body(json_encode([
+            'error' => 'Missing token parameter'
+        ], JSON_PRETTY_PRINT));
+        return;
+    }
+
+    $user = $app->getUserForFoursquareToken($token);
+
+    if($user === false) {
+        $response->status(400);
+        $response->body(json_encode([
+            'error' => 'Invalid token'
+        ], JSON_PRETTY_PRINT));
+        return;
+    }
+
+    $body = [
+        'settings' => [
+            'user' => [
+                'id' => $user->id,
+                'firstName' => $user->name,
+                'lastName' => $user->surname,
+                'address' => $user->street,
+                'town' => $user->town,
+                'email' => $user->email,
+                'phone' => $user->phone,
+            ],
+            'notifications' => [
+                'types' => [
+                    'get-goodie',
+                    'get-achievement'
+                ],
+                'availableMethods' => $user->getNotificationMediumOptions(),
+                'selectedMethod' => $user->getNotificationMedium()
+            ]
+        ],
+
+        'achievements' => [
+            [
+                'id' => 1,
+                'name' => 'Completed and collected',
+                'description' => 'Lorem ipsum',
+                'completed' => true,
+                'progress' => 1.0,
+                'stamps_required' => 4,
+                'stamps' => [
+                    [
+                        'timestamp' => '2013-06-01T14:30',
+                        'type' => 'pool',
+                        'new' => false
+                    ],
+                    [
+                        'timestamp' => '2013-06-02T14:30',
+                        'type' => 'gym',
+                        'new' => false
+                    ],
+                    [
+                        'timestamp' => '2013-01-03T14:30',
+                        'type' => 'school',
+                        'new' => false
+                    ],
+                    [
+                        'timestamp' => '2013-01-04T14:30',
+                        'type' => 'library',
+                        'new' => false
+                    ]
+                ],
+                'goodie' => [
+                    'mystery' => false,
+                    'title' => 'Collected goodie',
+                    'claimed' => true
+                ]
+            ],
+
+            [
+                'id' => 2,
+                'name' => 'Completed and unclaimed',
+                'description' => 'Lorem ipsum',
+                'completed' => true,
+                'progress' => 1.0,
+                'stamps_required' => 4,
+                'stamps' => [
+                    [
+                        'timestamp' => '2013-06-01T14:30',
+                        'type' => 'pool',
+                        'new' => false,
+                    ],
+                    [
+                        'timestamp' => '2013-06-02T14:30',
+                        'type' => 'gym',
+                        'new' => false
+                    ],
+                    [
+                        'timestamp' => '2013-01-03T14:30',
+                        'type' => 'school',
+                        'new' => false
+                    ],
+                    [
+                        'timestamp' => '2013-01-04T14:30',
+                        'type' => 'library',
+                        'new' => false
+                    ]
+                ],
+                'goodie' => [
+                    'mystery' => false,
+                    'title' => 'Unclaimed goodie',
+                    'claimed' => false
+                ]
+            ],
+
+            [
+                'id' => 2,
+                'name' => 'Some progress (1/4)',
+                'description' => 'Lorem ipsum',
+                'completed' => false,
+                'progress' => (1 / 4),
+                'stamps_required' => 4,
+                'stamps' => [
+                    [
+                        'timestamp' => '2013-01-01T14:30',
+                        'type' => 'train'
+                    ]
+                ],
+                'goodie' => null
+            ],
+
+            [
+                'id' => 3,
+                'name' => 'Some progress (1/8)',
+                'description' => 'Lorem ipsum',
+                'completed' => false,
+                'progress' => (1 / 8),
+                'stamps_required' => 8,
+                'stamps' => [
+                    [
+                        'timestamp' => '2013-01-01T14:30',
+                        'type' => 'gym',
+                        'new' => false
+                    ]
+                ],
+                'goodie' => null
+            ],
+
+
+            [
+                'id' => 4,
+                'name' => 'NEW progress (1/8)',
+                'description' => 'Lorem ipsum',
+                'completed' => false,
+                'progress' => (1 / 8),
+                'stamps_required' => 8,
+                'stamps' => [
+                    [
+                        'timestamp' => '2013-01-01T14:30',
+                        'type' => 'pool',
+                        'new' => true
+                    ]
+                ],
+                'goodie' => null
+            ],
+
+            [
+                'id' => 5,
+                'name' => 'No progress (4)',
+                'description' => 'Lorem ipsum',
+                'completed' => false,
+                'progress' => 0.0,
+                'stamps_required' => 4,
+                'stamps' => [
+                ],
+                'goodie' => [
+                    'mystery' => false,
+                    'title' => 'Visible goodie',
+                    'claimed' => false
+                ]
+            ],
+
+            [
+                'id' => 6,
+                'name' => 'No progress (8)',
+                'description' => 'Lorem ipsum',
+                'completed' => false,
+                'progress' => 0.0,
+                'stamps_required' => 8,
+                'stamps' => [],
+                'goodie' => null
+            ],
+
+            [
+                'id' => 7,
+                'name' => 'No progress (12)',
+                'description' => 'Lorem ipsum',
+                'completed' => false,
+                'progress' => 0.0,
+                'stamps_required' => 12,
+                'stamps' => [],
+                'goodie' => null
+            ],
+
+            [
+                'id' => 8,
+                'name' => 'No progress (16)',
+                'description' => 'Lorem ipsum',
+                'completed' => false,
+                'progress' => 0.0,
+                'stamps_required' => 16,
+                'stamps' => [],
+                'goodie' => null
+            ]
+        ]
+    ];
+
+    $response->body(json_encode($body, JSON_PRETTY_PRINT));
+});
+
+$slim->map('/db/reset', function () use ($slim, $app) {
+    if($slim->request()->isPost()) {
+        $achievements = file_get_contents('data/achievements.json');
+        $achievements = json_decode($achievements);
+        $app->loadTestData();
+        $app->emptyDatabase();
+
+        $venueTypes = [];
+        foreach($achievements as $achievementData) {
+            $achievement = R::dispense('achievement');
+            $achievement->name = $achievementData->name;
+            $achievement->mystery = false;
+            $achievement->description = $achievementData->description;
+            $achievement->icon = $achievementData->description;
+            foreach($achievementData->requirements as $requirementData) {
+                $requirement = R::dispense('requirement');
+                $requirement->numberRequired = $requirementData->required;
+                foreach($requirementData->types as $type) {
+                    if(!isset($venueTypes[$type])) {
+                        $venueTypes[$type] = R::dispense('venuetype');
+                        $venueTypes[$type]->type = $type;
+                    }
+                    $requirement->sharedVenuetype[] = $venueTypes[$type];
+                }
+                $achievement->ownRequirement[] = $requirement;
+            }
+            R::store($achievement);
+        }
+        echo 'Database nuked and filled with sample data';
+        return;
+    }
+
+    $slim->render('db_reset.php');
+})->via('GET', 'POST');
+
+$slim->post('/checkin/foursquare', function () use ($slim, $app) {
+    $checkin = $slim->request()->params('checkin');
+    $checkin = json_decode($checkin);
+
+    $fourSquareUser = $slim->request()->params('user');
+    $fourSquareUser = json_decode($fourSquareUser);
+
+    $app->addFourSquareCheckin($fourSquareUser->id, $checkin);
+});
+
+$slim->run();
