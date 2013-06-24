@@ -104,7 +104,18 @@ function createCard(achievement) {
     var wrapper = $(template);
 
     for (var i = 0; i < achievement.stamps_required; i++) {
-        $('<div class="stamp"></div>').appendTo(wrapper.find('.stamp-wrapper'));
+        var stampBox = $('<div class="stamp-box"></div>');
+        if (achievement.stamps[i] !== undefined) {
+            $('<div/>')
+                .addClass('stamp type-' + achievement.stamps[i].type)
+                .css({
+                    left: (Math.random() * 40 + 30) + '%',
+                    top: (Math.random() * 40 + 30) + '%',
+                    transform: 'rotate(' + (Math.random() * 50 - 25) + 'deg)'
+                })
+                .appendTo(stampBox);
+        }
+        stampBox.appendTo(wrapper.find('.stamp-wrapper'));
     }
 
 
