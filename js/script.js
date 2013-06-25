@@ -93,6 +93,10 @@ function createCard(achievement) {
     var stampsFinal = "";
     template = template.replace(':achievementId', achievement.id);
     template = template.replace(':achievementTitle', achievement.name);
+    template = template.replace(':achievementIcon1', achievement.icon);
+    template = template.replace(':achievementIcon2', achievement.icon);
+    template = template.replace(':achievementIcon3', achievement.icon);
+    template = template.replace(':achievementIcon4', achievement.icon);
     template = template.replace(':achievementDescription', achievement.description);
 
     var cardWrapper = $(template);
