@@ -25,6 +25,7 @@
 .card-front {
     background: crimson;
     height: 100%;
+
 }
 
 .card-back {
@@ -109,7 +110,7 @@
 }
 
 .card-header {
-    padding: 8px 8px 8px 72px;
+    padding: 8px 32px 8px 72px;
     margin: -1px;
 }
 
@@ -153,4 +154,5 @@
     position: absolute;
     top: -3px;
     right: -3px;
+    -webkit-backface-visibility: hidden;
 }
