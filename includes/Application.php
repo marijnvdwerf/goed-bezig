@@ -326,6 +326,8 @@ class Application
 
                 if ($userAchievement->getProgress() == 1) {
                     $message = $this->getNotificationMessage($user->id, 'achievement-earned', $achievement);
+
+                    $this->logger->debug('Generated message', [$message]);
                     $this->notificationManager->sendMessage($message);
 
                     $this->logger->addInfo('User completed achievement', [
@@ -376,7 +378,7 @@ class Application
         /**
          * @var $user Model_User
          */
-        $user = R::findOne('user', $userId);
+        $user = R::load('user', $userId);
 
         if ($user->getNotificationSetting($notificationType) === false) {
             return null;
@@ -503,7 +505,7 @@ class Model_User extends RedBean_SimpleModel
             ':userid' => $this->bean->id
         ]);
 
-        if($setting === null) {
+        if ($setting === null) {
             $setting = R::dispense('usersetting');
             $setting->user = $this->bean;
             $setting->name = $settingName;
