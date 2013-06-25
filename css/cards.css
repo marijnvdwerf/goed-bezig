@@ -19,7 +19,6 @@
     border-radius: 3px;
     box-sizing: border-box;
 
-
 }
 
 .card-front *,
@@ -46,14 +45,16 @@
 }
 
 .goodie-indicator {
+    position: absolute;
+    display: none;
+}
+
+.card-back .goodie-indicator {
     background: url("../img/goodie-indicator.png") no-repeat left top;
     width: 75px;
     height: 75px;
-    position: absolute;
     left: -7px;
     top: -7px;
-    padding: 18px 0 0 18px;
-    box-sizing: border-box;
 }
 
 .card-placeholder {
@@ -122,6 +123,9 @@
     width: 44px;
     height: 44px;
     background: #000;
+    position: absolute;
+    left: 11px;
+    top: 11px;
 }
 
 .card-close {
@@ -129,7 +133,6 @@
     right: 5px;
     top: 4px;
 }
-
 
 .type-school {
     background-image: url("../img/stamp-green.png");
@@ -151,12 +154,21 @@
     background-size: contain;
 }
 
-.goodie-label {
+.card-front .goodie-indicator {
     background: url("../img/front-goodie-indicator.png") no-repeat top right;
     height: 25px;
     width: 25px;
-    position: absolute;
     top: -3px;
     right: -3px;
-    -webkit-backface-visibility: hidden;
+}
+
+.card-front .card-icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -22px;
+}
+
+.card.has-goodie .goodie-indicator {
+    display: block;
 }

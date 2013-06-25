@@ -29,6 +29,7 @@
         <div class="header">
             <div class="wrapper">
                 <img class="ditzoLogo" src="img/ditzo_logo.svg">
+
                 <div id="settings" class="hammer-tappable">
                     <img class="cog cog1" src="img/cog.svg"/>
                     <img class="cog cog2" src="img/cog.svg"/>
@@ -86,15 +87,15 @@
 
     <script type="text/html" id="template-card">
         <div class="card-wrapper">
-            <div class="card" style="height::achievementDataRatio;" data-id=":achievementId">
+            <div class="card type-:achievementIcon" style="height::achievementDataRatio;" data-id=":achievementId">
                 <div class="card-front">
-                    :achievementGoodie
+                    <div class="card-icon"></div>
+                    <div class="goodie-indicator"></div>
                 </div>
                 <div class="card-back">
                     <div class="card-header">
-                        <div class="goodie-indicator">
-                            <div class="card-icon"></div>
-                        </div>
+                        <div class="card-icon"></div>
+                        <div class="goodie-indicator"></div>
                         <span class="card-title">:achievementTitle</span>
                         <span class="card-description">:achievementDescription</span>
                         <i class="card-close icon-remove"></i>
@@ -106,18 +107,6 @@
                 </div>
             </div>
         </div>
-    </script>
-
-    <script type="text/html" id="template-stamp">
-        <div class="stamp" style="width:50px; height:50px; background-color:#f90;float:left;">:stampStamp</div>
-    </script>
-
-    <script type="text/html" id="template-stamp">
-        <div class="stamp" style="width:50px; height:50px; background-color:#f90;float:left;">:stampStamp</div>
-    </script>
-
-    <script type="text/html" id="template-goodie">
-        <div class="goodie-label"></div>
     </script>
 
 

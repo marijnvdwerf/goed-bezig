@@ -93,16 +93,12 @@ function createCard(achievement) {
     template = template.replace(':achievementTitle', achievement.name);
     template = template.replace(':achievementDescription', achievement.description);
 
-    if (achievement.goodie === null) {
-        template = template.replace(':achievementGoodie', "");
-        console.log("goodie is null");
-    } else {
-        template = template.replace(':achievementGoodie', goodieTemplate);
-        console.log("FOUND goodie");
+    var cardWrapper = $(template);
+
+    if (achievement.goodie !== null) {
+        cardWrapper.find('.card').addClass('has-goodie');
     }
 
-
-    var wrapper = $(template);
 
     for (var i = 0; i < achievement.stamps_required; i++) {
         var stampBox = $('<div class="stamp-box"></div>');
@@ -116,24 +112,24 @@ function createCard(achievement) {
                 })
                 .appendTo(stampBox);
         }
-        stampBox.appendTo(wrapper.find('.stamp-wrapper'));
+        stampBox.appendTo(cardWrapper.find('.stamp-wrapper'));
     }
 
 
-    $("#home > .page > .content-main > .scrollable > .wrapper").append(wrapper);
+    $("#home > .page > .content-main > .scrollable > .wrapper").append(cardWrapper);
 
-    var back = wrapper.find('.card-back');
+    var back = cardWrapper.find('.card-back');
     var backRatio = back.outerHeight() / back.outerWidth();
     back.css({
         margin: '-' + (back.outerHeight() / 2) + 'px -' + (back.outerWidth() / 2) + 'px'
     });
 
-    var card = wrapper.find('.card');
+    var card = cardWrapper.find('.card');
     card.css('width', 96);
     card.css('height', 96 * backRatio);
 
-    wrapper.css('height', 96 * backRatio);
-    wrapper.css('padding', '4px');
+    cardWrapper.css('height', 96 * backRatio);
+    cardWrapper.css('padding', '4px');
 }
 
 
