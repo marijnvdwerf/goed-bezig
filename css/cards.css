@@ -77,8 +77,9 @@
 }
 
 .stamp-wrapper {
-    margin-top: 26px;
-    padding: 3px;
+    margin: 26px -1px -1px -1px;
+    padding: 4px;
+    overflow: hidden;
 }
 
 .stamp-box {
@@ -143,4 +144,13 @@
 .type-gym {
     background-image: url("../img/stamp-colorful.png");
     background-size: contain;
+}
+
+.goodie-label {
+    background: url("../img/front-goodie-indicator.png") no-repeat top right;
+    height:25px;
+    width:25px;
+    position: absolute;
+    top: -3px;
+    right: -3px;
 }
