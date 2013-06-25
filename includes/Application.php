@@ -28,6 +28,7 @@ class Application
         } else {
             R::setup('sqlite::memory:');
         }
+        R::freeze(true);
 
         $this->notificationManager = new NotificationManager();
         $this->logger = $logger;
@@ -36,6 +37,7 @@ class Application
 
     function loadTestData()
     {
+        R::freeze(false);
         R::nuke();
 
         $user = R::dispense('user');
@@ -78,26 +80,6 @@ class Application
         $gym->type = "Gym";
         R::store($gym);
 
-        $requirement = R::dispense('requirement');
-        $requirement->achievement = $achievement;
-        $requirement->sharedVenueTypes = [$collegeGym, $gym];
-        $requirement->numberRequired = 2;
-        R::store($requirement);
-
-        $userAchievement = R::dispense('userachievement');
-        $userAchievement->user = $user;
-        $userAchievement->achievement = $achievement;
-        $userAchievement->goodieClaimed = null;
-        R::store($userAchievement);
-
-        $stamp = R::dispense('stamp');
-        $stamp->userachievement = $userAchievement;
-        $stamp->venueType = "Pool / Lake";
-        $stamp->requirement = $requirement;
-        $stamp->datetime = new DateTime();
-        R::store($stamp);
-
-
         $poolLake = R::dispense('venuetype');
         $poolLake->type = "Pool / Lake";
         R::store($poolLake);
@@ -112,6 +94,25 @@ class Application
 
         $requirement = R::dispense('requirement');
         $requirement->achievement = $achievement;
+        $requirement->sharedVenueTypes = [$collegeGym, $gym];
+        $requirement->numberRequired = 2;
+        R::store($requirement);
+
+        $userAchievement = R::dispense('userachievement');
+        $userAchievement->user = $user;
+        $userAchievement->achievement = $achievement;
+        $userAchievement->goodieClaimed = null;
+        R::store($userAchievement);
+
+        $stamp = R::dispense('stamp');
+        $stamp->userachievement = $userAchievement;
+        $stamp->venueType = $poolLake;
+        $stamp->requirement = $requirement;
+        $stamp->datetime = new DateTime();
+        R::store($stamp);
+
+        $requirement = R::dispense('requirement');
+        $requirement->achievement = $achievement;
         $requirement->sharedVenueTypes = [$poolLake, $waterpark, $gymPool];
         $requirement->numberRequired = 2;
         R::store($requirement);
@@ -119,7 +120,7 @@ class Application
 
         $stamp = R::dispense('stamp');
         $stamp->userachievement = $userAchievement;
-        $stamp->venueType = "Gym";
+        $stamp->venueType = $gym;
         $stamp->requirement = $requirement;
         $stamp->datetime = new DateTime();
         R::store($stamp);
@@ -155,7 +156,7 @@ class Application
 
         $stamp = R::dispense('stamp');
         $stamp->userachievement = $userAchievement;
-        $stamp->venueType = "Pool / Lake";
+        $stamp->venueType = $poolLake;
         $stamp->requirement = $requirement;
         $stamp->datetime = new DateTime();
         R::store($stamp);
@@ -180,13 +181,20 @@ class Application
         $user->setMeta('cast.facebookId', 'string');
         R::store($user);
 
+        $setting = R::dispense('usersetting');
+        $setting->user = $user;
+        $setting->name = 'notification-medium';
+        $setting->value = 'email';
+        R::store($setting);
+
         $address = R::dispense('address');
-        //$user ->ownAddress = [$adress];
         $address->user = $user;
         $address->address = "Hoofdstraat 4";
         $address->postalCode = "1234AD";
         $address->town = "Amsterdam";
         R::store($address);
+
+        R::freeze(true);
     }
 
     public function emptyDatabase()
@@ -253,7 +261,7 @@ class Application
 
     public function getCategoryTree($categoryId)
     {
-        $data = json_decode(file_get_contents('../data/categories.json'));
+        $data = json_decode(file_get_contents(__DIR__ . '/../data/categories.json'));
         foreach ($data->response->categories as $mainCategory) {
             if ($mainCategory->id === $categoryId) {
                 return [$mainCategory->name];
@@ -494,6 +502,12 @@ class Model_User extends RedBean_SimpleModel
             ':setting' => $settingName,
             ':userid' => $this->bean->id
         ]);
+
+        if($setting === null) {
+            $setting = R::dispense('usersetting');
+            $setting->user = $this->bean;
+            $setting->name = $settingName;
+        }
 
         $setting->value = $value;
 

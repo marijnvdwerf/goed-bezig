@@ -62,6 +62,8 @@ class ApplicationTest extends PHPUnit_Framework_TestCase
 
     function testGetUserForFoursquareId()
     {
+        $this->app->loadTestData();
+
         $userA = $this->app->getUserForFoursquareId('00023043287276367263');
         $this->assertSame('John', $userA->name);
         $this->assertSame('1', $userA->id);
@@ -73,6 +75,8 @@ class ApplicationTest extends PHPUnit_Framework_TestCase
 
     function testGetUserForFoursquareToken()
     {
+        $this->app->loadTestData();
+
         $userA = $this->app->getUserForFoursquareToken('RJJEHFDSHJFHJKHF34938598KJHFKJSHFJKHFJHSF9843UIHFJHSFJSIFH04823DHJ');
         $this->assertEquals('1', $userA->id);
         $this->assertEquals('John', $userA->name);
@@ -92,6 +96,8 @@ class ApplicationTest extends PHPUnit_Framework_TestCase
 
     function testAddingFoursquareCheckin()
     {
+        $this->app->loadTestData();
+
         $checkinData = '{"id":"51a0ecad498ec1fa9824f0ff","createdAt":1369500845,"type":"checkin","timeZone":
         "Europe\/Amsterdam","timeZoneOffset":120,"user":{"id":"55629080","firstName":"Jeroen","lastName":
         "van der Sanden","gender":"male","relationship":"self","photo":"https:\/\/foursquare.com\/img\/blank_boy.png",
@@ -133,6 +139,8 @@ class ApplicationTest extends PHPUnit_Framework_TestCase
 
     function testNotificationGeneration()
     {
+        $this->app->loadTestData();
+
         $user = R::findOne('user', 1);
 
         $user->setSetting('notification-medium', 'sms');
