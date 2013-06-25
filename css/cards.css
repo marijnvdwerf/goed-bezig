@@ -130,13 +130,17 @@
 
 .type-school {
     background-image: url("../img/school.jpg");
+    background-size: contain;
 }
 .type-library {
     background-image: url("../img/library.jpg");
+    background-size: contain;
 }
 .type-pool {
     background-image: url("../img/pool.jpg");
+    background-size: contain;
 }
 .type-gym {
     background-image: url("../img/gym.jpg");
+    background-size: contain;
 }
