@@ -75,8 +75,9 @@
 }
 
 .stamp-wrapper {
-    margin-top: 26px;
-    padding: 3px;
+    margin: 26px -1px -1px -1px;
+    padding: 4px;
+    overflow: hidden;
 }
 
 .stamp-box {
@@ -97,12 +98,12 @@
 }
 
 .stamp {
-    width: 50px;
-    height: 50px;
-    background: rgba(0, 0, 0, .8);
-    border-radius: 10px;
+    width: 60px;
+    height: 60px;
+    /*background: rgba(0, 0, 0, .8);*/
+    /*border-radius: 10px;*/
     position: absolute;
-    margin: -25px;
+    margin: -30px;
 }
 
 .card-header {
@@ -123,21 +124,30 @@
 }
 
 .type-school {
-    background-image: url("../img/school.jpg");
+    background-image: url("../img/stamp-green.png");
     background-size: contain;
 }
 
 .type-library {
-    background-image: url("../img/library.jpg");
+    background-image: url("../img/stamp-zwart.png");
     background-size: contain;
 }
 
 .type-pool {
-    background-image: url("../img/pool.jpg");
+    background-image: url("../img/stamp-blue.png");
     background-size: contain;
 }
 
 .type-gym {
-    background-image: url("../img/gym.jpg");
+    background-image: url("../img/stamp-colorful.png");
     background-size: contain;
+}
+
+.goodie-label {
+    background: url("../img/front-goodie-indicator.png") no-repeat top right;
+    height:25px;
+    width:25px;
+    position: absolute;
+    top: -3px;
+    right: -3px;
 }

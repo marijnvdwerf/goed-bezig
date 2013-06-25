@@ -167,13 +167,8 @@ html, body {
     z-index: 5;
 }
 
-.page-main .header h1 {
-    position: absolute;
-    margin-top: 10px;
-    margin-left: 20px;
-    font-weight: 100;
-    font-size: 24px;
-    width: 50%;
+.page-main .header .ditzoLogo {
+	height: 48px;
 }
 
 .page-main .header #settings {
