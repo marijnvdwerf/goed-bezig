@@ -8,12 +8,14 @@ var uri = new Uri(window.location.href);
 // parse #foo=bar as if it was ?foo=bar
 uri.query(uri.anchor());
 
-if (uri.getQueryParamValue('login-foursquare') !== undefined
+if(localStorage.getItem('foursquareToken') !== null) {
+    $('.page-login').attr('data-state', 'loading');
+    foursquareLogin(localStorage.getItem('foursquareToken'));
+} else if (uri.getQueryParamValue('login-foursquare') !== undefined
     || uri.getQueryParamValue('login-facebook') !== undefined) {
     // #login-foursquare or #login-facebook are set
     $('.page-login').attr('data-state', 'loading');
 
-    // TODO: Post token to server in exchange for user information
     foursquareLogin(uri.getQueryParamValue('access_token'));
 } else {
     // Animate the logo out
@@ -57,7 +59,7 @@ $('.button-foursquare')
 
 
 function foursquareLogin(token) {
-
+    localStorage.setItem('foursquareToken', token);
     $.ajax({
         url: "/api/login/foursquare",
         type: "POST",
