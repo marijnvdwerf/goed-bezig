@@ -18,6 +18,8 @@
     -webkit-backface-visibility: hidden;
     border-radius: 3px;
     box-sizing: border-box;
+
+
 }
 
 .card-front {
@@ -29,8 +31,24 @@
     left: 50%;
     top: 50%;
     width: 296px;
-    background: #eee;
     -webkit-transform: rotateY(180deg) scale(0.32432432432432434);
+    background: #EAEAEA;
+    border: 1px solid #fff;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: #222;
+}
+
+.goodie-indicator {
+    background: url("../img/goodie-indicator.png") no-repeat left top;
+    width: 75px;
+    height: 75px;
+    position: absolute;
+    left: -7px;
+    top: -7px;
+    padding: 18px 0 0 18px;
+    box-sizing: border-box;
 }
 
 .card-placeholder {
@@ -44,19 +62,23 @@
 }
 
 .card-title {
-    margin-left: 70px;
-    font-size: 120%;
-
+    font-size: 16px;
+    margin-bottom: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
 }
 
 .card-description {
-    margin-left: 70px;
-    font-size: 80%;
+    font-size: 11px;
+    line-height: 13px;
+    display: block;
 }
 
 .stamp-wrapper {
     margin-top: 26px;
-    padding: 4px;
+    padding: 3px;
 }
 
 .stamp-box {
@@ -83,4 +105,38 @@
     border-radius: 10px;
     position: absolute;
     margin: -25px;
+}
+
+.card-header {
+    padding: 8px 8px 8px 72px;
+    margin: -1px;
+}
+
+.card-icon {
+    width: 44px;
+    height: 44px;
+    background: #000;
+}
+
+.close-icon {
+    position:  absolute;
+    right: 7px;
+    top: 7px;
+    width: 13px;
+    height: 13px;
+    background: #000;
+}
+
+
+.type-school {
+    background-image: url("../img/school.jpg");
+}
+.type-library {
+    background-image: url("../img/library.jpg");
+}
+.type-pool {
+    background-image: url("../img/pool.jpg");
+}
+.type-gym {
+    background-image: url("../img/gym.jpg");
 }

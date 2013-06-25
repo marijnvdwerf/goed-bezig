@@ -91,8 +91,14 @@
                     :achievementGoodie
                 </div>
                 <div class="card-back">
-                    <span class="card-title">:achievementTitle</span><br>
-                    <span class="card-description">:achievementDescription</span><br>
+                    <div class="card-header">
+                        <div class="goodie-indicator">
+                            <div class="card-icon"></div>
+                        </div>
+                        <span class="card-title">:achievementTitle</span>
+                        <span class="card-description">:achievementDescription</span>
+                        <div class="close-icon"></div>
+                    </div>
 
                     <div class="stamp-wrapper clearfix">
                         <!--:achievementStamps-->
