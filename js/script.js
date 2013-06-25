@@ -59,7 +59,7 @@ $('.button-foursquare')
 function foursquareLogin(token) {
 
     $.ajax({
-        url: "http://goedbezig.marijnvdwerf.nl/api/login/foursquare",
+        url: "http://goedbezig.pimvet.nl/api/login/foursquare",
         type: "POST",
         data: {
             token: token
