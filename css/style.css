@@ -169,7 +169,7 @@ html, body {
 }
 
 .page-main .header .ditzoLogo {
-	height: 48px;
+    height: 48px;
 }
 
 .page-main .header #settings {
@@ -299,4 +299,12 @@ textarea:focus, input:focus {
     display: none;
     z-index: 100;
     -webkit-perspective: 2000;
+    padding: 0;
+}
+
+.overlay .card-wrapper {
+    background: red;
+    position: relative;
+    left: 50%;
+    top: 50%;
 }

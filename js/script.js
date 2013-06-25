@@ -8,7 +8,7 @@ var uri = new Uri(window.location.href);
 // parse #foo=bar as if it was ?foo=bar
 uri.query(uri.anchor());
 
-if(localStorage.getItem('foursquareToken') !== null) {
+if (localStorage.getItem('foursquareToken') !== null) {
     $('.page-login').attr('data-state', 'loading');
     foursquareLogin(localStorage.getItem('foursquareToken'));
 } else if (uri.getQueryParamValue('login-foursquare') !== undefined
@@ -192,6 +192,10 @@ var overlay = {
         };
 
         this.el[0].addEventListener('webkitTransitionEnd', onTransitionEnd);
+    },
+
+    empty: function() {
+        this.el.empty();
     }
 };
 
@@ -206,14 +210,28 @@ cardContainer.hammer()
         var card = $(this);
 
         var offset = card.offset();
-
         var clonedCard = card.clone();
-        clonedCard.css({
-            position: 'absolute',
-            left: offset.left,
-            top: offset.top
-        });
-        clonedCard.appendTo(overlay.el);
+
+        var cardWidth = card.find('.card-back').outerWidth();
+        var cardHeight = card.find('.card-back').outerHeight();
+
+        var wrapper = $('<div class="card-wrapper"/>');
+        wrapper
+            .css({
+                'width': cardWidth,
+                'height': cardHeight,
+                'margin-left': -(cardWidth / 2),
+                'margin-top': -(cardHeight / 2)
+            })
+            .appendTo(overlay.el);
+
+        clonedCard
+            .css({
+                position: 'absolute',
+                left: offset.left,
+                top: offset.top
+            })
+            .appendTo(wrapper);
 
         overlay.show();
 
@@ -240,7 +258,7 @@ cardContainer.hammer()
     });
 
 
-$('.overlay').hammer().on('tap', function (event) {
+overlay.el.hammer().on('tap', function (event) {
     overlay.hide();
 
     var overlayCard = $(this).find('.card');
@@ -251,6 +269,7 @@ $('.overlay').hammer().on('tap', function (event) {
     originalCard.show();
 
     overlay.hide();
+    overlay.empty();
 
     return;
 
