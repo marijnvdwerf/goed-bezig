@@ -215,11 +215,15 @@ cardContainer.hammer()
 
         overlay.show();
 
+        var newLeft = $(window).width() / 2;
+        var newTop = $(window).height() / 2;
+
+        var x = newLeft - offset.left;
+        var y = newTop - offset.top;
+
         clonedCard
             .css({
-                transform: 'scale(3.0833333333) rotateY(-180deg)',
-                top: '50%',
-                left: '50%',
+                transform: 'translate(' + x + 'px, ' + y + 'px) scale(3.0833333333) rotateY(-180deg)',
                 margin: '-' + (card.outerHeight() / 2) + 'px -' + (card.outerWidth() / 2) + 'px'
             })
             .addClass('focus');
