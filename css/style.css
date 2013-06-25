@@ -135,13 +135,13 @@ html, body {
 
 .page-login .loader {
     position: absolute;
-    width: 60px;
-    height: 60px;
-    margin: -30px;
+    width: 48px;
+    height: 48px;
+    margin: -24px;
     left: 50%;
     top: 50%;
     opacity: 0;
-    background: #fff;
+    background: #fff url('../img/loader.gif') no-repeat center;
     border-radius: 30px;
     -webkit-transition: .25s;
 }
