@@ -106,6 +106,7 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
         $a = [
             'id' => $achievement->id,
             'name' => $achievement->name,
+            'icon' => $achievement->icon,
             'description' => $achievement->description,
             'completed' => ($userAchievement->getProgress() == 1),
             'progress' => $userAchievement->getProgress(),
