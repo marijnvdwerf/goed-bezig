@@ -187,6 +187,34 @@
         "icon": "gezond"
     },
     {
+        "name": "Boswachter",
+        "requirements": [
+            {
+                "required": "12",
+                "types": [
+                    "Fish Market"
+                ]
+            }
+        ],
+        "description": "Even een frisse neus hale, lekker ontspannen, goed bezig!",
+        "goodie": null,
+        "icon": "boswachter"
+    },
+    {
+        "name": "Eerste Ditzo punt",
+        "requirements": [
+            {
+                "required": "4",
+                "types": [
+                    "Fish Market"
+                ]
+            }
+        ],
+        "description": "Je begint al aardig actief te zijn, goed bezig houd zo vol!",
+        "goodie": null,
+        "icon": "eerste_ditzo_punt"
+    },
+    {
         "name": "Nerd",
         "requirements": [
             {
