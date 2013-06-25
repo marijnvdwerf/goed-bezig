@@ -1,0 +1,86 @@
+.card-wrapper {
+    width: 96px;
+}
+
+.card {
+    width: 96px;
+    height: 60px;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition-duration: .6s;
+    left: 50%;
+    top: 50%;
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    -webkit-backface-visibility: hidden;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.card-front {
+    background: crimson;
+    height: 100%;
+}
+
+.card-back {
+    left: 50%;
+    top: 50%;
+    width: 296px;
+    background: #eee;
+    -webkit-transform: rotateY(180deg) scale(0.32432432432432434);
+}
+
+.card-placeholder {
+    background: none;
+    border: 10px dashed #eee;
+}
+
+.card-placeholder .card-front,
+.card-placeholder .card-back {
+    display: none;
+}
+
+.card-title {
+    margin-left: 70px;
+    font-size: 120%;
+
+}
+
+.card-description {
+    margin-left: 70px;
+    font-size: 80%;
+}
+
+.stamp-wrapper {
+    margin-top: 26px;
+    padding: 4px;
+}
+
+.stamp-box {
+    width: 72px;
+    height: 72px;
+    float: left;
+    box-sizing: border-box;
+    border-right: 1px dashed #ccc;
+    position: relative;
+}
+
+.stamp-box:nth-child(4n) {
+    border-right: none;
+}
+
+.stamp-box:nth-child(n+5) {
+    border-top: 1px dashed #ccc;
+}
+
+.stamp {
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, .8);
+    border-radius: 10px;
+    position: absolute;
+    margin: -25px;
+}

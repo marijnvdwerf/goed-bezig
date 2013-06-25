@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>GoedBezig</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cards.css">
+    <link rel="stylesheet" href="css/settings.css">
 </head>
 
 <body id="home">
@@ -15,7 +17,8 @@
 
         <div class="form">
             <button class="button-facebook hammer-tappable">Meld aan met Facebook</button>
-            <button class="button-foursquare hammer-tappable"><span>Meld aan met</span> <img src="img/foursquare.svg" alt="foursquare"/></button>
+            <button class="button-foursquare hammer-tappable"><span>Meld aan met</span> <img src="img/foursquare.svg"
+                                                                                             alt="foursquare"/></button>
         </div>
 
         <div class="loader"></div>
@@ -25,6 +28,7 @@
         <div class="header">
             <div class="wrapper">
                 <h1>Ditzo</h1>
+
                 <div id="settings" class="hammer-tappable">
                     <img class="cog cog1" src="img/cog.svg"/>
                     <img class="cog cog2" src="img/cog.svg"/>
@@ -89,6 +93,7 @@
                 <div class="card-back">
                     <span class="card-title">:achievementTitle</span><br>
                     <span class="card-description">:achievementDescription</span><br>
+
                     <div class="stamp-wrapper clearfix">
                         <!--:achievementStamps-->
                     </div>
@@ -122,7 +127,6 @@
     <script src="components/masonry/jquery.masonry.min.js"></script>
     <script src="js/script.js"></script>
     <script src="js/tappable.js"></script>
-
 
 </body>
 </html>

@@ -251,11 +251,6 @@ html, body {
     box-sizing: border-box;
 }
 
-.content-settings {
-    z-index: 1;
-    background: #e5e5e5;
-}
-
 .content-main {
     z-index: 2;
     background-color: #0082bb;
@@ -281,14 +276,6 @@ html, body {
     margin: 0 auto;
 }
 
-.content-settings p {
-    font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    margin: 25px 0 12px 20px;
-    color: #3f3f3f;
-}
-
 .scrollable {
     top: 48px;
     left: 0;
@@ -300,122 +287,8 @@ html, body {
 
 }
 
-.settings-wrapper {
-    margin-top: 20px !important;
-}
-
-.content-settings span {
-    color: #929292;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
-}
-
-.content-settings input[type=text],
-.content-settings input[type=button],
-.content-settings input[type=submit] {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    padding: 12px 20px 12px 20px;
-    border: 1px solid #929292;
-    color: #3f3f3f;
-    -webkit-appearance: none;
-    margin: 0 auto;
-    width: 288px;
-    box-sizing: border-box;
-    display: block;
-    -moz-border-radius: 0px;
-    -webkit-border-radius: 0px;
-    border-radius: 0px;
-    margin-top: -1px;
-}
-
-.content-settings input.uitloggen {
-    background: #ce3434;
-    border: 1px solid #b22f2f;
-    color: #fff;
-    margin-top: 20px;
-    margin-bottom: 40px;
-    -webkit-font-smoothing: antialiased;
-    font-weight: bold;
-}
-
-.content-settings .un-checked {
-    margin: -1px auto 0;
-    border: 1px solid #929292;
-    color: #3f3f3f;
-    background: #fff;
-    box-sizing: border-box;
-    padding: 12px 20px 12px 20px;
-    width: 288px;
-    -webkit-transition: background 0.25s;
-}
-
-.content-settings .un-checked.hammer-touch {
-    background: #aae0f9;
-    -webkit-transform: scale(1);
-    -webkit-transition-duration: 0.1s;
-}
-
-.content-settings input[type="checkbox"],
-.content-settings input[type="radio"] {
-    float: right;
-}
-
 textarea:focus, input:focus {
     outline: 0;
-}
-
-/*______________Cards___________*/
-.card-wrapper {
-    width: 96px;
-}
-
-.card {
-    width: 96px;
-    height: 60px;
-    -webkit-transform-style: preserve-3d;
-    -webkit-transition-duration: .6s;
-    z-index: 0;
-
-    left: 50%;
-    top: 50%;
-}
-
-.card-wrapper.focus {
-    z-index: 120;
-}
-
-.card-front,
-.card-back {
-    /*    border: 1px solid rgba(0, 0, 0, .1);*/
-    position: absolute;
-    width: 100%;
-    -webkit-backface-visibility: hidden;
-    border-radius: 3px;
-    box-sizing: border-box;
-}
-
-.card-front {
-    background: crimson;
-    height: 100%;
-}
-
-.card-back {
-    left: 50%;
-    top: 50%;
-    width: 296px;
-    background: #eee;
-    -webkit-transform: rotateY(180deg) scale(0.32432432432432434);
-}
-
-.card-placeholder {
-    background: none;
-    border: 10px dashed #eee;
-}
-
-.card-placeholder .card-front,
-.card-placeholder .card-back {
-    display: none;
 }
 
 .overlay {
@@ -430,46 +303,4 @@ textarea:focus, input:focus {
     display: none;
     z-index: 100;
     -webkit-perspective: 2000;
-}
-
-.stamp-wrapper {
-    margin-top: 26px;
-    padding: 4px;
-}
-
-.stamp-box {
-    width: 72px;
-    height: 72px;
-    float: left;
-    box-sizing: border-box;
-    border-right: 1px dashed #ccc;
-    position: relative;
-}
-
-.stamp-box:nth-child(4n) {
-    border-right: none;
-}
-
-.stamp-box:nth-child(n+5) {
-    border-top: 1px dashed #ccc;
-}
-
-.stamp {
-    width: 50px;
-    height: 50px;
-    background: rgba(0, 0, 0, .8);
-    border-radius: 10px;
-    position: absolute;
-    margin: -25px;
-}
-
-.card-title {
-    margin-left: 70px;
-    font-size: 120%;
-
-}
-
-.card-description {
-    margin-left: 70px;
-    font-size: 80%;
 }
