@@ -166,7 +166,7 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
             ],
 
             [
-                'id' => 2,
+                'id' => 3,
                 'name' => 'Some progress (1/4)',
                 'description' => 'Lorem ipsum',
                 'completed' => false,
@@ -182,7 +182,7 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
             ],
 
             [
-                'id' => 3,
+                'id' => 4,
                 'name' => 'Some progress (1/8)',
                 'description' => 'Lorem ipsum',
                 'completed' => false,
@@ -200,7 +200,7 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
 
 
             [
-                'id' => 4,
+                'id' => 5,
                 'name' => 'NEW progress (1/8)',
                 'description' => 'Lorem ipsum',
                 'completed' => false,
@@ -217,7 +217,7 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
             ],
 
             [
-                'id' => 5,
+                'id' => 6,
                 'name' => 'No progress (4)',
                 'description' => 'Lorem ipsum',
                 'completed' => false,
@@ -233,7 +233,7 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
             ],
 
             [
-                'id' => 6,
+                'id' => 7,
                 'name' => 'No progress (8)',
                 'description' => 'Lorem ipsum',
                 'completed' => false,
@@ -244,7 +244,7 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
             ],
 
             [
-                'id' => 7,
+                'id' => 8,
                 'name' => 'No progress (12)',
                 'description' => 'Lorem ipsum',
                 'completed' => false,
@@ -255,7 +255,7 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
             ],
 
             [
-                'id' => 8,
+                'id' => 9,
                 'name' => 'No progress (16)',
                 'description' => 'Lorem ipsum',
                 'completed' => false,
