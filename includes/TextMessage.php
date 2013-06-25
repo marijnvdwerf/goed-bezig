@@ -21,7 +21,7 @@ class TextMessage extends Message
         switch ($messageType) {
             case 'achievement-earned':
                 $achievement = $data;
-                $this->body = 'Gefeliciteerd ' . $user->name . ', je hebt een achievement vrijgespeeld. Check http://' . $_SERVER['SERVER_NAME'] . '#c=' . $achievement->id;
+                $this->body = 'Gefeliciteerd ' . $achievement->nickname . ', je hebt een achievement behaald! Bekijk hem op http://' . $_SERVER['SERVER_NAME'] . '#c=' . $achievement->id;
                 break;
         }
     }

@@ -69,7 +69,7 @@ class Application
         $achievement->description = "Je bent sportief bezig";
         $achievement->icon = "sporter";
         $achievement->mystery = false;
-        $achievement->earnMessage = 'Laat die spierballen maar zien!';
+        $achievement->nickname = 'spierbonk';
         R::store($achievement);
 
         $collegeGym = R::dispense('venuetype');
@@ -130,7 +130,7 @@ class Application
         $achievement->description = "Je bent graag in het water";
         $achievement->icon = "waterrat";
         $achievement->mystery = false;
-        $achievement->earnMessage = 'Pas maar op dat je geen vinnen krijgt!';
+        $achievement->nickname = 'waterrrat';
 
         $goodie = R::dispense('goodie');
         $goodie->name = "Bidon";
