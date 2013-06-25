@@ -130,15 +130,15 @@ class Application
         $achievement->icon = "waterrat";
         $achievement->mystery = false;
         $achievement->earnMessage = 'Pas maar op dat je geen vinnen krijgt!';
-        R::store($achievement);
 
         $goodie = R::dispense('goodie');
-        $goodie->achievement = $achievement;
         $goodie->name = "Bidon";
         $goodie->description = "Een lekkere drinkfles";
         $goodie->icon = "bidon";
         $goodie->mystery = false;
-        R::store($goodie);
+        $achievement->goodie = $goodie;
+
+        R::store($achievement);
 
 
         $requirement = R::dispense('requirement');
@@ -404,14 +404,29 @@ class Model_Userachievement extends RedBean_SimpleModel
 {
     public function getProgress()
     {
+        $totalRequired = $this->bean->achievement->getStampsRequired();
+        return count($this->bean->ownStamp) / $totalRequired;
+    }
+
+    public function getStamps()
+    {
+        return $this->bean->ownStamp;
+    }
+}
+
+
+class Model_Achievement extends RedBean_SimpleModel
+{
+    public function getStampsRequired()
+    {
         $totalRequired = 0;
 
-        $requirements = $this->bean->achievement->ownRequirement;
+        $requirements = $this->bean->ownRequirement;
         foreach ($requirements as $requirement) {
             $totalRequired += (int)$requirement->numberRequired;
         }
 
-        return count($this->bean->ownStamp) / $totalRequired;
+        return $totalRequired;
     }
 }
 

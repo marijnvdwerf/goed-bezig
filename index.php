@@ -97,180 +97,42 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
             ]
         ],
 
-        'achievements' => [
-            [
-                'id' => 1,
-                'name' => 'Completed and collected',
-                'description' => 'Lorem ipsum',
-                'completed' => true,
-                'progress' => 1.0,
-                'stamps_required' => 4,
-                'stamps' => [
-                    [
-                        'timestamp' => '2013-06-01T14:30',
-                        'type' => 'pool',
-                        'new' => false
-                    ],
-                    [
-                        'timestamp' => '2013-06-02T14:30',
-                        'type' => 'gym',
-                        'new' => false
-                    ],
-                    [
-                        'timestamp' => '2013-01-03T14:30',
-                        'type' => 'school',
-                        'new' => false
-                    ],
-                    [
-                        'timestamp' => '2013-01-04T14:30',
-                        'type' => 'library',
-                        'new' => false
-                    ]
-                ],
-                'goodie' => [
-                    'mystery' => false,
-                    'title' => 'Collected goodie',
-                    'claimed' => true
-                ]
-            ],
-
-            [
-                'id' => 2,
-                'name' => 'Completed and unclaimed',
-                'description' => 'Lorem ipsum',
-                'completed' => true,
-                'progress' => 1.0,
-                'stamps_required' => 4,
-                'stamps' => [
-                    [
-                        'timestamp' => '2013-06-01T14:30',
-                        'type' => 'pool',
-                        'new' => false,
-                    ],
-                    [
-                        'timestamp' => '2013-06-02T14:30',
-                        'type' => 'gym',
-                        'new' => false
-                    ],
-                    [
-                        'timestamp' => '2013-01-03T14:30',
-                        'type' => 'school',
-                        'new' => false
-                    ],
-                    [
-                        'timestamp' => '2013-01-04T14:30',
-                        'type' => 'library',
-                        'new' => false
-                    ]
-                ],
-                'goodie' => [
-                    'mystery' => false,
-                    'title' => 'Unclaimed goodie',
-                    'claimed' => false
-                ]
-            ],
-
-            [
-                'id' => 3,
-                'name' => 'Some progress (1/4)',
-                'description' => 'Lorem ipsum',
-                'completed' => false,
-                'progress' => (1 / 4),
-                'stamps_required' => 4,
-                'stamps' => [
-                    [
-                        'timestamp' => '2013-01-01T14:30',
-                        'type' => 'train'
-                    ]
-                ],
-                'goodie' => null
-            ],
-
-            [
-                'id' => 4,
-                'name' => 'Some progress (1/8)',
-                'description' => 'Lorem ipsum',
-                'completed' => false,
-                'progress' => (1 / 8),
-                'stamps_required' => 8,
-                'stamps' => [
-                    [
-                        'timestamp' => '2013-01-01T14:30',
-                        'type' => 'gym',
-                        'new' => false
-                    ]
-                ],
-                'goodie' => null
-            ],
-
-
-            [
-                'id' => 5,
-                'name' => 'NEW progress (1/8)',
-                'description' => 'Lorem ipsum',
-                'completed' => false,
-                'progress' => (1 / 8),
-                'stamps_required' => 8,
-                'stamps' => [
-                    [
-                        'timestamp' => '2013-01-01T14:30',
-                        'type' => 'pool',
-                        'new' => true
-                    ]
-                ],
-                'goodie' => null
-            ],
-
-            [
-                'id' => 6,
-                'name' => 'No progress (4)',
-                'description' => 'Lorem ipsum',
-                'completed' => false,
-                'progress' => 0.0,
-                'stamps_required' => 4,
-                'stamps' => [
-                ],
-                'goodie' => [
-                    'mystery' => false,
-                    'title' => 'Visible goodie',
-                    'claimed' => false
-                ]
-            ],
-
-            [
-                'id' => 7,
-                'name' => 'No progress (8)',
-                'description' => 'Lorem ipsum',
-                'completed' => false,
-                'progress' => 0.0,
-                'stamps_required' => 8,
-                'stamps' => [],
-                'goodie' => null
-            ],
-
-            [
-                'id' => 8,
-                'name' => 'No progress (12)',
-                'description' => 'Lorem ipsum',
-                'completed' => false,
-                'progress' => 0.0,
-                'stamps_required' => 12,
-                'stamps' => [],
-                'goodie' => null
-            ],
-
-            [
-                'id' => 9,
-                'name' => 'No progress (16)',
-                'description' => 'Lorem ipsum',
-                'completed' => false,
-                'progress' => 0.0,
-                'stamps_required' => 16,
-                'stamps' => [],
-                'goodie' => null
-            ]
-        ]
+        'achievements' => []
     ];
+
+    $achievements = $app->getAchievements();
+    foreach ($achievements as $achievement) {
+        $userAchievement = $app->getUserAchievement($achievement->id, $user->id);
+        $a = [
+            'id' => $achievement->id,
+            'name' => $achievement->name,
+            'description' => $achievement->description,
+            'completed' => ($userAchievement->getProgress() == 1),
+            'progress' => $userAchievement->getProgress(),
+            'stamps_required' => $achievement->getStampsRequired(),
+            'stamps' => [],
+            'goodie' => null
+        ];
+
+        foreach ($userAchievement->getStamps() as $stamp) {
+            $a['stamps'][] = [
+                'timestamp' => $stamp->datetime,
+                'type' => $stamp->venueType,
+                'new' => false,
+            ];
+        }
+        if ($achievement->goodie !== null) {
+            $a['goodie'] = [
+                'id' => $achievement->goodie->id,
+                'name' => $achievement->goodie->name,
+                'icon' => $achievement->goodie->icon,
+                'mystery' => (boolean)$achievement->goodie->mystery,
+                'claimed' => false
+            ];
+        }
+
+        $body['achievements'][] = $a;
+    }
 
     $response->body(json_encode($body, JSON_PRETTY_PRINT));
 });
