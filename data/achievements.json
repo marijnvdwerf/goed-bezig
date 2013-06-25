@@ -98,6 +98,44 @@
         "icon": "bourgondier"
     },
     {
+        "name": "Reiziger",
+        "requirements": [
+            {
+                "required": "8",
+                "types": [
+                    "Airport"
+                ]
+            }
+        ],
+        "description": "Cultuur opsnuiven, ervaringen opdoen, jij bent altijd onderweg naar de volgende stap",
+        "goodie": {
+            "name": "",
+            "description": "",
+            "icon": "",
+            "mystery": false
+        },
+        "icon": "reiziger"
+    },
+    {
+        "name": "Mark Rutte",
+        "requirements": [
+            {
+                "required": "8",
+                "types": [
+                    "Airport"
+                ]
+            }
+        ],
+        "description": "Jij snapt het, iedere stem telt!",
+        "goodie": {
+            "name": "",
+            "description": "",
+            "icon": "",
+            "mystery": false
+        },
+        "icon": "mark_rutte"
+    },
+    {
         "name": "Archeoloog",
         "requirements": [
             {
