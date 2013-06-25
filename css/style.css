@@ -309,6 +309,10 @@ textarea:focus, input:focus {
     top: 50%;
 }
 
+#card-container {
+    width: 312px !important;
+}
+
 .overlay .card {
     left: 50%;
     top: 50%;

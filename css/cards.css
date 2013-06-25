@@ -27,7 +27,7 @@
 }
 
 .card-front {
-    background: crimson;
+    /*background: crimson;*/
     height: 100%;
 }
 
@@ -178,3 +178,18 @@
 .card.has-goodie .goodie-indicator {
     display: block;
 }
+
+.type-waterrat {}
+.card-front-waterrat { background: url("../img/fronts/waterrat.svg") repeat; background-position: center;}
+.card-front-icon-waterrat {}
+.card-back-icon-waterrat {}
+
+.type-nerd {}
+.card-front-nerd {}
+.card-front-icon-nerd {}
+.card-back-icon-nerd {}
+
+.type-archeoloog {}
+.card-front-archeoloog {}
+.card-front-icon-archeoloog {}
+.card-back-icon-archeoloog {}
