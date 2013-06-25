@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/cards.css">
     <link rel="stylesheet" href="css/settings.css">
+    <link rel="stylesheet" href="css/fonts.css">
 </head>
 
 <body id="home">
