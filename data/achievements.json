@@ -3,7 +3,7 @@
         "name": "Waterrat",
         "requirements": [
             {
-                "required": "5",
+                "required": "4",
                 "types": [
                     "Pool / Lake",
                     "Water Park",
@@ -12,13 +12,28 @@
             }
         ],
         "description": "Je krijgt de smaak te pakken! Je bent steeds vaker in het water te vinden, je bent op weg een met het water te worden.",
+        "goodie": null,
         "icon": "watterat"
+    },
+    {
+        "name": "Goedbezig",
+        "requirements": [
+            {
+                "required": "4",
+                "types": [
+                    "Office"
+                ]
+            }
+        ],
+        "description": "Dit is een voorbeeld achievement. Checkin bij Bluemango op dit achievement te halen!",
+        "goodie": null,
+        "icon": "nerd"
     },
     {
         "name": "Popeye",
         "requirements": [
             {
-                "required": "10",
+                "required": "8",
                 "types": [
                     "College Gym",
                     "Gym"
@@ -26,26 +41,33 @@
             }
         ],
         "description": "Jij hebt geen blik spinazie nodig om zo gespierd te worden als popeye!",
+        "goodie": null,
         "icon": "popeye"
     },
     {
         "name": "Bruce Lee",
         "requirements": [
             {
-                "required": "10",
+                "required": "8",
                 "types": [
                     "Martial Arts Dojo"
                 ]
             }
         ],
         "description": "Je bent in leer om groot te worden in de weg van de voet en de vuist net zoals jou sensei!",
+        "goodie": {
+            "name": "fdgg",
+            "description": "dfgfdg ",
+            "icon": "fdgfdg ",
+            "mystery": false
+        },
         "icon": "bruce"
     },
     {
         "name": "Boekenwurm",
         "requirements": [
             {
-                "required": "15",
+                "required": "16",
                 "types": [
                     "College Library",
                     "Library"
@@ -53,26 +75,33 @@
             }
         ],
         "description": "Je bent als boekenwurm veel te vinden in de bibliotheek, je kunt hier rustig nadenken en lekker lezen.",
+        "goodie": null,
         "icon": "boekenwurm"
     },
     {
         "name": "Bourgondiër",
         "requirements": [
             {
-                "required": "10",
+                "required": "12",
                 "types": [
                     "Food"
                 ]
             }
         ],
         "description": "Een wijntje, lekker eten en gezellige mensen om je heen, daar geniet je van!",
+        "goodie": {
+            "name": "",
+            "description": "",
+            "icon": "",
+            "mystery": false
+        },
         "icon": "bourgondier"
     },
     {
         "name": "Archeoloog",
         "requirements": [
             {
-                "required": "15",
+                "required": "8",
                 "types": [
                     "Museum",
                     "Historic Site"
@@ -80,26 +109,33 @@
             }
         ],
         "description": "Je bent als archeoloog fanatiek bezig met het verleden en je bezoekt graag oude bouwwerken  en locaties.",
+        "goodie": null,
         "icon": "archeoloog"
     },
     {
         "name": "Yeti",
         "requirements": [
             {
-                "required": "15",
+                "required": "16",
                 "types": [
                     "Ski Area"
                 ]
             }
         ],
         "description": "Heb je na al die uren in de sneeuw al een Yeti gevonden?",
+        "goodie": {
+            "name": "",
+            "description": "",
+            "icon": "",
+            "mystery": false
+        },
         "icon": "yeti"
     },
     {
         "name": "Gezondiër",
         "requirements": [
             {
-                "required": "10",
+                "required": "8",
                 "types": [
                     "Fish Market",
                     "Farmers Market",
@@ -109,19 +145,26 @@
             }
         ],
         "description": "Gezond leven is een must voor jou!",
+        "goodie": null,
         "icon": "gezond"
     },
     {
         "name": "Nerd",
         "requirements": [
             {
-                "required": "1",
+                "required": "4",
                 "types": [
                     "College & University"
                 ]
             }
         ],
-        "description": "Je",
-        "icon": "archeoloog"
+        "description": "Je bent een echte nerd",
+        "goodie": {
+            "name": "",
+            "description": "",
+            "icon": "",
+            "mystery": false
+        },
+        "icon": "nerd"
     }
 ]
