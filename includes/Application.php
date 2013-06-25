@@ -245,6 +245,36 @@ class Application
         return $userAchievement;
     }
 
+    public function getFoursquareUrl($url, $version)
+    {
+        global $foursquare_client_id, $foursquare_client_secret;
+        return 'https://api.foursquare.com/' . $url . '?client_id=' . $foursquare_client_id . '&client_secret=' . $foursquare_client_secret . '&v=' . $version;
+    }
+
+    public function getCategoryTree($categoryId)
+    {
+        $data = json_decode(file_get_contents('../data/categories.json'));
+        foreach ($data->response->categories as $mainCategory) {
+            if ($mainCategory->id === $categoryId) {
+                return [$mainCategory->name];
+            }
+
+            foreach ($mainCategory->categories as $subCategory) {
+                if ($subCategory->id === $categoryId) {
+                    return [$subCategory->name, $mainCategory->name];
+                }
+
+                foreach ($subCategory->categories as $subsubCategory) {
+                    if ($subsubCategory->id === $categoryId) {
+                        return [$subsubCategory->name, $subCategory->name, $mainCategory->name];
+                    }
+                }
+            }
+        }
+
+        return [];
+    }
+
     public function addFourSquareCheckin($foursquareUserId, $checkinData)
     {
         $user = $this->getUserForFoursquareId($foursquareUserId);
@@ -255,12 +285,13 @@ class Application
         ]);
 
         $categories = [];
-        foreach ($checkinData->venue->categories as $category) {
-            $categories[] = $category->name;
-            if (isset($category->parents)) {
-                $categories = array_merge($category->parents, $categories);
-            }
+        $url = $this->getFoursquareUrl('v2/venues/' . $checkinData->venue->id, '20130625');
+        $venueData = json_decode(file_get_contents($url));
+
+        foreach ($venueData->response->venue->categories as $category) {
+            $categories = array_merge($this->getCategoryTree($category->id), $categories);
         }
+
         $this->logger->addDebug('Categories for venue', $categories);
 
         if (count($categories) < 1) {

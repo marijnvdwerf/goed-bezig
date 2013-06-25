@@ -2,6 +2,7 @@
 include dirname(__FILE__) . '/../vendor/autoload.php';
 include dirname(__FILE__) . '/../includes/vendor/rb.php';
 include dirname(__FILE__) . '/../includes/Application.php';
+include dirname(__FILE__) . '/../includes/config.php';
 
 class ApplicationTest extends PHPUnit_Framework_TestCase
 {
@@ -13,6 +14,18 @@ class ApplicationTest extends PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->app = new Application(new \Monolog\Logger('TestLog'), true);
+    }
+
+    function testGetParentCategories()
+    {
+        $categories = $this->app->getCategoryTree('4bf58dd8d48988d1a8941735');
+        $this->assertSame(['General College & University', 'College & University'], $categories);
+
+        $categories = $this->app->getCategoryTree('4d954b0ea243a5684a65b473');
+        $this->assertSame(['Convenience Store', 'Shop & Service'], $categories);
+
+        $categories = $this->app->getCategoryTree('4bf58dd8d48988d105951735');
+        $this->assertSame(['Kids Store', 'Clothing Store', 'Shop & Service'], $categories);
     }
 
 
