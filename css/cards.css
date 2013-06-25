@@ -18,8 +18,6 @@
     -webkit-backface-visibility: hidden;
     border-radius: 3px;
     box-sizing: border-box;
-
-
 }
 
 .card-front {
@@ -118,28 +116,27 @@
     background: #000;
 }
 
-.close-icon {
-    position:  absolute;
-    right: 7px;
-    top: 7px;
-    width: 13px;
-    height: 13px;
-    background: #000;
+.card-close {
+    position: absolute;
+    right: 5px;
+    top: 4px;
 }
-
 
 .type-school {
     background-image: url("../img/school.jpg");
     background-size: contain;
 }
+
 .type-library {
     background-image: url("../img/library.jpg");
     background-size: contain;
 }
+
 .type-pool {
     background-image: url("../img/pool.jpg");
     background-size: contain;
 }
+
 .type-gym {
     background-image: url("../img/gym.jpg");
     background-size: contain;

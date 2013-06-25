@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>GoedBezig</title>
+    <link rel="stylesheet" href="components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/cards.css">
     <link rel="stylesheet" href="css/settings.css">
@@ -97,7 +98,7 @@
                         </div>
                         <span class="card-title">:achievementTitle</span>
                         <span class="card-description">:achievementDescription</span>
-                        <div class="close-icon"></div>
+                        <i class="card-close icon-remove"></i>
                     </div>
 
                     <div class="stamp-wrapper clearfix">
