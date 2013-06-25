@@ -231,9 +231,7 @@ cardContainer.hammer()
 
         clonedCard
             .css({
-                position: 'absolute',
-                left: offset.left,
-                top: offset.top
+                margin: '-' + (card.outerHeight() / 2) + 'px -' + (card.outerWidth() / 2) + 'px'
             })
             .appendTo(wrapper);
 
@@ -247,8 +245,7 @@ cardContainer.hammer()
 
         clonedCard
             .css({
-                transform: 'translate(' + x + 'px, ' + y + 'px) scale(3.0833333333) rotateY(-180deg)',
-                margin: '-' + (card.outerHeight() / 2) + 'px -' + (card.outerWidth() / 2) + 'px'
+                transform: 'scale(3.0833333333) rotateY(-180deg)',
             })
             .addClass('focus');
 
