@@ -27,8 +27,7 @@
     <div class="page page-main" data-state="overview">
         <div class="header">
             <div class="wrapper">
-                <h1>Ditzo</h1>
-
+                <img class="ditzoLogo" src="img/ditzo_logo.svg">
                 <div id="settings" class="hammer-tappable">
                     <img class="cog cog1" src="img/cog.svg"/>
                     <img class="cog cog2" src="img/cog.svg"/>
