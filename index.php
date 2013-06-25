@@ -19,6 +19,10 @@ $mailHandler = new MarijnvdWerf\Monolog\Handler\NativeHtmlMailerHandler('log+goe
 $mailHandler->setFormatter(new MarijnvdWerf\Monolog\Formatter\HtmlFormatter());
 $logger->pushHandler($mailHandler);
 
+// Log to HipChat
+$hipChatHandler = new Monolog\Handler\HipChatHandler('4b8954da631985d35b6c0e46a08bc4', 'Log', 'Monolog', true, \Monolog\Logger::DEBUG);
+$logger->pushHandler($hipChatHandler);
+
 // Log to ChromeLogger
 $chromePhpHandler = new Monolog\Handler\ChromePHPHandler();
 $logger->pushHandler($chromePhpHandler);
@@ -29,10 +33,11 @@ $app = new Application($logger);
 
 $slim = new \Slim\Slim([
     'debug' => true,
-    'log.level' => \Slim\Log::WARN,
+    'log.level' => \Slim\Log::DEBUG,
     'log.writer' => new \Flynsarmy\SlimMonolog\Log\MonologWriter([
         'handlers' => [
             $mailHandler,
+            $hipChatHandler,
             $chromePhpHandler
         ]
     ])
