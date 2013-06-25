@@ -56,9 +56,9 @@
         ],
         "description": "Je bent in leer om groot te worden in de weg van de voet en de vuist net zoals jou sensei!",
         "goodie": {
-            "name": "fdgg",
-            "description": "dfgfdg ",
-            "icon": "fdgfdg ",
+            "name": "Bandage",
+            "description": "Na al die uren in de dojo verslijt je bandage snel, wij helpen jou opweeg met een extra paar ",
+            "icon": "bandage ",
             "mystery": false
         },
         "icon": "bruce"
