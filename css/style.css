@@ -3,6 +3,7 @@ html, body {
     margin: 0;
     padding: 0;
     position: relative;
+    font-family: museo_sans500, sans-serif;
 }
 
 /*
@@ -51,7 +52,7 @@ html, body {
     left: 0;
     top: 0;
     color: #fff;
-    font-family: arial;
+
 }
 
 .page-main {
