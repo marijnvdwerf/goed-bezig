@@ -14,7 +14,7 @@
         "description": "Je krijgt de smaak te pakken! Je bent steeds vaker in het water te vinden, je bent op weg een met het water te worden.",
         "goodie": null,
         "icon": "watterat",
-	"nickname": "Pietertje"
+        "nickname": "Pietertje",
 
         "icon": "waterrat"
     },
@@ -31,7 +31,7 @@
         "description": "Dit is een voorbeeld achievement. Checkin bij Bluemango om dit achievement te halen!",
         "goodie": null,
         "icon": "nerd",
-	"nickname": "Bluemango"
+        "nickname": "Bluemango"
     },
     {
         "name": "Popeye",
@@ -47,7 +47,7 @@
         "description": "Jij hebt geen blik spinazie nodig om zo gespierd te worden als popeye!",
         "goodie": null,
         "icon": "popeye",
-	"nickname": "Sailor man"
+        "nickname": "Sailor man"
     },
     {
         "name": "Bruce Lee",
@@ -67,119 +67,44 @@
             "mystery": false
         },
         "icon": "bruce",
-	"nickname": "Sensei"
+        "nickname": "Sensei"
     },
+
+
     {
-        "name": "Boekenwurm",
+        "name": "Reiziger",
         "requirements": [
             {
-                "required": "16",
+                "required": "8",
                 "types": [
-                    "College Library",
-                    "Library"
+                    "Airport"
                 ]
             }
         ],
-        "description": "Je bent als boekenwurm veel te vinden in de bibliotheek, je kunt hier rustig nadenken en lekker lezen.",
-        "goodie": null,
-        "icon": "boekenwurm",
-	"nickname": "boekenwurm"
+        "description": "Cultuur opsnuiven, ervaringen opdoen, jij bent altijd onderweg naar de volgende stap",
+        "goodie": {
+            "name": "",
+            "description": "",
+            "icon": "",
+            "mystery": false
+        },
+        "icon": "reiziger"
     },
     {
-        "name": "Bourgondiër",
+        "name": "Boswachter",
         "requirements": [
             {
                 "required": "12",
                 "types": [
-                    "Food"
+                    "Fish Market"
                 ]
             }
         ],
-        "description": "Een wijntje, lekker eten en gezellige mensen om je heen, daar geniet je van!",
-        "goodie": {
-            "name": "2e persoon gratis bij de wijnproeferij",
-            "description": "Ga samen met een vriend of vriendin bourgondisch genieten bij de wijnproeverij in Uden",
-            "icon": "wijnglas",
-            "mystery": false
-        },
-        "icon": "bourgondier"
+        "description": "Even een frisse neus hale, lekker ontspannen, goed bezig!",
+        "goodie": null,
+        "icon": "boswachter"
     },
-    {
-        "name": "Reiziger",
-        "requirements": [
-            {
-                "required": "8",
-                "types": [
-                    "Airport"
-                ]
-            }
-        ],
-        "description": "Cultuur opsnuiven, ervaringen opdoen, jij bent altijd onderweg naar de volgende stap",
-        "goodie": {
-            "name": "",
-            "description": "",
-            "icon": "",
-            "mystery": false
-        },
-        "icon": "reiziger"
-    },
-    {
-        "name": "Mark Rutte",
-        "requirements": [
-            {
-                "required": "8",
-                "types": [
-                    "Airport"
-                ]
-            }
-        ],
-        "description": "Jij snapt het, iedere stem telt!",
-        "goodie": {
-            "name": "",
-            "description": "",
-            "icon": "",
-            "mystery": false
-        },
-        "icon": "mark_rutte"
-    },
-    {
-        "name": "Reiziger",
-        "requirements": [
-            {
-                "required": "8",
-                "types": [
-                    "Airport"
-                ]
-            }
-        ],
-        "description": "Cultuur opsnuiven, ervaringen opdoen, jij bent altijd onderweg naar de volgende stap",
-        "goodie": {
-            "name": "",
-            "description": "",
-            "icon": "",
-            "mystery": false
-        },
-        "icon": "reiziger"
-    },
-    {
-        "name": "Mark Rutte",
-        "requirements": [
-            {
-                "required": "8",
-                "types": [
-                    "Airport"
-                ]
-            }
-        ],
-        "description": "Jij snapt het, iedere stem telt!",
-        "goodie": {
-            "name": "",
-            "description": "",
-            "icon": "",
-            "mystery": false
-        },
-        "icon": "mark_rutte"
-    },
+
     {
         "name": "Archeoloog",
         "requirements": [
@@ -194,7 +119,7 @@
         "description": "Je bent als archeoloog fanatiek bezig met het verleden en je bezoekt graag oude bouwwerken  en locaties.",
         "goodie": null,
         "icon": "archeoloog",
-	"nickname": "Indiana Jones"
+        "nickname": "Indiana Jones"
     },
     {
         "name": "Yeti",
@@ -214,8 +139,9 @@
             "mystery": false
         },
         "icon": "yeti",
-	"nickname": "sneeuwman"
+        "nickname": "sneeuwman"
     },
+
     {
         "name": "Gezondiër",
         "requirements": [
@@ -232,50 +158,9 @@
         "description": "Gezond leven is een must voor jou!",
         "goodie": null,
         "icon": "gezond",
-	"nickname": "kanjer"
+        "nickname": "kanjer"
     },
-    {
-        "name": "Boswachter",
-        "requirements": [
-            {
-                "required": "12",
-                "types": [
-                    "Fish Market"
-                ]
-            }
-        ],
-        "description": "Even een frisse neus hale, lekker ontspannen, goed bezig!",
-        "goodie": null,
-        "icon": "boswachter"
-    },
-    {
-        "name": "Eerste Ditzo punt",
-        "requirements": [
-            {
-                "required": "4",
-                "types": [
-                    "Fish Market"
-                ]
-            }
-        ],
-        "description": "Je begint al aardig actief te zijn, goed bezig houd zo vol!",
-        "goodie": null,
-        "icon": "eerste_ditzo_punt"
-    },
-    {
-        "name": "Boswachter",
-        "requirements": [
-            {
-                "required": "12",
-                "types": [
-                    "Fish Market"
-                ]
-            }
-        ],
-        "description": "Even een frisse neus hale, lekker ontspannen, goed bezig!",
-        "goodie": null,
-        "icon": "boswachter"
-    },
+
     {
         "name": "Eerste Ditzo punt",
         "requirements": [
@@ -308,6 +193,51 @@
             "mystery": false
         },
         "icon": "nerd",
-	"nickname": "knappe kop"
+        "nickname": "knappe kop"
+    },
+    {
+        "name": "Mark Rutte",
+        "requirements": [
+            {
+                "required": "8",
+                "types": [
+                    "Airport"
+                ]
+            }
+        ],
+        "description": "Jij snapt het, iedere stem telt!",
+        "goodie": null,
+        "icon": "mark_rutte"
+    },
+    {
+        "name": "Boekenwurm",
+        "requirements": [
+            {
+                "required": "16",
+                "types": [
+                    "College Library",
+                    "Library"
+                ]
+            }
+        ],
+        "description": "Je bent als boekenwurm veel te vinden in de bibliotheek, je kunt hier rustig nadenken en lekker lezen.",
+        "goodie": null,
+        "icon": "boekenwurm",
+        "nickname": "boekenwurm"
+    },
+
+    {
+        "name": "Bourgondiër",
+        "requirements": [
+            {
+                "required": "12",
+                "types": [
+                    "Food"
+                ]
+            }
+        ],
+        "description": "Een wijntje, lekker eten en gezellige mensen om je heen, daar geniet je van!",
+        "goodie": null,
+        "icon": "bourgondier"
     }
 ]
