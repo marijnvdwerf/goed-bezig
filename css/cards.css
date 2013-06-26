@@ -30,6 +30,7 @@
     background: crimson;
     height: 100%;
     box-shadow: 0 0 0 1px rgba(0, 0, 0, .2), 0 2px 1px rgba(0, 0, 0, .1);
+
 }
 
 .card-back {
@@ -203,32 +204,32 @@
 
 .type-popeye {}
 .card-front-popeye { background: url("../img/fronts/swimming_back.svg") repeat; background-position: center;}
-.card-front-icon-popeye {}
+.card-front-icon-popeye { background: none;}
 .card-back-icon-popeye {}
 
 .type-bruce  {}
 .card-front-bruce  { background: url("../img/fronts/ninja_back.svg") repeat; background-position: center;}
-.card-front-icon-bruce  {}
+.card-front-icon-bruce  { background: none;}
 .card-back-icon-bruce {}
 
 .type-bourgondier  {}
-.card-front-bourgondier  { background: none; border:4px dashed;}
-.card-front-icon-bourgondier  {}
+.card-front-bourgondier  { background: none; border:4px dashed; box-shadow: none;}
+.card-front-icon-bourgondier  { background: url("../img/fronticons/vork.svg") no-repeat; background-position: center; width:70px;left: 36px !important; height: 70px; top:43px !important;}
 .card-back-icon-bourgondier  {}
 
 .type-yeti  {}
 .card-front-yeti  { background: url("../img/fronts/skies_back.svg") no-repeat; background-position: center; background-size: 150%;}
-.card-front-icon-yeti  { background: url("../img/fronticons/ijsberg.svg") no-repeat; background-position: center; width:70px;left: 33px !important;}
+.card-front-icon-yeti  { background: url("../img/fronticons/ijsberg.svg") no-repeat; background-position: center; width:100px;height:100px;left: 20px !important;top:61px !important;}
 .card-back-icon-yeti  {}
 
 .type-gezond  {}
-.card-front-gezond  { background: none; border:4px dashed;}
+.card-front-gezond  { background: none; border:4px dashed; box-shadow: none;}
 .card-front-icon-gezond  {background: url("../img/fronticons/hart.svg") no-repeat; background-position: center; width:70px;left: 31px !important;}
 .card-back-icon-gezond  {}
 
 .type-boekenwurm  {}
-.card-front-boekenwurm  { background: none; border:4px dashed;}
-.card-front-icon-boekenwurm  {}
+.card-front-boekenwurm  { background: none; border:4px dashed;box-shadow: none;}
+.card-front-icon-boekenwurm  {background: url("../img/fronticons/boek.svg") no-repeat; background-position: center; width:70px;left: 33px !important; height: 70px; top:53px !important;}
 .card-back-icon-boekenwurm  {}
 
 .type-reiziger  {}
@@ -237,12 +238,12 @@
 .card-back-icon-reiziger  {}
 
 .type-mark_rutte  {}
-.card-front-mark_rutte  { background: none; border:4px dashed;}
+.card-front-mark_rutte  { background: none; border:4px dashed; box-shadow: none;}
 .card-front-icon-mark_rutte  { background: url("../img/fronticons/stemmen.svg") no-repeat; background-position: center; width:70px;left: 33px !important; }
 .card-back-icon-mark_rutte  {}
 
 .type-nerd2  {}
-.card-front-nerd2  { background: none; border:4px dashed;}
+.card-front-nerd2  { background: none; border:4px dashed; box-shadow: none;}
 .card-front-icon-nerd2  { background: url("../img/fronticons/bril.svg") no-repeat; background-position: center; width:70px;left: 31px !important;}
 .card-back-icon-nerd2  {}
 
