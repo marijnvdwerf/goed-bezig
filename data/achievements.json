@@ -141,6 +141,20 @@
         "icon": "yeti",
         "nickname": "sneeuwman"
     },
+    {
+        "name": "Eerste Ditzo punt",
+        "requirements": [
+            {
+                "required": "4",
+                "types": [
+                    "Fish Market"
+                ]
+            }
+        ],
+        "description": "Je begint al aardig actief te zijn, goed bezig houd zo vol!",
+        "goodie": null,
+        "icon": "eerste_ditzo_punt"
+    },
 
     {
         "name": "Gezondiër",
@@ -161,20 +175,7 @@
         "nickname": "kanjer"
     },
 
-    {
-        "name": "Eerste Ditzo punt",
-        "requirements": [
-            {
-                "required": "4",
-                "types": [
-                    "Fish Market"
-                ]
-            }
-        ],
-        "description": "Je begint al aardig actief te zijn, goed bezig houd zo vol!",
-        "goodie": null,
-        "icon": "eerste_ditzo_punt"
-    },
+
     {
         "name": "Nerd",
         "requirements": [
@@ -186,13 +187,8 @@
             }
         ],
         "description": "Je bent vaak op school om te leren",
-        "goodie": {
-            "name": "Huiswerk-set",
-            "description": "Het huiswerk-set bevat een pen, potlood en papier. De survivalkit voor elke student",
-            "icon": "pen",
-            "mystery": false
-        },
-        "icon": "nerd",
+        "goodie": null,
+        "icon": "nerd2",
         "nickname": "knappe kop"
     },
     {
