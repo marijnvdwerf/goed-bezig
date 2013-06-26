@@ -187,10 +187,16 @@
     display: block;
 }
 
+.card.unstarted .card-front {
+    border: 2px dashed #fff;
+    box-shadow: none;
+    background: none;
+}
+
 .type-waterrat {}
 .card-front-waterrat { background: url("../img/fronts/swimming_back.svg") repeat; background-position: center;}
 .card-front-icon-waterrat { background: url("../img/fronticons/zwemmer.svg") no-repeat; background-position: center; width:70px;left: 36px !important; !important;height:70px; top:22px !important;}
-.card-back-icon-waterrat {}
+.card-back-icon-waterrat { background: url("../img/backicons/waterrat_icon_kaart.svg"); background-size:100%;}
 
 .type-nerd {}
 .card-front-nerd { background: url("../img/fronts/nerd_back.svg") repeat; background-position: center;}
@@ -210,12 +216,12 @@
 .type-bruce  {}
 .card-front-bruce  { background: url("../img/fronts/ninja_back.svg") repeat; background-position: center;}
 .card-front-icon-bruce  { background: url("../img/fronticons/ninja.svg") no-repeat; background-position: center; width:70px;left: 31px !important; height: 101px; top:-8px !important;}
-.card-back-icon-bruce {}
+.card-back-icon-bruce { background: url("../img/backicons/ninja_icon_kaart-01.svg"); background-size:100%;}
 
 .type-bourgondier  {}
 .card-front-bourgondier  { background: none; border:4px dashed; box-shadow: none;}
 .card-front-icon-bourgondier  { background: url("../img/fronticons/vork.svg") no-repeat; background-position: center; width:70px;left: 36px !important; height: 70px; top:43px !important;}
-.card-back-icon-bourgondier  {}
+.card-back-icon-bourgondier  {background: url("../img/backicons/ijsberg_icon_kaartje-01.svg"); background-size:100%;}
 
 .type-yeti  {}
 .card-front-yeti  { background: url("../img/fronts/skies_back.svg") no-repeat; background-position: center; background-size: 150%;}
@@ -230,7 +236,7 @@
 .type-boekenwurm  {}
 .card-front-boekenwurm  { background: none; border:4px dashed;box-shadow: none;}
 .card-front-icon-boekenwurm  {background: url("../img/fronticons/boek.svg") no-repeat; background-position: center; width:70px;left: 33px !important; height: 70px; top:53px !important;}
-.card-back-icon-boekenwurm  {}
+.card-back-icon-boekenwurm  {background: url("../img/backicons/boekenworm_icon_kaart-01.svg"); background-size:100%;}
 
 .type-reiziger  {}
 .card-front-reiziger  { background: url("../img/fronts/reiziger_back.svg") repeat; background-position: center;}
