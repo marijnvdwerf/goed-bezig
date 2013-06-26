@@ -292,19 +292,23 @@ class Application
             'checkin' => $checkinData
         ]);
 
-        $categories = [];
-        $url = $this->getFoursquareUrl('v2/venues/' . $checkinData->venue->id, '20130625');
-        $venueData = json_decode(file_get_contents($url));
+        if ($checkinData->venue->id === '4b962e5bf964a520a2bf34e3') {
+            $categories = ['BlueMango'];
+        } else {
+            $categories = [];
+            $url = $this->getFoursquareUrl('v2/venues/' . $checkinData->venue->id, '20130625');
+            $venueData = json_decode(file_get_contents($url));
 
-        foreach ($venueData->response->venue->categories as $category) {
-            $categories = array_merge($this->getCategoryTree($category->id), $categories);
+            foreach ($venueData->response->venue->categories as $category) {
+                $categories = array_merge($this->getCategoryTree($category->id), $categories);
+            }
+
+            if (count($categories) < 1) {
+                return;
+            }
         }
 
         $this->logger->addDebug('Categories for venue', $categories);
-
-        if (count($categories) < 1) {
-            return;
-        }
 
         $relatedAchievements = $this->getAchievementsForCategories($categories);
 
