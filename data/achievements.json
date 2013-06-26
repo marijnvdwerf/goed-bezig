@@ -13,7 +13,14 @@
         ],
         "description": "Je krijgt de smaak te pakken! Je bent steeds vaker in het water te vinden, je bent op weg een met het water te worden.",
         "goodie": null,
-        "icon": "watterat"
+        "icon": "watterat",
+	"nickname": "Pietertje"
+=======
+        "icon": "waterrat"
+>>>>>>> cdf52cdaa689e971b96ce38ec480b2a67bc713eb
+=======
+        "icon": "waterrat"
+>>>>>>> cdf52cdaa689e971b96ce38ec480b2a67bc713eb
     },
     {
         "name": "Goedbezig",
@@ -25,9 +32,10 @@
                 ]
             }
         ],
-        "description": "Dit is een voorbeeld achievement. Checkin bij Bluemango op dit achievement te halen!",
+        "description": "Dit is een voorbeeld achievement. Checkin bij Bluemango om dit achievement te halen!",
         "goodie": null,
-        "icon": "nerd"
+        "icon": "nerd",
+	"nickname": "Bluemango"
     },
     {
         "name": "Popeye",
@@ -42,7 +50,8 @@
         ],
         "description": "Jij hebt geen blik spinazie nodig om zo gespierd te worden als popeye!",
         "goodie": null,
-        "icon": "popeye"
+        "icon": "popeye",
+	"nickname": "Sailor man"
     },
     {
         "name": "Bruce Lee",
@@ -61,7 +70,8 @@
             "icon": "bandage ",
             "mystery": false
         },
-        "icon": "bruce"
+        "icon": "bruce",
+	"nickname": "Sensei"
     },
     {
         "name": "Boekenwurm",
@@ -76,7 +86,8 @@
         ],
         "description": "Je bent als boekenwurm veel te vinden in de bibliotheek, je kunt hier rustig nadenken en lekker lezen.",
         "goodie": null,
-        "icon": "boekenwurm"
+        "icon": "boekenwurm",
+	"nickname": "boekenwurm"
     },
     {
         "name": "Bourgondiër",
@@ -90,12 +101,88 @@
         ],
         "description": "Een wijntje, lekker eten en gezellige mensen om je heen, daar geniet je van!",
         "goodie": {
+            "name": "2e persoon gratis bij de wijnproeferij",
+            "description": "Ga samen met een vriend of vriendin bourgondisch genieten bij de wijnproeverij in Uden",
+            "icon": "wijnglas",
+            "mystery": false
+        },
+        "icon": "bourgondier"
+    },
+    {
+        "name": "Reiziger",
+        "requirements": [
+            {
+                "required": "8",
+                "types": [
+                    "Airport"
+                ]
+            }
+        ],
+        "description": "Cultuur opsnuiven, ervaringen opdoen, jij bent altijd onderweg naar de volgende stap",
+        "goodie": {
             "name": "",
             "description": "",
             "icon": "",
             "mystery": false
         },
-        "icon": "bourgondier"
+        "icon": "reiziger"
+    },
+    {
+        "name": "Mark Rutte",
+        "requirements": [
+            {
+                "required": "8",
+                "types": [
+                    "Airport"
+                ]
+            }
+        ],
+        "description": "Jij snapt het, iedere stem telt!",
+        "goodie": {
+            "name": "",
+            "description": "",
+            "icon": "",
+            "mystery": false
+        },
+        "icon": "mark_rutte"
+    },
+    {
+        "name": "Reiziger",
+        "requirements": [
+            {
+                "required": "8",
+                "types": [
+                    "Airport"
+                ]
+            }
+        ],
+        "description": "Cultuur opsnuiven, ervaringen opdoen, jij bent altijd onderweg naar de volgende stap",
+        "goodie": {
+            "name": "",
+            "description": "",
+            "icon": "",
+            "mystery": false
+        },
+        "icon": "reiziger"
+    },
+    {
+        "name": "Mark Rutte",
+        "requirements": [
+            {
+                "required": "8",
+                "types": [
+                    "Airport"
+                ]
+            }
+        ],
+        "description": "Jij snapt het, iedere stem telt!",
+        "goodie": {
+            "name": "",
+            "description": "",
+            "icon": "",
+            "mystery": false
+        },
+        "icon": "mark_rutte"
     },
     {
         "name": "Archeoloog",
@@ -110,7 +197,8 @@
         ],
         "description": "Je bent als archeoloog fanatiek bezig met het verleden en je bezoekt graag oude bouwwerken  en locaties.",
         "goodie": null,
-        "icon": "archeoloog"
+        "icon": "archeoloog",
+	"nickname": "Indiana Jones"
     },
     {
         "name": "Yeti",
@@ -124,12 +212,13 @@
         ],
         "description": "Heb je na al die uren in de sneeuw al een Yeti gevonden?",
         "goodie": {
-            "name": "",
-            "description": "",
-            "icon": "",
+            "name": "Goedbezig handschoenen",
+            "description": "Het is belangrijk warm te blijven wanneer je goed bezig bent",
+            "icon": "handschoenen",
             "mystery": false
         },
-        "icon": "yeti"
+        "icon": "yeti",
+	"nickname": "sneeuwman"
     },
     {
         "name": "Gezondiër",
@@ -146,7 +235,64 @@
         ],
         "description": "Gezond leven is een must voor jou!",
         "goodie": null,
-        "icon": "gezond"
+        "icon": "gezond",
+	"nickname": "kanjer"
+    },
+    {
+        "name": "Boswachter",
+        "requirements": [
+            {
+                "required": "12",
+                "types": [
+                    "Fish Market"
+                ]
+            }
+        ],
+        "description": "Even een frisse neus hale, lekker ontspannen, goed bezig!",
+        "goodie": null,
+        "icon": "boswachter"
+    },
+    {
+        "name": "Eerste Ditzo punt",
+        "requirements": [
+            {
+                "required": "4",
+                "types": [
+                    "Fish Market"
+                ]
+            }
+        ],
+        "description": "Je begint al aardig actief te zijn, goed bezig houd zo vol!",
+        "goodie": null,
+        "icon": "eerste_ditzo_punt"
+    },
+    {
+        "name": "Boswachter",
+        "requirements": [
+            {
+                "required": "12",
+                "types": [
+                    "Fish Market"
+                ]
+            }
+        ],
+        "description": "Even een frisse neus hale, lekker ontspannen, goed bezig!",
+        "goodie": null,
+        "icon": "boswachter"
+    },
+    {
+        "name": "Eerste Ditzo punt",
+        "requirements": [
+            {
+                "required": "4",
+                "types": [
+                    "Fish Market"
+                ]
+            }
+        ],
+        "description": "Je begint al aardig actief te zijn, goed bezig houd zo vol!",
+        "goodie": null,
+        "icon": "eerste_ditzo_punt"
     },
     {
         "name": "Nerd",
@@ -158,13 +304,14 @@
                 ]
             }
         ],
-        "description": "Je bent een echte nerd",
+        "description": "Je bent vaak op school om te leren",
         "goodie": {
-            "name": "",
-            "description": "",
-            "icon": "",
+            "name": "Huiswerk-set",
+            "description": "Het huiswerk-set bevat een pen, potlood en papier. De survivalkit voor elke student",
+            "icon": "pen",
             "mystery": false
         },
-        "icon": "nerd"
+        "icon": "nerd",
+	"nickname": "knappe kop"
     }
 ]

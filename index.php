@@ -149,6 +149,7 @@ $slim->map('/db/reset', function () use ($slim, $app) {
         foreach($achievements as $achievementData) {
             $achievement = R::dispense('achievement');
             $achievement->name = $achievementData->name;
+            $achievement->nickname = $achievementData->nickname;
             $achievement->mystery = false;
             $achievement->description = $achievementData->description;
             if($achievementData->goodie !== null){

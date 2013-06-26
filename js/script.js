@@ -198,7 +198,7 @@ var overlay = {
         this.el[0].addEventListener('webkitTransitionEnd', onTransitionEnd);
     },
 
-    empty: function() {
+    empty: function () {
         this.el.empty();
     }
 };
@@ -213,8 +213,14 @@ cardContainer.hammer()
     .on('tap', '.card', function (event) {
         var card = $(this);
 
-        var offset = card.offset();
+        var cardOffset = card.offset();
         var clonedCard = card.clone();
+
+        var centerX = $(window).width() / 2;
+        var centerY = $(window).height() / 2;
+
+        var thumbWidth = card.outerWidth();
+        var thumbHeight = card.outerHeight();
 
         var cardWidth = card.find('.card-back').outerWidth();
         var cardHeight = card.find('.card-back').outerHeight();
@@ -231,24 +237,20 @@ cardContainer.hammer()
 
         clonedCard
             .css({
-                margin: '-' + (card.outerHeight() / 2) + 'px -' + (card.outerWidth() / 2) + 'px'
+                margin: '-' + (card.outerHeight() / 2) + 'px -' + (card.outerWidth() / 2) + 'px',
+                transform: 'translate(' + (cardOffset.left + thumbWidth / 2 - centerX ) + 'px, ' + (cardOffset.top + thumbHeight / 2 - centerY) + 'px)'
             })
             .appendTo(wrapper);
 
         overlay.show();
 
-        var newLeft = $(window).width() / 2;
-        var newTop = $(window).height() / 2;
-
-        var x = newLeft - offset.left;
-        var y = newTop - offset.top;
-
-        clonedCard
-            .css({
-                transform: 'scale(3.0833333333) rotateY(-180deg)',
-            })
-            .addClass('focus');
-
+        setTimeout(function () {
+            clonedCard
+                .css({
+                    transform: 'translate(0, 0) scale(3.0833333333) rotateY(-180deg)'
+                })
+                .addClass('focus');
+        }, 1);
         card.hide();
     })
     .on('touch', '.card-wrapper', function (event) {
