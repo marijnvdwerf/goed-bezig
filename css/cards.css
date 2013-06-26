@@ -203,8 +203,8 @@
 .card-back-icon-archeoloog {}
 
 .type-popeye {}
-.card-front-popeye { background: url("../img/fronts/swimming_back.svg") repeat; background-position: center;}
-.card-front-icon-popeye { background: none;}
+.card-front-popeye { background: url("../img/fronts/sterk_back.svg") repeat; background-position: center;}
+.card-front-icon-popeye { background: url("../img/fronticons/spierballen.svg") no-repeat; background-position: center; width:70px;left: 31px !important; height: 100px; top:-13px !important;}
 .card-back-icon-popeye { background: url("../img/backicons/back_icon_sterk.svg"); background-size:100%;}
 
 .type-bruce  {}
