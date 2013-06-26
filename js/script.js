@@ -190,20 +190,20 @@ var overlay = {
     show: function () {
         this.el.css('display', 'block');
 
-        window.setTimeout(function (el) {
-            el.css('opacity', 1);
-        }, 1, this.el);
+        window.setTimeout(function () {
+            overlay.el.find('.curtain').css('opacity', 1);
+        }, 1);
     },
 
     hide: function () {
-        this.el.css('opacity', 0);
+        this.el.find('.curtain').css('opacity', 0);
 
         var onTransitionEnd = function (event) {
-            $(this).css('display', 'none');
+            overlay.el.css('display', 'none');
             this.removeEventListener('webkitTransitionEnd', onTransitionEnd);
         };
 
-        this.el[0].addEventListener('webkitTransitionEnd', onTransitionEnd);
+        this.el.find('.curtain')[0].addEventListener('webkitTransitionEnd', onTransitionEnd);
     },
 
     empty: function () {

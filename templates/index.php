@@ -49,6 +49,7 @@
         </div>
 
         <div class="content overlay">
+            <div class="curtain"></div>
             <div class="scrollable">
                 <div class="wrapper">
                     <div class="card-wrapper"></div>
