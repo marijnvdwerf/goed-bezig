@@ -334,3 +334,23 @@ textarea:focus, input:focus {
 .overlay .scrollable {
     top: 0;
 }
+
+.overlay .congratulations {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    right: 0;
+    background: #46a546;
+    -webkit-transition-duration: .25s;
+}
+
+.overlay .congratulations h1 {
+    font-size: 24px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.overlay .congratulations.show {
+    -webkit-transform: translateY(-100%);
+}

@@ -55,6 +55,11 @@
                     <div class="card-wrapper"></div>
                 </div>
             </div>
+            <div class="congratulations">
+                <div class="wrapper">
+                    <h1>Gefeliciteerd</h1>
+                </div>
+            </div>
         </div>
 
         <div class="content content-settings">

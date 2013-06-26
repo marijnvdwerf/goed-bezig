@@ -98,6 +98,10 @@ function sortData(data) {
 
         var overlayCard = $('.overlay .card');
         setTimeout(function () {
+            overlayCard.find('.stamp.fresh')[0].addEventListener('webkitTransitionEnd', function () {
+                overlay.el.find('.congratulations').addClass('show');
+            });
+
             overlayCard.find('.stamp').removeClass('fresh');
             card.find('.stamp').removeClass('fresh');
         }, 1000);
@@ -214,6 +218,8 @@ var overlay = {
         };
 
         this.el.find('.curtain')[0].addEventListener('webkitTransitionEnd', onTransitionEnd);
+
+        this.el.find('.congratulations').removeClass('show');
     },
 
     empty: function () {
