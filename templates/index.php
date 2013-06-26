@@ -66,9 +66,9 @@
             <div class="scrollable">
                 <div class="wrapper settings-wrapper">
                     <p>Gegevens</p>
-                    <input type="text" class="mailadres" name="mailadres" placeholder="Mailadres">
-                    <input type="text" class="adres" name="adres" placeholder="Adres">
-                    <input type="text" class="woonplaats" name="woonplaats" placeholder="Woonplaats">
+                    <input type="text" class="mailadres" name="mailadres" placeholder="Mailadres" value="mail@jelleduisters.nl">
+                    <input type="text" class="adres" name="adres" placeholder="Adres" value="Niewstraat 80">
+                    <input type="text" class="woonplaats" name="woonplaats" placeholder="Woonplaats" value="Budel">
 
                     <p>Meldingen</p>
 
