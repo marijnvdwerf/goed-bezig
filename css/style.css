@@ -166,6 +166,7 @@ html, body {
     width: 100%;
     background-color: #0082bb;
     z-index: 5;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .1), 0 1px rgba(0, 0, 0, .05);
 }
 
 .page-main .header .ditzoLogo {
@@ -305,8 +306,7 @@ textarea:focus, input:focus {
 .overlay .card-wrapper {
     background: red;
     position: relative;
-    left: 50%;
-    top: 50%;
+    margin: 0 auto;
 }
 
 #card-container {
@@ -317,4 +317,8 @@ textarea:focus, input:focus {
     left: 50%;
     top: 50%;
     position: absolute;
+}
+
+.overlay .scrollable {
+    top: 0;
 }
