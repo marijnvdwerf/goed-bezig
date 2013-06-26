@@ -201,12 +201,12 @@
 .type-nerd {}
 .card-front-nerd { background: url("../img/fronts/nerd_back.svg") repeat; background-position: center;}
 .card-front-icon-nerd {background-image: url("../img/fronticons/stropdas.svg"); }
-.card-back-icon-nerd {}
+.card-back-icon-nerd {background:none;}
 
 .type-archeoloog {}
 .card-front-archeoloog { background: url("../img/fronts/musea_back.svg") no-repeat; background-position: center;}
 .card-front-icon-archeoloog { background: none;}
-.card-back-icon-archeoloog {}
+.card-back-icon-archeoloog {background:none;}
 
 .type-popeye {}
 .card-front-popeye { background: url("../img/fronts/sterk_back.svg") repeat; background-position: center;}
@@ -225,13 +225,13 @@
 
 .type-yeti  {}
 .card-front-yeti  { background: url("../img/fronts/skies_back.svg") no-repeat; background-size: 150%;}
-.card-front-icon-yeti  { background-image: url("../img/fronticons/ijsberg.svg"); }
-.card-back-icon-yeti  {}
+.card-front-icon-yeti  { background-image: url("../img/fronticons/ijsberg_icon.svg"); }
+.card-back-icon-yeti  {background:none;}
 
 .type-gezond  {}
 .card-front-gezond  { background: crimson; }
 .card-front-icon-gezond  {background-image: url("../img/fronticons/hart.svg"); }
-.card-back-icon-gezond  {}
+.card-back-icon-gezond  {background:none;}
 
 .type-boekenwurm  {}
 .card-front-boekenwurm  { background: none; border:4px dashed;box-shadow: none;}
@@ -241,37 +241,37 @@
 .type-reiziger  {}
 .card-front-reiziger  { background: url("../img/fronts/reiziger_back.svg") repeat; background-position: center;}
 .card-front-icon-reiziger  { background-image: url("../img/fronticons/raarpoppetje.svg"); }
-.card-back-icon-reiziger  {}
+.card-back-icon-reiziger  {background:none;}
 
 .type-mark_rutte  {}
-.card-front-mark_rutte  { background: none; border:4px dashed; box-shadow: none;}
+.card-front-mark_rutte  { background: url("../img/fronts/boekenwurm_back.svg") repeat; background-position: center;}
 .card-front-icon-mark_rutte  { background-image: url("../img/fronticons/stemmen.svg"); }
-.card-back-icon-mark_rutte  {}
+.card-back-icon-mark_rutte  {background:none;}
 
 .type-nerd2  {}
 .card-front-nerd2  { background: none; border:4px dashed; box-shadow: none;}
 .card-front-icon-nerd2  { background-image: url("../img/fronticons/bril.svg"); }
-.card-back-icon-nerd2  {}
+.card-back-icon-nerd2  {background:none;}
 
 .type-boswachter  {}
 .card-front-boswachter  { background: url("../img/fronts/boswachter_back.svg") no-repeat; }
 .card-front-icon-boswachter  {background-image: url("../img/fronticons/boom.svg"); }
-.card-back-icon-boswachter  {}
+.card-back-icon-boswachter  {background:none;}
 
 .type-eerste_ditzo_punt  {}
 .card-front-eerste_ditzo_punt  { background: url("../img/fronts/ditzopunt_back.svg") repeat; }
 .card-front-icon-eerste_ditzo_punt  {background-image: url("../img/fronticons/marker.svg"); }
-.card-back-icon-eerste_ditzo_punt  {}
+.card-back-icon-eerste_ditzo_punt  {background:none;}
 
 .type-recycle  {}
 .card-front-recycle  { background: url("../img/fronts/recycle_back.svg") repeat; }
 .card-front-icon-recycle  {background-image: url("../img/fronticons/recycle_logo.svg"); }
-.card-back-icon-recycle  {}
+.card-back-icon-recycle  {background:none;}
 
 .type-uefa  {}
 .card-front-uefa  { background: url("../img/fronts/UEFA_back.svg") repeat; }
 .card-front-icon-uefa  {background: none }
-.card-back-icon-uefa  {}
+.card-back-icon-uefa  {background:none;}
 
 .card .card-front .card-icon {
     position: absolute;
@@ -286,3 +286,11 @@
     height: auto;
     right: 0;
 }
+
+
+.stamp.type-Airport {}
+.stamp.type-Fish.Market {}
+.stamp.type-Airport {}
+.stamp.type-Gym {}
+.stamp.type-Martial.Arts.Dojo {}
+.stamp.type-Ski.Area {}
