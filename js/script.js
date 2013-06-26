@@ -90,7 +90,17 @@ function sortData(data) {
 
     if (uri.getQueryParamValue('c') !== undefined) {
         var cardId = uri.getQueryParamValue('c');
-        $('.card[data-id="' + cardId + '"]').hammer().trigger('tap');
+        var card = $('.card[data-id="' + cardId + '"]');
+
+        // hide last stamp
+        card.find('.stamp').last().addClass('fresh');
+        card.hammer().trigger('tap');
+
+        var overlayCard = $('.overlay .card');
+        setTimeout(function () {
+            overlayCard.find('.stamp').removeClass('fresh');
+            card.find('.stamp').removeClass('fresh');
+        }, 1000);
     }
 }
 

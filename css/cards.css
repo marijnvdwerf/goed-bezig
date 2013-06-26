@@ -115,10 +115,16 @@
 .stamp {
     width: 60px;
     height: 60px;
-    /*background: rgba(0, 0, 0, .8);*/
-    /*border-radius: 10px;*/
+    background: rgba(0, 0, 0, .8);
+    border-radius: 10px;
     position: absolute;
     margin: -30px;
+    -webkit-transition-duration: 0.5s;
+}
+
+.stamp.fresh {
+    -webkit-transform: scale(2.5) !important;
+    opacity: 0;
 }
 
 .card-header {
