@@ -304,7 +304,11 @@ textarea:focus, input:focus {
 }
 
 .overlay .card-wrapper {
-    background: red;
+    -webkit-transform-style: keep-perspective;
+    -webkit-perspective: 2000;
+}
+
+.overlay .card-wrapper {
     position: relative;
     margin: 0 auto;
 }
