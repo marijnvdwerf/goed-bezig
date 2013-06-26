@@ -84,6 +84,11 @@ function sortData(data) {
     cardContainer.masonry({
         itemSelector: '.card-wrapper'
     });
+
+    if (uri.getQueryParamValue('c') !== undefined) {
+        var cardId = uri.getQueryParamValue('c');
+        $('.card[data-id="' + cardId + '"]').hammer().trigger('tap');
+    }
 }
 
 function createCard(achievement) {
@@ -199,12 +204,9 @@ var overlay = {
     },
 
     empty: function () {
-        this.el.empty();
+        overlay.el.find('.card-wrapper').empty();
     }
 };
-
-
-$('body').removeClass('loading');
 
 var activeWrapper;
 var activeCard;
@@ -225,22 +227,23 @@ cardContainer.hammer()
         var cardWidth = card.find('.card-back').outerWidth();
         var cardHeight = card.find('.card-back').outerHeight();
 
-        var wrapper = $('<div class="card-wrapper"/>');
-        wrapper
-            .css({
-                'width': cardWidth,
-                'height': cardHeight,
-                'margin-left': -(cardWidth / 2),
-                'margin-top': -(cardHeight / 2)
-            })
-            .appendTo(overlay.el);
+        var cardWrapper = overlay.el.find('.card-wrapper');
+        cardWrapper.css({
+            'width': cardWidth,
+            'height': cardHeight
+        });
+
+        cardWrapper.parent().css({
+            'padding-top': centerY - (cardHeight / 2),
+            'padding-bottom': centerY - (cardHeight / 2)
+        });
 
         clonedCard
             .css({
                 margin: '-' + (card.outerHeight() / 2) + 'px -' + (card.outerWidth() / 2) + 'px',
                 transform: 'translate(' + (cardOffset.left + thumbWidth / 2 - centerX ) + 'px, ' + (cardOffset.top + thumbHeight / 2 - centerY) + 'px)'
             })
-            .appendTo(wrapper);
+            .appendTo(cardWrapper);
 
         overlay.show();
 
