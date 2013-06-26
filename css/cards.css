@@ -219,3 +219,33 @@
 .card-front-gezond  { background: none; border:4px dashed;}
 .card-front-icon-gezond  {background: url("../img/fronticons/hart.svg") no-repeat; background-position: center; width:70px;left: 31px !important;}
 .card-back-icon-gezond  {}
+
+.type-boekenwurm  {}
+.card-front-boekenwurm  { background: none; border:4px dashed;}
+.card-front-icon-boekenwurm  {}
+.card-back-icon-boekenwurm  {}
+
+.type-reiziger  {}
+.card-front-reiziger  { background: url("../img/fronts/reiziger_back.svg") repeat; background-position: center;}
+.card-front-icon-reiziger  { background: url("../img/fronticons/raarpoppetje.svg") no-repeat; background-position: center; width:70px;left: 36px !important; height: 70px; top:32px !important;}
+.card-back-icon-reiziger  {}
+
+.type-mark_rutte  {}
+.card-front-mark_rutte  { background: none; border:4px dashed;}
+.card-front-icon-mark_rutte  { background: url("../img/fronticons/stemmen.svg") no-repeat; background-position: center; width:70px;left: 33px !important; }
+.card-back-icon-mark_rutte  {}
+
+.type-nerd2  {}
+.card-front-nerd2  { background: none; border:4px dashed;}
+.card-front-icon-nerd2  { background: url("../img/fronticons/bril.svg") no-repeat; background-position: center; width:70px;left: 31px !important;}
+.card-back-icon-nerd2  {}
+
+.type-boswachter  {}
+.card-front-boswachter  { background: url("../img/fronts/boswachter_back.svg") no-repeat; background-position: center; background-size: 110%;}
+.card-front-icon-boswachter  {background: url("../img/fronticons/boom.svg") no-repeat; background-position: center; width:70px;left: 36px !important;height:53px; top:46px !important;}
+.card-back-icon-boswachter  {}
+
+.type-eerste_ditzo_punt  {}
+.card-front-eerste_ditzo_punt  { background: url("../img/fronts/ditzopunt_back.svg") repeat; background-position: center;}
+.card-front-icon-eerste_ditzo_punt  {background: url("../img/fronticons/goedbezig.svg") no-repeat; background-position: center; width:70px;left: 36px !important; }
+.card-back-icon-eerste_ditzo_punt  {}
