@@ -1,5 +1,19 @@
 [
     {
+        "name": "Boswachter",
+        "requirements": [
+            {
+                "required": "12",
+                "types": [
+                    "Fish Market"
+                ]
+            }
+        ],
+        "description": "Even een frisse neus hale, lekker ontspannen, goed bezig!",
+        "goodie": null,
+        "icon": "boswachter"
+    },
+    {
         "name": "Waterrat",
         "requirements": [
             {
@@ -91,21 +105,6 @@
         "icon": "reiziger"
     },
     {
-        "name": "Boswachter",
-        "requirements": [
-            {
-                "required": "12",
-                "types": [
-                    "Fish Market"
-                ]
-            }
-        ],
-        "description": "Even een frisse neus hale, lekker ontspannen, goed bezig!",
-        "goodie": null,
-        "icon": "boswachter"
-    },
-
-    {
         "name": "Archeoloog",
         "requirements": [
             {
@@ -120,6 +119,36 @@
         "goodie": null,
         "icon": "archeoloog",
         "nickname": "Indiana Jones"
+    },
+    {
+        "name": "Wecycle",
+        "requirements": [
+            {
+                "required": "8",
+                "types": [
+                    "recycle"
+                ]
+            }
+        ],
+        "description": "Je spullen herbruiken, zuinig zijn, je bent super goed bezig!",
+        "goodie": null,
+        "icon": "recycle",
+        "nickname": "recycle"
+    },
+    {
+        "name": "Messi",
+        "requirements": [
+            {
+                "required": "8",
+                "types": [
+                    "soccer"
+                ]
+            }
+        ],
+        "description": "Jij ben de voetbalster die iedereen inspireerd, de Messi van Nederland!",
+        "goodie": null,
+        "icon": "uefa",
+        "nickname": "uefa"
     },
     {
         "name": "Yeti",
@@ -205,21 +234,7 @@
         "goodie": null,
         "icon": "mark_rutte"
     },
-    {
-        "name": "recycle",
-        "requirements": [
-            {
-                "required": "8",
-                "types": [
-                    "recycle"
-                ]
-            }
-        ],
-        "description": "Jij hebt geen blik spinazie nodig om zo gespierd te worden als popeye!",
-        "goodie": null,
-        "icon": "recycle",
-        "nickname": "recycle"
-    },
+
     {
         "name": "Boekenwurm",
         "requirements": [
