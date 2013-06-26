@@ -224,8 +224,8 @@
 .card-back-icon-bourgondier  {background: url("../img/backicons/ijsberg_icon_kaartje-01.svg"); background-size:100%;}
 
 .type-yeti  {}
-.card-front-yeti  { background: url("../img/fronts/skies_back.svg") no-repeat; background-size: 150%;}
-.card-front-icon-yeti  { background-image: url("../img/fronticons/ijsberg_icon.svg"); }
+.card-front-yeti  { background: url("../img/fronts/skies_back.svg") no-repeat; background-size: cover;}
+.card-front-icon-yeti  { background-image: url("../img/fronticons/ijsberg_icon.svg");  background-position:bottom; top:40px !important;}
 .card-back-icon-yeti  {background:none;}
 
 .type-gezond  {}
@@ -249,12 +249,12 @@
 .card-back-icon-mark_rutte  {background:none;}
 
 .type-nerd2  {}
-.card-front-nerd2  { background: none; border:4px dashed; box-shadow: none;}
+.card-front-nerd2  { background: url("../img/fronts/recycle_back.svg") repeat; }
 .card-front-icon-nerd2  { background-image: url("../img/fronticons/bril.svg"); }
 .card-back-icon-nerd2  {background:none;}
 
 .type-boswachter  {}
-.card-front-boswachter  { background: url("../img/fronts/boswachter_back.svg") no-repeat; }
+.card-front-boswachter  { background: url("../img/fronts/boswachter_back.svg") no-repeat; background-size: cover;}
 .card-front-icon-boswachter  {background-image: url("../img/fronticons/boom.svg"); }
 .card-back-icon-boswachter  {background:none;}
 
@@ -288,10 +288,12 @@
 }
 
 
-.stamp.type-Airport {background: url("../img/stamps/bluemango.svg") no-repeat;}
-.stamp.type-Fish.Market {background: url("../img/stamps/collegegym.svg") no-repeat;}
-.stamp.type-Airport {background: url("../img/stamps/office.svg") no-repeat;}
-.stamp.type-Gym {background: url("../img/stamps/strong.svg") no-repeat;}
-.stamp.type-Martial.Arts.Dojo {background: url("../img/stamps/ditzo_stamp.svg") no-repeat;}
-.stamp.type-Ski.Area {}
+.stamp.type-College {background: url("../img/stamps/collegegym.svg") no-repeat; background-size: cover;}
+.stamp.type-Airport {background: url("../img/stamps/office.svg") no-repeat; background-size: contain;}
+.stamp.type-Museum {background: url("../img/stamps/office.svg") no-repeat; background-size: contain;}
+.stamp.type-Gym {background: url("../img/stamps/strong.svg") no-repeat; background-size: cover;}
+.stamp.type-Martial.Arts.Dojo {background: url("../img/stamps/ditzo_stamp.svg") no-repeat; background-size: contain;}
+.stamp.type-Fish.Market {background: url("../img/stamps/ditzo_stamp.svg") no-repeat; background-size: contain;}
+.stamp.type-Ski.Area {background: url("../img/stamps/ditzo_stamp.svg") no-repeat; background-size: contain;}
+.stamp.type-BlueMango {background: url("../img/stamps/bluemango.svg") no-repeat; background-size: contain;}
 
