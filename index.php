@@ -116,7 +116,6 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
         ];
 
         foreach ($userAchievement->getStamps() as $stamp) {
-            $slim->getLog()->error($stamp);
             $a['stamps'][] = [
                 'timestamp' => $stamp->datetime,
                 'type' => $stamp->venuetype->type,
