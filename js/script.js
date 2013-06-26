@@ -127,6 +127,10 @@ function createCard(achievement) {
         cardWrapper.find('.card').addClass('has-goodie');
     }
 
+    if (achievement.stamps.length === 0) {
+        cardWrapper.find('.card').addClass('unstarted');
+    }
+
 
     for (var i = 0; i < achievement.stamps_required; i++) {
         var stampBox = $('<div class="stamp-box"></div>');
