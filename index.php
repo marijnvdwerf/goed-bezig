@@ -58,7 +58,7 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
     $response['Content-Type'] = 'application/json';
 
     $token = $request->params('token');
-    if($token === null) {
+    if ($token === null) {
         $response->status(400);
         $response->body(json_encode([
             'error' => 'Missing token parameter'
@@ -68,7 +68,7 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
 
     $user = $app->getUserForFoursquareToken($token);
 
-    if($user === false) {
+    if ($user === false) {
         $response->status(400);
         $response->body(json_encode([
             'error' => 'Invalid token'
@@ -116,9 +116,10 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
         ];
 
         foreach ($userAchievement->getStamps() as $stamp) {
+            $slim->getLog()->error($stamp);
             $a['stamps'][] = [
                 'timestamp' => $stamp->datetime,
-                'type' => $stamp->venue->type,
+                'type' => $stamp->venuetype->type,
                 'new' => false,
             ];
         }
@@ -139,20 +140,20 @@ $slim->post('/api/login/foursquare', function () use ($slim, $app) {
 });
 
 $slim->map('/db/reset', function () use ($slim, $app) {
-    if($slim->request()->isPost()) {
+    if ($slim->request()->isPost()) {
         $achievements = file_get_contents('data/achievements.json');
         $achievements = json_decode($achievements);
         $app->loadTestData();
         $app->emptyDatabase();
 
         $venueTypes = [];
-        foreach($achievements as $achievementData) {
+        foreach ($achievements as $achievementData) {
             $achievement = R::dispense('achievement');
             $achievement->name = $achievementData->name;
             $achievement->nickname = $achievementData->nickname;
             $achievement->mystery = false;
             $achievement->description = $achievementData->description;
-            if($achievementData->goodie !== null){
+            if ($achievementData->goodie !== null) {
                 $goodie = R::dispense('goodie');
                 $goodie->name = $achievementData->goodie->name;
                 $goodie->description = $achievementData->goodie->description;
@@ -161,11 +162,11 @@ $slim->map('/db/reset', function () use ($slim, $app) {
                 $achievement->goodie = $goodie;
             }
             $achievement->icon = $achievementData->icon;
-            foreach($achievementData->requirements as $requirementData) {
+            foreach ($achievementData->requirements as $requirementData) {
                 $requirement = R::dispense('requirement');
                 $requirement->numberRequired = $requirementData->required;
-                foreach($requirementData->types as $type) {
-                    if(!isset($venueTypes[$type])) {
+                foreach ($requirementData->types as $type) {
+                    if (!isset($venueTypes[$type])) {
                         $venueTypes[$type] = R::dispense('venuetype');
                         $venueTypes[$type]->type = $type;
                     }

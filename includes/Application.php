@@ -106,7 +106,7 @@ class Application
 
         $stamp = R::dispense('stamp');
         $stamp->userachievement = $userAchievement;
-        $stamp->venueType = $poolLake;
+        $stamp->venuetype = $poolLake;
         $stamp->requirement = $requirement;
         $stamp->datetime = new DateTime();
         R::store($stamp);
@@ -120,7 +120,7 @@ class Application
 
         $stamp = R::dispense('stamp');
         $stamp->userachievement = $userAchievement;
-        $stamp->venueType = $gym;
+        $stamp->venuetype = $gym;
         $stamp->requirement = $requirement;
         $stamp->datetime = new DateTime();
         R::store($stamp);
@@ -156,7 +156,7 @@ class Application
 
         $stamp = R::dispense('stamp');
         $stamp->userachievement = $userAchievement;
-        $stamp->venueType = $poolLake;
+        $stamp->venuetype = $poolLake;
         $stamp->requirement = $requirement;
         $stamp->datetime = new DateTime();
         R::store($stamp);
@@ -225,8 +225,8 @@ class Application
 
         //CREATE array with achievements per venue;
         $venueAchievements = [];
-        foreach ($relatedVenueTypes as $venueType) {
-            foreach ($venueType->sharedRequirement as $requirement) {
+        foreach ($relatedVenueTypes as $venuetype) {
+            foreach ($venuetype->sharedRequirement as $requirement) {
                 $venueAchievements[] = $requirement->achievement;
 
             }
@@ -345,12 +345,12 @@ class Application
         $requirements = R::find('requirement', ' achievement_id = ?', [$achievementId]);
 
         foreach ($requirements as $requirement) {
-            foreach ($requirement->sharedVenuetype as $venueType) {
-                if (!in_array($venueType->type, $categories)) {
+            foreach ($requirement->sharedVenuetype as $venuetype) {
+                if (!in_array($venuetype->type, $categories)) {
                     continue;
                 }
                 $stamp = R::dispense('stamp');
-                $stamp->venueType = $venueType;
+                $stamp->venuetype = $venuetype;
                 $stamp->requirement = $requirement;
                 $stamp->datetime = new DateTime();
                 return $stamp;
