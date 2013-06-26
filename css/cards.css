@@ -288,9 +288,10 @@
 }
 
 
-.stamp.type-Bluemango { background: url("../img/stamps/bluemango.svg") no-repeat; }
-.stamp.type-Collegegym { background: url("../img/stamps/collegegym.svg") no-repeat; }
-.stamp.type-Office { background: url("../img/stamps/office.svg") no-repeat; }
-.stamp.type-Gym { background: url("../img/stamps/strong.svg") no-repeat; }
-.stamp.type-Ditzo { background: url("../img/stamps/ditzo_stamp.svg") no-repeat; }
+.stamp.type-Airport {background: url("../img/stamps/bluemango.svg") no-repeat;}
+.stamp.type-Fish.Market {background: url("../img/stamps/collegegym.svg") no-repeat;}
+.stamp.type-Airport {background: url("../img/stamps/office.svg") no-repeat;}
+.stamp.type-Gym {background: url("../img/stamps/strong.svg") no-repeat;}
+.stamp.type-Martial.Arts.Dojo {background: url("../img/stamps/ditzo_stamp.svg") no-repeat;}
+.stamp.type-Ski.Area {}
 
