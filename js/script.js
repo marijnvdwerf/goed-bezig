@@ -77,6 +77,9 @@ function foursquareLogin(token) {
 }
 
 function sortData(data) {
+    data.achievements.sort(function (a, b) {
+        return b.progress - a.progress;
+    });
     $.each(data.achievements, function (i, achievement) {
         createCard(achievement);
     });
