@@ -27,7 +27,7 @@
 }
 
 .card-front {
-    /*background: crimson;*/
+    background: crimson;
     height: 100%;
 }
 
@@ -180,16 +180,41 @@
 }
 
 .type-waterrat {}
-.card-front-waterrat { background: url("../img/fronts/waterrat.svg") repeat; background-position: center;}
-.card-front-icon-waterrat {}
+.card-front-waterrat { background: url("../img/fronts/swimming_back.svg") repeat; background-position: center;}
+.card-front-icon-waterrat { background: url("../img/fronticons/zwemmer.svg") no-repeat; background-position: center; width:70px;left: 36px !important; }
 .card-back-icon-waterrat {}
 
 .type-nerd {}
-.card-front-nerd {}
+.card-front-nerd { background: url("../img/fronts/nerd_back.svg") repeat; background-position: center;}
 .card-front-icon-nerd {}
 .card-back-icon-nerd {}
 
 .type-archeoloog {}
-.card-front-archeoloog {}
+.card-front-archeoloog { background: url("../img/fronts/musea_back.svg") no-repeat; background-position: center;}
 .card-front-icon-archeoloog {}
 .card-back-icon-archeoloog {}
+
+.type-popeye {}
+.card-front-popeye { background: url("../img/fronts/swimming_back.svg") repeat; background-position: center;}
+.card-front-icon-popeye {}
+.card-back-icon-popeye {}
+
+.type-bruce  {}
+.card-front-bruce  { background: url("../img/fronts/ninja_back.svg") repeat; background-position: center;}
+.card-front-icon-bruce  {}
+.card-back-icon-bruce {}
+
+.type-bourgondier  {}
+.card-front-bourgondier  { background: url("../img/fronts/fruits_back.svg") repeat; background-position: center;}
+.card-front-icon-bourgondier  {}
+.card-back-icon-bourgondier  {}
+
+.type-yeti  {}
+.card-front-yeti  { background: url("../img/fronts/swimming_back.svg") repeat; background-position: center;}
+.card-front-icon-yeti  {}
+.card-back-icon-yeti  {}
+
+.type-gezond  {}
+.card-front-gezond  { background: url("../img/fronts/fruits_back.svg") repeat; background-position: center;}
+.card-front-icon-gezond  {}
+.card-back-icon-gezond  {}

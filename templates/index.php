@@ -90,12 +90,12 @@
         <div class="card-wrapper">
             <div class="card type-:achievementIcon1" style="height::achievementDataRatio;" data-id=":achievementId">
                 <div class="card-front card-front-:achievementIcon2">
-                    <div class="card-icon card-icon-front-:achievementIcon3"></div>
+                    <div class="card-icon card-front-icon-:achievementIcon3"></div>
                     <div class="goodie-indicator"></div>
                 </div>
                 <div class="card-back">
                     <div class="card-header">
-                        <div class="card-icon card-icon-back-:achievementIcon4"></div>
+                        <div class="card-icon card-back-icon-:achievementIcon4"></div>
                         <div class="goodie-indicator"></div>
                         <span class="card-title">:achievementTitle</span>
                         <span class="card-description">:achievementDescription</span>
