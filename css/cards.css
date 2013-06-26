@@ -288,9 +288,9 @@
 }
 
 
-.stamp.type-Airport {}
-.stamp.type-Fish.Market {}
-.stamp.type-Airport {}
-.stamp.type-Gym {}
-.stamp.type-Martial.Arts.Dojo {}
-.stamp.type-Ski.Area {}
+.stamp.type-Bluemango { background: url("../img/stamps/bluemango.svg") no-repeat; }
+.stamp.type-Collegegym { background: url("../img/stamps/collegegym.svg") no-repeat; }
+.stamp.type-Office { background: url("../img/stamps/office.svg") no-repeat; }
+.stamp.type-Gym { background: url("../img/stamps/strong.svg") no-repeat; }
+.stamp.type-Ditzo { background: url("../img/stamps/ditzo_stamp.svg") no-repeat; }
+
