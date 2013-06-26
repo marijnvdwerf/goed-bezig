@@ -11,7 +11,8 @@
         ],
         "description": "Even een frisse neus hale, lekker ontspannen, goed bezig!",
         "goodie": null,
-        "icon": "boswachter"
+        "icon": "boswachter",
+	"nickname": "boswachter"
     },
     {
         "name": "Waterrat",
@@ -102,7 +103,8 @@
             "icon": "",
             "mystery": false
         },
-        "icon": "reiziger"
+        "icon": "reiziger",
+	"nickname": "reiziger"
     },
     {
         "name": "Archeoloog",
@@ -148,7 +150,7 @@
         "description": "Jij ben de voetbalster die iedereen inspireerd, de Messi van Nederland!",
         "goodie": null,
         "icon": "uefa",
-        "nickname": "uefa"
+        "nickname": "topscoorder"
     },
     {
         "name": "Yeti",
@@ -182,7 +184,8 @@
         ],
         "description": "Je begint al aardig actief te zijn, goed bezig houd zo vol!",
         "goodie": null,
-        "icon": "eerste_ditzo_punt"
+        "icon": "eerste_ditzo_punt",
+	"nickname": "verzekerde"
     },
 
     {
@@ -232,7 +235,8 @@
         ],
         "description": "Jij snapt het, iedere stem telt!",
         "goodie": null,
-        "icon": "mark_rutte"
+        "icon": "mark_rutte",
+	"nickname": "parlementarier"
     },
 
     {
@@ -264,6 +268,7 @@
         ],
         "description": "Een wijntje, lekker eten en gezellige mensen om je heen, daar geniet je van!",
         "goodie": null,
-        "icon": "bourgondier"
+        "icon": "bourgondier",
+	"nickname": "genieter"
     }
 ]
