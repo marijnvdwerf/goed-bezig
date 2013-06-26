@@ -47,7 +47,7 @@ $('.button-foursquare')
             .setAnchor('login-foursquare')
             .setQuery('');
 
-        var foursquareLoginUri = new Uri('https://foursquare.com/oauth2/authenticate');
+        var foursquareLoginUri = new Uri('https://foursquare.com/oauth2/authorize');
         foursquareLoginUri
             .addQueryParam('client_id', config.foursquare_id)
             .addQueryParam('response_type', 'token')
