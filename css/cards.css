@@ -200,7 +200,7 @@
 
 .type-nerd {}
 .card-front-nerd { background: url("../img/fronts/nerd_back.svg") repeat; background-position: center;}
-.card-front-icon-nerd {background-image: url("../img/fronticons/stropdas.svg"); }
+.card-front-icon-nerd {background-image: url("../img/fronticons/bril.svg"); }
 .card-back-icon-nerd {background:none;}
 
 .type-archeoloog {}
@@ -250,7 +250,7 @@
 
 .type-nerd2  {}
 .card-front-nerd2  { background: url("../img/fronts/recycle_back.svg") repeat; }
-.card-front-icon-nerd2  { background-image: url("../img/fronticons/bril.svg"); }
+.card-front-icon-nerd2  { background-image: url("../img/fronticons/stropdas.svg"); }
 .card-back-icon-nerd2  {background:none;}
 
 .type-boswachter  {}
@@ -269,8 +269,8 @@
 .card-back-icon-recycle  {background:none;}
 
 .type-uefa  {}
-.card-front-uefa  { background: url("../img/fronts/UEFA_back.svg") repeat; }
-.card-front-icon-uefa  {background: none }
+.card-front-uefa  { background: url("../img/fronts/degoedeuefa.svg") repeat; }
+.card-front-icon-uefa  {background-image: url("../img/fronticons/uefa2.svg"); }
 .card-back-icon-uefa  {background:none;}
 
 .card .card-front .card-icon {
